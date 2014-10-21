@@ -1,0 +1,1 @@
+create index IX_DE39B675 on timemanagement_TMTask (companyId, groupId);
