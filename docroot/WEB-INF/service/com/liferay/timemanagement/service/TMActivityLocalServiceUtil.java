@@ -275,6 +275,37 @@ public class TMActivityLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static com.liferay.timemanagement.model.TMActivity addTMActivity(
+		long companyId, long userId, java.lang.String taskName,
+		java.lang.String description,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addTMActivity(companyId, userId, taskName, description,
+			serviceContext);
+	}
+
+	public static void addTMActivityResources(
+		com.liferay.timemanagement.model.TMActivity tmActivity,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addTMActivityResources(tmActivity, addGroupPermissions,
+			addGuestPermissions);
+	}
+
+	public static void addTMActivityResources(
+		com.liferay.timemanagement.model.TMActivity tmActivity,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addTMActivityResources(tmActivity, groupPermissions,
+			guestPermissions);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

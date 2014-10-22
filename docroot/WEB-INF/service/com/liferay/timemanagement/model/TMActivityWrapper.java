@@ -672,7 +672,7 @@ public class TMActivityWrapper implements TMActivity, ModelWrapper<TMActivity> {
 	}
 
 	@Override
-	public int compareTo(TMActivity tmActivity) {
+	public int compareTo(com.liferay.timemanagement.model.TMActivity tmActivity) {
 		return _tmActivity.compareTo(tmActivity);
 	}
 
@@ -682,17 +682,17 @@ public class TMActivityWrapper implements TMActivity, ModelWrapper<TMActivity> {
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<TMActivity> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<com.liferay.timemanagement.model.TMActivity> toCacheModel() {
 		return _tmActivity.toCacheModel();
 	}
 
 	@Override
-	public TMActivity toEscapedModel() {
+	public com.liferay.timemanagement.model.TMActivity toEscapedModel() {
 		return new TMActivityWrapper(_tmActivity.toEscapedModel());
 	}
 
 	@Override
-	public TMActivity toUnescapedModel() {
+	public com.liferay.timemanagement.model.TMActivity toUnescapedModel() {
 		return new TMActivityWrapper(_tmActivity.toUnescapedModel());
 	}
 

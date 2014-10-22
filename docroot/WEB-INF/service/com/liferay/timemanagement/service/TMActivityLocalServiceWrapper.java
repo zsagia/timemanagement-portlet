@@ -287,6 +287,37 @@ public class TMActivityLocalServiceWrapper implements TMActivityLocalService,
 			arguments);
 	}
 
+	@Override
+	public com.liferay.timemanagement.model.TMActivity addTMActivity(
+		long companyId, long userId, java.lang.String taskName,
+		java.lang.String description,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivityLocalService.addTMActivity(companyId, userId,
+			taskName, description, serviceContext);
+	}
+
+	@Override
+	public void addTMActivityResources(
+		com.liferay.timemanagement.model.TMActivity tmActivity,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tmActivityLocalService.addTMActivityResources(tmActivity,
+			addGroupPermissions, addGuestPermissions);
+	}
+
+	@Override
+	public void addTMActivityResources(
+		com.liferay.timemanagement.model.TMActivity tmActivity,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tmActivityLocalService.addTMActivityResources(tmActivity,
+			groupPermissions, guestPermissions);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */
