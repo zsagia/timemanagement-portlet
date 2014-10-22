@@ -17,21 +17,21 @@ package com.liferay.timemanagement.service.persistence;
 import com.liferay.portal.kernel.dao.orm.BaseActionableDynamicQuery;
 import com.liferay.portal.kernel.exception.SystemException;
 
-import com.liferay.timemanagement.model.TMTask;
-import com.liferay.timemanagement.service.TMTaskLocalServiceUtil;
+import com.liferay.timemanagement.model.TMActivity;
+import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
 
 /**
  * @author Istvan Sajtos, Zsolt Szabo
  * @generated
  */
-public abstract class TMTaskActionableDynamicQuery
+public abstract class TMActivityActionableDynamicQuery
 	extends BaseActionableDynamicQuery {
-	public TMTaskActionableDynamicQuery() throws SystemException {
-		setBaseLocalService(TMTaskLocalServiceUtil.getService());
-		setClass(TMTask.class);
+	public TMActivityActionableDynamicQuery() throws SystemException {
+		setBaseLocalService(TMActivityLocalServiceUtil.getService());
+		setClass(TMActivity.class);
 
 		setClassLoader(com.liferay.timemanagement.service.ClpSerializer.class.getClassLoader());
 
-		setPrimaryKeyPropertyName("taskId");
+		setPrimaryKeyPropertyName("activityId");
 	}
 }

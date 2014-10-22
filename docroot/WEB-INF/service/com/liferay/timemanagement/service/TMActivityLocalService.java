@@ -24,67 +24,69 @@ import com.liferay.portal.service.InvokableLocalService;
 import com.liferay.portal.service.PersistedModelLocalService;
 
 /**
- * Provides the local service interface for TMTask. Methods of this
+ * Provides the local service interface for TMActivity. Methods of this
  * service will not have security checks based on the propagated JAAS
  * credentials because this service can only be accessed from within the same
  * VM.
  *
  * @author Istvan Sajtos, Zsolt Szabo
- * @see TMTaskLocalServiceUtil
- * @see com.liferay.timemanagement.service.base.TMTaskLocalServiceBaseImpl
- * @see com.liferay.timemanagement.service.impl.TMTaskLocalServiceImpl
+ * @see TMActivityLocalServiceUtil
+ * @see com.liferay.timemanagement.service.base.TMActivityLocalServiceBaseImpl
+ * @see com.liferay.timemanagement.service.impl.TMActivityLocalServiceImpl
  * @generated
  */
 @Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
 	PortalException.class, SystemException.class})
-public interface TMTaskLocalService extends BaseLocalService,
+public interface TMActivityLocalService extends BaseLocalService,
 	InvokableLocalService, PersistedModelLocalService {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link TMTaskLocalServiceUtil} to access the t m task local service. Add custom service methods to {@link com.liferay.timemanagement.service.impl.TMTaskLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify or reference this interface directly. Always use {@link TMActivityLocalServiceUtil} to access the t m activity local service. Add custom service methods to {@link com.liferay.timemanagement.service.impl.TMActivityLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 
 	/**
-	* Adds the t m task to the database. Also notifies the appropriate model listeners.
+	* Adds the t m activity to the database. Also notifies the appropriate model listeners.
 	*
-	* @param tmTask the t m task
-	* @return the t m task that was added
+	* @param tmActivity the t m activity
+	* @return the t m activity that was added
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.liferay.timemanagement.model.TMTask addTMTask(
-		com.liferay.timemanagement.model.TMTask tmTask)
+	public com.liferay.timemanagement.model.TMActivity addTMActivity(
+		com.liferay.timemanagement.model.TMActivity tmActivity)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Creates a new t m task with the primary key. Does not add the t m task to the database.
+	* Creates a new t m activity with the primary key. Does not add the t m activity to the database.
 	*
-	* @param taskId the primary key for the new t m task
-	* @return the new t m task
+	* @param activityId the primary key for the new t m activity
+	* @return the new t m activity
 	*/
-	public com.liferay.timemanagement.model.TMTask createTMTask(long taskId);
+	public com.liferay.timemanagement.model.TMActivity createTMActivity(
+		long activityId);
 
 	/**
-	* Deletes the t m task with the primary key from the database. Also notifies the appropriate model listeners.
+	* Deletes the t m activity with the primary key from the database. Also notifies the appropriate model listeners.
 	*
-	* @param taskId the primary key of the t m task
-	* @return the t m task that was removed
-	* @throws PortalException if a t m task with the primary key could not be found
+	* @param activityId the primary key of the t m activity
+	* @return the t m activity that was removed
+	* @throws PortalException if a t m activity with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.liferay.timemanagement.model.TMTask deleteTMTask(long taskId)
+	public com.liferay.timemanagement.model.TMActivity deleteTMActivity(
+		long activityId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Deletes the t m task from the database. Also notifies the appropriate model listeners.
+	* Deletes the t m activity from the database. Also notifies the appropriate model listeners.
 	*
-	* @param tmTask the t m task
-	* @return the t m task that was removed
+	* @param tmActivity the t m activity
+	* @return the t m activity that was removed
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.liferay.timemanagement.model.TMTask deleteTMTask(
-		com.liferay.timemanagement.model.TMTask tmTask)
+	public com.liferay.timemanagement.model.TMActivity deleteTMActivity(
+		com.liferay.timemanagement.model.TMActivity tmActivity)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery();
@@ -105,7 +107,7 @@ public interface TMTaskLocalService extends BaseLocalService,
 	* Performs a dynamic query on the database and returns a range of the matching rows.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMTaskModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param dynamicQuery the dynamic query
@@ -123,7 +125,7 @@ public interface TMTaskLocalService extends BaseLocalService,
 	* Performs a dynamic query on the database and returns an ordered range of the matching rows.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMTaskModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
 	* @param dynamicQuery the dynamic query
@@ -165,19 +167,21 @@ public interface TMTaskLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public com.liferay.timemanagement.model.TMTask fetchTMTask(long taskId)
+	public com.liferay.timemanagement.model.TMActivity fetchTMActivity(
+		long activityId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns the t m task with the primary key.
+	* Returns the t m activity with the primary key.
 	*
-	* @param taskId the primary key of the t m task
-	* @return the t m task
-	* @throws PortalException if a t m task with the primary key could not be found
+	* @param activityId the primary key of the t m activity
+	* @return the t m activity
+	* @throws PortalException if a t m activity with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public com.liferay.timemanagement.model.TMTask getTMTask(long taskId)
+	public com.liferay.timemanagement.model.TMActivity getTMActivity(
+		long activityId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
@@ -189,41 +193,41 @@ public interface TMTaskLocalService extends BaseLocalService,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns a range of all the t m tasks.
+	* Returns a range of all the t m activities.
 	*
 	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMTaskModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
 	* </p>
 	*
-	* @param start the lower bound of the range of t m tasks
-	* @param end the upper bound of the range of t m tasks (not inclusive)
-	* @return the range of t m tasks
+	* @param start the lower bound of the range of t m activities
+	* @param end the upper bound of the range of t m activities (not inclusive)
+	* @return the range of t m activities
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public java.util.List<com.liferay.timemanagement.model.TMTask> getTMTasks(
+	public java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivities(
 		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns the number of t m tasks.
+	* Returns the number of t m activities.
 	*
-	* @return the number of t m tasks
+	* @return the number of t m activities
 	* @throws SystemException if a system exception occurred
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public int getTMTasksCount()
+	public int getTMActivitiesCount()
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Updates the t m task in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
+	* Updates the t m activity in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
-	* @param tmTask the t m task
-	* @return the t m task that was updated
+	* @param tmActivity the t m activity
+	* @return the t m activity that was updated
 	* @throws SystemException if a system exception occurred
 	*/
-	public com.liferay.timemanagement.model.TMTask updateTMTask(
-		com.liferay.timemanagement.model.TMTask tmTask)
+	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
+		com.liferay.timemanagement.model.TMActivity tmActivity)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

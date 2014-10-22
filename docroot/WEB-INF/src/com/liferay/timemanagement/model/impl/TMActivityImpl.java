@@ -15,20 +15,20 @@
 package com.liferay.timemanagement.model.impl;
 
 /**
- * The extended model implementation for the TMTask service. Represents a row in the &quot;timemanagement_TMTask&quot; database table, with each column mapped to a property of this class.
+ * The extended model implementation for the TMActivity service. Represents a row in the &quot;timemanagement_TMActivity&quot; database table, with each column mapped to a property of this class.
  *
  * <p>
- * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.timemanagement.model.TMTask} interface.
+ * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.timemanagement.model.TMActivity} interface.
  * </p>
  *
  * @author Istvan Sajtos, Zsolt Szabo
  */
-public class TMTaskImpl extends TMTaskBaseImpl {
+public class TMActivityImpl extends TMActivityBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this class directly. All methods that expect a t m task model instance should use the {@link com.liferay.timemanagement.model.TMTask} interface instead.
+	 * Never reference this class directly. All methods that expect a t m activity model instance should use the {@link com.liferay.timemanagement.model.TMActivity} interface instead.
 	 */
-	public TMTaskImpl() {
+	public TMActivityImpl() {
 	}
 }

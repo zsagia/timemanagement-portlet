@@ -26,11 +26,11 @@ import java.util.List;
  * @author Istvan Sajtos, Zsolt Szabo
  * @generated
  */
-public class TMTaskSoap implements Serializable {
-	public static TMTaskSoap toSoapModel(TMTask model) {
-		TMTaskSoap soapModel = new TMTaskSoap();
+public class TMActivitySoap implements Serializable {
+	public static TMActivitySoap toSoapModel(TMActivity model) {
+		TMActivitySoap soapModel = new TMActivitySoap();
 
-		soapModel.setTaskId(model.getTaskId());
+		soapModel.setActivityId(model.getActivityId());
 		soapModel.setGroupId(model.getGroupId());
 		soapModel.setCompanyId(model.getCompanyId());
 		soapModel.setUserId(model.getUserId());
@@ -38,13 +38,13 @@ public class TMTaskSoap implements Serializable {
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
 		soapModel.setDescription(model.getDescription());
-		soapModel.setTaskName(model.getTaskName());
+		soapModel.setActivityName(model.getActivityName());
 
 		return soapModel;
 	}
 
-	public static TMTaskSoap[] toSoapModels(TMTask[] models) {
-		TMTaskSoap[] soapModels = new TMTaskSoap[models.length];
+	public static TMActivitySoap[] toSoapModels(TMActivity[] models) {
+		TMActivitySoap[] soapModels = new TMActivitySoap[models.length];
 
 		for (int i = 0; i < models.length; i++) {
 			soapModels[i] = toSoapModel(models[i]);
@@ -53,14 +53,14 @@ public class TMTaskSoap implements Serializable {
 		return soapModels;
 	}
 
-	public static TMTaskSoap[][] toSoapModels(TMTask[][] models) {
-		TMTaskSoap[][] soapModels = null;
+	public static TMActivitySoap[][] toSoapModels(TMActivity[][] models) {
+		TMActivitySoap[][] soapModels = null;
 
 		if (models.length > 0) {
-			soapModels = new TMTaskSoap[models.length][models[0].length];
+			soapModels = new TMActivitySoap[models.length][models[0].length];
 		}
 		else {
-			soapModels = new TMTaskSoap[0][0];
+			soapModels = new TMActivitySoap[0][0];
 		}
 
 		for (int i = 0; i < models.length; i++) {
@@ -70,33 +70,33 @@ public class TMTaskSoap implements Serializable {
 		return soapModels;
 	}
 
-	public static TMTaskSoap[] toSoapModels(List<TMTask> models) {
-		List<TMTaskSoap> soapModels = new ArrayList<TMTaskSoap>(models.size());
+	public static TMActivitySoap[] toSoapModels(List<TMActivity> models) {
+		List<TMActivitySoap> soapModels = new ArrayList<TMActivitySoap>(models.size());
 
-		for (TMTask model : models) {
+		for (TMActivity model : models) {
 			soapModels.add(toSoapModel(model));
 		}
 
-		return soapModels.toArray(new TMTaskSoap[soapModels.size()]);
+		return soapModels.toArray(new TMActivitySoap[soapModels.size()]);
 	}
 
-	public TMTaskSoap() {
+	public TMActivitySoap() {
 	}
 
 	public long getPrimaryKey() {
-		return _taskId;
+		return _activityId;
 	}
 
 	public void setPrimaryKey(long pk) {
-		setTaskId(pk);
+		setActivityId(pk);
 	}
 
-	public long getTaskId() {
-		return _taskId;
+	public long getActivityId() {
+		return _activityId;
 	}
 
-	public void setTaskId(long taskId) {
-		_taskId = taskId;
+	public void setActivityId(long activityId) {
+		_activityId = activityId;
 	}
 
 	public long getGroupId() {
@@ -155,15 +155,15 @@ public class TMTaskSoap implements Serializable {
 		_description = description;
 	}
 
-	public String getTaskName() {
-		return _taskName;
+	public String getActivityName() {
+		return _activityName;
 	}
 
-	public void setTaskName(String taskName) {
-		_taskName = taskName;
+	public void setActivityName(String activityName) {
+		_activityName = activityName;
 	}
 
-	private long _taskId;
+	private long _activityId;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;
@@ -171,5 +171,5 @@ public class TMTaskSoap implements Serializable {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private String _description;
-	private String _taskName;
+	private String _activityName;
 }

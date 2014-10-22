@@ -4,6 +4,6 @@
 <display>
 	
 	<category name="category.sample">
-		<portlet id="task"></portlet>
+		<portlet id="activity"></portlet>
 	</category>
 </display>

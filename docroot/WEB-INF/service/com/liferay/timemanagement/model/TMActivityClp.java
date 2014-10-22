@@ -29,7 +29,7 @@ import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.util.PortalUtil;
 
 import com.liferay.timemanagement.service.ClpSerializer;
-import com.liferay.timemanagement.service.TMTaskLocalServiceUtil;
+import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
 
 import java.io.Serializable;
 
@@ -45,33 +45,34 @@ import java.util.TreeSet;
 /**
  * @author Istvan Sajtos, Zsolt Szabo
  */
-public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
-	public TMTaskClp() {
+public class TMActivityClp extends BaseModelImpl<TMActivity>
+	implements TMActivity {
+	public TMActivityClp() {
 	}
 
 	@Override
 	public Class<?> getModelClass() {
-		return TMTask.class;
+		return TMActivity.class;
 	}
 
 	@Override
 	public String getModelClassName() {
-		return TMTask.class.getName();
+		return TMActivity.class.getName();
 	}
 
 	@Override
 	public long getPrimaryKey() {
-		return _taskId;
+		return _activityId;
 	}
 
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		setTaskId(primaryKey);
+		setActivityId(primaryKey);
 	}
 
 	@Override
 	public Serializable getPrimaryKeyObj() {
-		return _taskId;
+		return _activityId;
 	}
 
 	@Override
@@ -83,7 +84,7 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("taskId", getTaskId());
+		attributes.put("activityId", getActivityId());
 		attributes.put("groupId", getGroupId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
@@ -91,17 +92,17 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("description", getDescription());
-		attributes.put("taskName", getTaskName());
+		attributes.put("activityName", getActivityName());
 
 		return attributes;
 	}
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		Long taskId = (Long)attributes.get("taskId");
+		Long activityId = (Long)attributes.get("activityId");
 
-		if (taskId != null) {
-			setTaskId(taskId);
+		if (activityId != null) {
+			setActivityId(activityId);
 		}
 
 		Long groupId = (Long)attributes.get("groupId");
@@ -146,29 +147,29 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 			setDescription(description);
 		}
 
-		String taskName = (String)attributes.get("taskName");
+		String activityName = (String)attributes.get("activityName");
 
-		if (taskName != null) {
-			setTaskName(taskName);
+		if (activityName != null) {
+			setActivityName(activityName);
 		}
 	}
 
 	@Override
-	public long getTaskId() {
-		return _taskId;
+	public long getActivityId() {
+		return _activityId;
 	}
 
 	@Override
-	public void setTaskId(long taskId) {
-		_taskId = taskId;
+	public void setActivityId(long activityId) {
+		_activityId = activityId;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setTaskId", long.class);
+				Method method = clazz.getMethod("setActivityId", long.class);
 
-				method.invoke(_tmTaskRemoteModel, taskId);
+				method.invoke(_tmActivityRemoteModel, activityId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -185,13 +186,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public void setGroupId(long groupId) {
 		_groupId = groupId;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setGroupId", long.class);
 
-				method.invoke(_tmTaskRemoteModel, groupId);
+				method.invoke(_tmActivityRemoteModel, groupId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -208,13 +209,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setCompanyId", long.class);
 
-				method.invoke(_tmTaskRemoteModel, companyId);
+				method.invoke(_tmActivityRemoteModel, companyId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -231,13 +232,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public void setUserId(long userId) {
 		_userId = userId;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setUserId", long.class);
 
-				method.invoke(_tmTaskRemoteModel, userId);
+				method.invoke(_tmActivityRemoteModel, userId);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -264,13 +265,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public void setUserName(String userName) {
 		_userName = userName;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setUserName", String.class);
 
-				method.invoke(_tmTaskRemoteModel, userName);
+				method.invoke(_tmActivityRemoteModel, userName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -287,13 +288,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public void setCreateDate(Date createDate) {
 		_createDate = createDate;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setCreateDate", Date.class);
 
-				method.invoke(_tmTaskRemoteModel, createDate);
+				method.invoke(_tmActivityRemoteModel, createDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -310,13 +311,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public void setModifiedDate(Date modifiedDate) {
 		_modifiedDate = modifiedDate;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setModifiedDate", Date.class);
 
-				method.invoke(_tmTaskRemoteModel, modifiedDate);
+				method.invoke(_tmActivityRemoteModel, modifiedDate);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -375,13 +376,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public void setDescription(String description) {
 		_description = description;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
 				Method method = clazz.getMethod("setDescription", String.class);
 
-				method.invoke(_tmTaskRemoteModel, description);
+				method.invoke(_tmActivityRemoteModel, description);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -451,63 +452,63 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	}
 
 	@Override
-	public String getTaskName() {
-		return _taskName;
+	public String getActivityName() {
+		return _activityName;
 	}
 
 	@Override
-	public String getTaskName(Locale locale) {
+	public String getActivityName(Locale locale) {
 		String languageId = LocaleUtil.toLanguageId(locale);
 
-		return getTaskName(languageId);
+		return getActivityName(languageId);
 	}
 
 	@Override
-	public String getTaskName(Locale locale, boolean useDefault) {
+	public String getActivityName(Locale locale, boolean useDefault) {
 		String languageId = LocaleUtil.toLanguageId(locale);
 
-		return getTaskName(languageId, useDefault);
+		return getActivityName(languageId, useDefault);
 	}
 
 	@Override
-	public String getTaskName(String languageId) {
-		return LocalizationUtil.getLocalization(getTaskName(), languageId);
+	public String getActivityName(String languageId) {
+		return LocalizationUtil.getLocalization(getActivityName(), languageId);
 	}
 
 	@Override
-	public String getTaskName(String languageId, boolean useDefault) {
-		return LocalizationUtil.getLocalization(getTaskName(), languageId,
+	public String getActivityName(String languageId, boolean useDefault) {
+		return LocalizationUtil.getLocalization(getActivityName(), languageId,
 			useDefault);
 	}
 
 	@Override
-	public String getTaskNameCurrentLanguageId() {
-		return _taskNameCurrentLanguageId;
+	public String getActivityNameCurrentLanguageId() {
+		return _activityNameCurrentLanguageId;
 	}
 
 	@Override
-	public String getTaskNameCurrentValue() {
-		Locale locale = getLocale(_taskNameCurrentLanguageId);
+	public String getActivityNameCurrentValue() {
+		Locale locale = getLocale(_activityNameCurrentLanguageId);
 
-		return getTaskName(locale);
+		return getActivityName(locale);
 	}
 
 	@Override
-	public Map<Locale, String> getTaskNameMap() {
-		return LocalizationUtil.getLocalizationMap(getTaskName());
+	public Map<Locale, String> getActivityNameMap() {
+		return LocalizationUtil.getLocalizationMap(getActivityName());
 	}
 
 	@Override
-	public void setTaskName(String taskName) {
-		_taskName = taskName;
+	public void setActivityName(String activityName) {
+		_activityName = activityName;
 
-		if (_tmTaskRemoteModel != null) {
+		if (_tmActivityRemoteModel != null) {
 			try {
-				Class<?> clazz = _tmTaskRemoteModel.getClass();
+				Class<?> clazz = _tmActivityRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setTaskName", String.class);
+				Method method = clazz.getMethod("setActivityName", String.class);
 
-				method.invoke(_tmTaskRemoteModel, taskName);
+				method.invoke(_tmActivityRemoteModel, activityName);
 			}
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
@@ -516,39 +517,41 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	}
 
 	@Override
-	public void setTaskName(String taskName, Locale locale) {
-		setTaskName(taskName, locale, LocaleUtil.getDefault());
+	public void setActivityName(String activityName, Locale locale) {
+		setActivityName(activityName, locale, LocaleUtil.getDefault());
 	}
 
 	@Override
-	public void setTaskName(String taskName, Locale locale, Locale defaultLocale) {
+	public void setActivityName(String activityName, Locale locale,
+		Locale defaultLocale) {
 		String languageId = LocaleUtil.toLanguageId(locale);
 		String defaultLanguageId = LocaleUtil.toLanguageId(defaultLocale);
 
-		if (Validator.isNotNull(taskName)) {
-			setTaskName(LocalizationUtil.updateLocalization(getTaskName(),
-					"TaskName", taskName, languageId, defaultLanguageId));
+		if (Validator.isNotNull(activityName)) {
+			setActivityName(LocalizationUtil.updateLocalization(
+					getActivityName(), "ActivityName", activityName,
+					languageId, defaultLanguageId));
 		}
 		else {
-			setTaskName(LocalizationUtil.removeLocalization(getTaskName(),
-					"TaskName", languageId));
+			setActivityName(LocalizationUtil.removeLocalization(
+					getActivityName(), "ActivityName", languageId));
 		}
 	}
 
 	@Override
-	public void setTaskNameCurrentLanguageId(String languageId) {
-		_taskNameCurrentLanguageId = languageId;
+	public void setActivityNameCurrentLanguageId(String languageId) {
+		_activityNameCurrentLanguageId = languageId;
 	}
 
 	@Override
-	public void setTaskNameMap(Map<Locale, String> taskNameMap) {
-		setTaskNameMap(taskNameMap, LocaleUtil.getDefault());
+	public void setActivityNameMap(Map<Locale, String> activityNameMap) {
+		setActivityNameMap(activityNameMap, LocaleUtil.getDefault());
 	}
 
 	@Override
-	public void setTaskNameMap(Map<Locale, String> taskNameMap,
+	public void setActivityNameMap(Map<Locale, String> activityNameMap,
 		Locale defaultLocale) {
-		if (taskNameMap == null) {
+		if (activityNameMap == null) {
 			return;
 		}
 
@@ -563,8 +566,8 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 				currentThread.setContextClassLoader(portalClassLoader);
 			}
 
-			setTaskName(LocalizationUtil.updateLocalization(taskNameMap,
-					getTaskName(), "TaskName",
+			setActivityName(LocalizationUtil.updateLocalization(
+					activityNameMap, getActivityName(), "ActivityName",
 					LocaleUtil.toLanguageId(defaultLocale)));
 		}
 		finally {
@@ -574,12 +577,12 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		}
 	}
 
-	public BaseModel<?> getTMTaskRemoteModel() {
-		return _tmTaskRemoteModel;
+	public BaseModel<?> getTMActivityRemoteModel() {
+		return _tmActivityRemoteModel;
 	}
 
-	public void setTMTaskRemoteModel(BaseModel<?> tmTaskRemoteModel) {
-		_tmTaskRemoteModel = tmTaskRemoteModel;
+	public void setTMActivityRemoteModel(BaseModel<?> tmActivityRemoteModel) {
+		_tmActivityRemoteModel = tmActivityRemoteModel;
 	}
 
 	public Object invokeOnRemoteModel(String methodName,
@@ -593,7 +596,7 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 			}
 		}
 
-		Class<?> remoteModelClass = _tmTaskRemoteModel.getClass();
+		Class<?> remoteModelClass = _tmActivityRemoteModel.getClass();
 
 		ClassLoader remoteModelClassLoader = remoteModelClass.getClassLoader();
 
@@ -613,7 +616,7 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		Method method = remoteModelClass.getMethod(methodName,
 				remoteParameterTypes);
 
-		Object returnValue = method.invoke(_tmTaskRemoteModel,
+		Object returnValue = method.invoke(_tmActivityRemoteModel,
 				remoteParameterValues);
 
 		if (returnValue != null) {
@@ -626,10 +629,10 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	@Override
 	public void persist() throws SystemException {
 		if (this.isNew()) {
-			TMTaskLocalServiceUtil.addTMTask(this);
+			TMActivityLocalServiceUtil.addTMActivity(this);
 		}
 		else {
-			TMTaskLocalServiceUtil.updateTMTask(this);
+			TMActivityLocalServiceUtil.updateTMActivity(this);
 		}
 	}
 
@@ -648,9 +651,9 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 			}
 		}
 
-		Map<Locale, String> taskNameMap = getTaskNameMap();
+		Map<Locale, String> activityNameMap = getActivityNameMap();
 
-		for (Map.Entry<Locale, String> entry : taskNameMap.entrySet()) {
+		for (Map.Entry<Locale, String> entry : activityNameMap.entrySet()) {
 			Locale locale = entry.getKey();
 			String value = entry.getValue();
 
@@ -696,27 +699,29 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 				defaultLocale);
 		}
 
-		String taskName = getTaskName(defaultLocale);
+		String activityName = getActivityName(defaultLocale);
 
-		if (Validator.isNull(taskName)) {
-			setTaskName(getTaskName(modelDefaultLanguageId), defaultLocale);
+		if (Validator.isNull(activityName)) {
+			setActivityName(getActivityName(modelDefaultLanguageId),
+				defaultLocale);
 		}
 		else {
-			setTaskName(getTaskName(defaultLocale), defaultLocale, defaultLocale);
+			setActivityName(getActivityName(defaultLocale), defaultLocale,
+				defaultLocale);
 		}
 	}
 
 	@Override
-	public TMTask toEscapedModel() {
-		return (TMTask)ProxyUtil.newProxyInstance(TMTask.class.getClassLoader(),
-			new Class[] { TMTask.class }, new AutoEscapeBeanHandler(this));
+	public TMActivity toEscapedModel() {
+		return (TMActivity)ProxyUtil.newProxyInstance(TMActivity.class.getClassLoader(),
+			new Class[] { TMActivity.class }, new AutoEscapeBeanHandler(this));
 	}
 
 	@Override
 	public Object clone() {
-		TMTaskClp clone = new TMTaskClp();
+		TMActivityClp clone = new TMActivityClp();
 
-		clone.setTaskId(getTaskId());
+		clone.setActivityId(getActivityId());
 		clone.setGroupId(getGroupId());
 		clone.setCompanyId(getCompanyId());
 		clone.setUserId(getUserId());
@@ -724,16 +729,16 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		clone.setCreateDate(getCreateDate());
 		clone.setModifiedDate(getModifiedDate());
 		clone.setDescription(getDescription());
-		clone.setTaskName(getTaskName());
+		clone.setActivityName(getActivityName());
 
 		return clone;
 	}
 
 	@Override
-	public int compareTo(TMTask tmTask) {
+	public int compareTo(TMActivity tmActivity) {
 		int value = 0;
 
-		value = getTaskName().compareTo(tmTask.getTaskName());
+		value = getActivityName().compareTo(tmActivity.getActivityName());
 
 		if (value != 0) {
 			return value;
@@ -748,13 +753,13 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 			return true;
 		}
 
-		if (!(obj instanceof TMTaskClp)) {
+		if (!(obj instanceof TMActivityClp)) {
 			return false;
 		}
 
-		TMTaskClp tmTask = (TMTaskClp)obj;
+		TMActivityClp tmActivity = (TMActivityClp)obj;
 
-		long primaryKey = tmTask.getPrimaryKey();
+		long primaryKey = tmActivity.getPrimaryKey();
 
 		if (getPrimaryKey() == primaryKey) {
 			return true;
@@ -773,8 +778,8 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	public String toString() {
 		StringBundler sb = new StringBundler(19);
 
-		sb.append("{taskId=");
-		sb.append(getTaskId());
+		sb.append("{activityId=");
+		sb.append(getActivityId());
 		sb.append(", groupId=");
 		sb.append(getGroupId());
 		sb.append(", companyId=");
@@ -789,8 +794,8 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		sb.append(getModifiedDate());
 		sb.append(", description=");
 		sb.append(getDescription());
-		sb.append(", taskName=");
-		sb.append(getTaskName());
+		sb.append(", activityName=");
+		sb.append(getActivityName());
 		sb.append("}");
 
 		return sb.toString();
@@ -801,12 +806,12 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		StringBundler sb = new StringBundler(31);
 
 		sb.append("<model><model-name>");
-		sb.append("com.liferay.timemanagement.model.TMTask");
+		sb.append("com.liferay.timemanagement.model.TMActivity");
 		sb.append("</model-name>");
 
 		sb.append(
-			"<column><column-name>taskId</column-name><column-value><![CDATA[");
-		sb.append(getTaskId());
+			"<column><column-name>activityId</column-name><column-value><![CDATA[");
+		sb.append(getActivityId());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>groupId</column-name><column-value><![CDATA[");
@@ -837,8 +842,8 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		sb.append(getDescription());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>taskName</column-name><column-value><![CDATA[");
-		sb.append(getTaskName());
+			"<column><column-name>activityName</column-name><column-value><![CDATA[");
+		sb.append(getActivityName());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -846,7 +851,7 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 		return sb.toString();
 	}
 
-	private long _taskId;
+	private long _activityId;
 	private long _groupId;
 	private long _companyId;
 	private long _userId;
@@ -856,7 +861,7 @@ public class TMTaskClp extends BaseModelImpl<TMTask> implements TMTask {
 	private Date _modifiedDate;
 	private String _description;
 	private String _descriptionCurrentLanguageId;
-	private String _taskName;
-	private String _taskNameCurrentLanguageId;
-	private BaseModel<?> _tmTaskRemoteModel;
+	private String _activityName;
+	private String _activityNameCurrentLanguageId;
+	private BaseModel<?> _tmActivityRemoteModel;
 }

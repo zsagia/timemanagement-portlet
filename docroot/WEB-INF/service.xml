@@ -5,11 +5,11 @@
 
 	<namespace>timemanagement</namespace>
 
-	<entity name="TMTask" local-service="true" remote-service="false">
+	<entity name="TMActivity" local-service="true" remote-service="false">
 
 		<!-- PK fields -->
 
-		<column name="taskId" type="long" primary="true" />
+		<column name="activityId" type="long" primary="true" />
 
 		<!-- Group instance -->
 
@@ -26,12 +26,12 @@
 		<!-- Other fields -->
 
 		<column name="description" type="String" localized="true"/>
-		<column name="taskName" type="String" localized="true"/>
+		<column name="activityName" type="String" localized="true"/>
 
 		<!-- Order -->
 
 		<order>
-			<order-column name="taskName" order-by="asc" />
+			<order-column name="activityName" order-by="asc" />
 		</order>
 
 		<!-- Finder methods -->

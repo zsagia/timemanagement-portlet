@@ -2,4 +2,4 @@
 
 <portlet:defineObjects />
 
-This is the <b>Task</b> portlet in View mode.
+This is the <b>Activity</b> portlet in View mode.

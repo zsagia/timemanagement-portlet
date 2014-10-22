@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="com.liferay.timemanagement.model.TMTask">
-		<field name="taskId" type="long" />
+	<model name="com.liferay.timemanagement.model.TMActivity">
+		<field name="activityId" type="long" />
 		<field name="groupId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="userId" type="long" />
@@ -10,6 +10,6 @@
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
 		<field name="description" type="String" localized="true" />
-		<field name="taskName" type="String" localized="true" />
+		<field name="activityName" type="String" localized="true" />
 	</model>
 </model-hints>

@@ -2,10 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-lazy="false" auto-import="false">
-	<import class="com.liferay.timemanagement.model.TMTask" />
-	<class name="com.liferay.timemanagement.model.impl.TMTaskImpl" table="timemanagement_TMTask">
+	<import class="com.liferay.timemanagement.model.TMActivity" />
+	<class name="com.liferay.timemanagement.model.impl.TMActivityImpl" table="timemanagement_TMActivity">
 		<cache usage="read-write" />
-		<id name="taskId" type="long">
+		<id name="activityId" type="long">
 			<generator class="assigned" />
 		</id>
 		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
@@ -15,6 +15,6 @@
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="taskName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="activityName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 </hibernate-mapping>

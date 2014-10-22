@@ -25,7 +25,7 @@ import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
-import com.liferay.timemanagement.model.TMTaskClp;
+import com.liferay.timemanagement.model.TMActivityClp;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -102,8 +102,8 @@ public class ClpSerializer {
 
 		String oldModelClassName = oldModelClass.getName();
 
-		if (oldModelClassName.equals(TMTaskClp.class.getName())) {
-			return translateInputTMTask(oldModel);
+		if (oldModelClassName.equals(TMActivityClp.class.getName())) {
+			return translateInputTMActivity(oldModel);
 		}
 
 		return oldModel;
@@ -121,10 +121,10 @@ public class ClpSerializer {
 		return newList;
 	}
 
-	public static Object translateInputTMTask(BaseModel<?> oldModel) {
-		TMTaskClp oldClpModel = (TMTaskClp)oldModel;
+	public static Object translateInputTMActivity(BaseModel<?> oldModel) {
+		TMActivityClp oldClpModel = (TMActivityClp)oldModel;
 
-		BaseModel<?> newModel = oldClpModel.getTMTaskRemoteModel();
+		BaseModel<?> newModel = oldClpModel.getTMActivityRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -149,8 +149,8 @@ public class ClpSerializer {
 		String oldModelClassName = oldModelClass.getName();
 
 		if (oldModelClassName.equals(
-					"com.liferay.timemanagement.model.impl.TMTaskImpl")) {
-			return translateOutputTMTask(oldModel);
+					"com.liferay.timemanagement.model.impl.TMActivityImpl")) {
+			return translateOutputTMActivity(oldModel);
 		}
 
 		return oldModel;
@@ -233,19 +233,20 @@ public class ClpSerializer {
 			return new SystemException();
 		}
 
-		if (className.equals("com.liferay.timemanagement.NoSuchTMTaskException")) {
-			return new com.liferay.timemanagement.NoSuchTMTaskException();
+		if (className.equals(
+					"com.liferay.timemanagement.NoSuchTMActivityException")) {
+			return new com.liferay.timemanagement.NoSuchTMActivityException();
 		}
 
 		return throwable;
 	}
 
-	public static Object translateOutputTMTask(BaseModel<?> oldModel) {
-		TMTaskClp newModel = new TMTaskClp();
+	public static Object translateOutputTMActivity(BaseModel<?> oldModel) {
+		TMActivityClp newModel = new TMActivityClp();
 
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
-		newModel.setTMTaskRemoteModel(oldModel);
+		newModel.setTMActivityRemoteModel(oldModel);
 
 		return newModel;
 	}

@@ -1,1 +1,1 @@
-create index IX_DE39B675 on timemanagement_TMTask (companyId, groupId);
+create index IX_38D9DC7F on timemanagement_TMActivity (companyId, groupId);

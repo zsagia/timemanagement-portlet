@@ -14,26 +14,26 @@
 
 package com.liferay.timemanagement.service.impl;
 
-import com.liferay.timemanagement.service.base.TMTaskLocalServiceBaseImpl;
+import com.liferay.timemanagement.service.base.TMActivityLocalServiceBaseImpl;
 
 /**
- * The implementation of the t m task local service.
+ * The implementation of the t m activity local service.
  *
  * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.timemanagement.service.TMTaskLocalService} interface.
+ * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.timemanagement.service.TMActivityLocalService} interface.
  *
  * <p>
  * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
  * </p>
  *
  * @author Istvan Sajtos, Zsolt Szabo
- * @see com.liferay.timemanagement.service.base.TMTaskLocalServiceBaseImpl
- * @see com.liferay.timemanagement.service.TMTaskLocalServiceUtil
+ * @see com.liferay.timemanagement.service.base.TMActivityLocalServiceBaseImpl
+ * @see com.liferay.timemanagement.service.TMActivityLocalServiceUtil
  */
-public class TMTaskLocalServiceImpl extends TMTaskLocalServiceBaseImpl {
+public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never reference this interface directly. Always use {@link com.liferay.timemanagement.service.TMTaskLocalServiceUtil} to access the t m task local service.
+	 * Never reference this interface directly. Always use {@link com.liferay.timemanagement.service.TMActivityLocalServiceUtil} to access the t m activity local service.
 	 */
 }

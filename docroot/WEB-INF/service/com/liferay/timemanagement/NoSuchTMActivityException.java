@@ -19,21 +19,21 @@ import com.liferay.portal.NoSuchModelException;
 /**
  * @author Istvan Sajtos, Zsolt Szabo
  */
-public class NoSuchTMTaskException extends NoSuchModelException {
+public class NoSuchTMActivityException extends NoSuchModelException {
 
-	public NoSuchTMTaskException() {
+	public NoSuchTMActivityException() {
 		super();
 	}
 
-	public NoSuchTMTaskException(String msg) {
+	public NoSuchTMActivityException(String msg) {
 		super(msg);
 	}
 
-	public NoSuchTMTaskException(String msg, Throwable cause) {
+	public NoSuchTMActivityException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 
-	public NoSuchTMTaskException(Throwable cause) {
+	public NoSuchTMActivityException(Throwable cause) {
 		super(cause);
 	}
 

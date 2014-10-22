@@ -18,7 +18,7 @@ import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.model.CacheModel;
 
-import com.liferay.timemanagement.model.TMTask;
+import com.liferay.timemanagement.model.TMActivity;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -28,19 +28,20 @@ import java.io.ObjectOutput;
 import java.util.Date;
 
 /**
- * The cache model class for representing TMTask in entity cache.
+ * The cache model class for representing TMActivity in entity cache.
  *
  * @author Istvan Sajtos, Zsolt Szabo
- * @see TMTask
+ * @see TMActivity
  * @generated
  */
-public class TMTaskCacheModel implements CacheModel<TMTask>, Externalizable {
+public class TMActivityCacheModel implements CacheModel<TMActivity>,
+	Externalizable {
 	@Override
 	public String toString() {
 		StringBundler sb = new StringBundler(19);
 
-		sb.append("{taskId=");
-		sb.append(taskId);
+		sb.append("{activityId=");
+		sb.append(activityId);
 		sb.append(", groupId=");
 		sb.append(groupId);
 		sb.append(", companyId=");
@@ -55,65 +56,65 @@ public class TMTaskCacheModel implements CacheModel<TMTask>, Externalizable {
 		sb.append(modifiedDate);
 		sb.append(", description=");
 		sb.append(description);
-		sb.append(", taskName=");
-		sb.append(taskName);
+		sb.append(", activityName=");
+		sb.append(activityName);
 		sb.append("}");
 
 		return sb.toString();
 	}
 
 	@Override
-	public TMTask toEntityModel() {
-		TMTaskImpl tmTaskImpl = new TMTaskImpl();
+	public TMActivity toEntityModel() {
+		TMActivityImpl tmActivityImpl = new TMActivityImpl();
 
-		tmTaskImpl.setTaskId(taskId);
-		tmTaskImpl.setGroupId(groupId);
-		tmTaskImpl.setCompanyId(companyId);
-		tmTaskImpl.setUserId(userId);
+		tmActivityImpl.setActivityId(activityId);
+		tmActivityImpl.setGroupId(groupId);
+		tmActivityImpl.setCompanyId(companyId);
+		tmActivityImpl.setUserId(userId);
 
 		if (userName == null) {
-			tmTaskImpl.setUserName(StringPool.BLANK);
+			tmActivityImpl.setUserName(StringPool.BLANK);
 		}
 		else {
-			tmTaskImpl.setUserName(userName);
+			tmActivityImpl.setUserName(userName);
 		}
 
 		if (createDate == Long.MIN_VALUE) {
-			tmTaskImpl.setCreateDate(null);
+			tmActivityImpl.setCreateDate(null);
 		}
 		else {
-			tmTaskImpl.setCreateDate(new Date(createDate));
+			tmActivityImpl.setCreateDate(new Date(createDate));
 		}
 
 		if (modifiedDate == Long.MIN_VALUE) {
-			tmTaskImpl.setModifiedDate(null);
+			tmActivityImpl.setModifiedDate(null);
 		}
 		else {
-			tmTaskImpl.setModifiedDate(new Date(modifiedDate));
+			tmActivityImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
 		if (description == null) {
-			tmTaskImpl.setDescription(StringPool.BLANK);
+			tmActivityImpl.setDescription(StringPool.BLANK);
 		}
 		else {
-			tmTaskImpl.setDescription(description);
+			tmActivityImpl.setDescription(description);
 		}
 
-		if (taskName == null) {
-			tmTaskImpl.setTaskName(StringPool.BLANK);
+		if (activityName == null) {
+			tmActivityImpl.setActivityName(StringPool.BLANK);
 		}
 		else {
-			tmTaskImpl.setTaskName(taskName);
+			tmActivityImpl.setActivityName(activityName);
 		}
 
-		tmTaskImpl.resetOriginalValues();
+		tmActivityImpl.resetOriginalValues();
 
-		return tmTaskImpl;
+		return tmActivityImpl;
 	}
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		taskId = objectInput.readLong();
+		activityId = objectInput.readLong();
 		groupId = objectInput.readLong();
 		companyId = objectInput.readLong();
 		userId = objectInput.readLong();
@@ -121,13 +122,13 @@ public class TMTaskCacheModel implements CacheModel<TMTask>, Externalizable {
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
 		description = objectInput.readUTF();
-		taskName = objectInput.readUTF();
+		activityName = objectInput.readUTF();
 	}
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput)
 		throws IOException {
-		objectOutput.writeLong(taskId);
+		objectOutput.writeLong(activityId);
 		objectOutput.writeLong(groupId);
 		objectOutput.writeLong(companyId);
 		objectOutput.writeLong(userId);
@@ -149,15 +150,15 @@ public class TMTaskCacheModel implements CacheModel<TMTask>, Externalizable {
 			objectOutput.writeUTF(description);
 		}
 
-		if (taskName == null) {
+		if (activityName == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(taskName);
+			objectOutput.writeUTF(activityName);
 		}
 	}
 
-	public long taskId;
+	public long activityId;
 	public long groupId;
 	public long companyId;
 	public long userId;
@@ -165,5 +166,5 @@ public class TMTaskCacheModel implements CacheModel<TMTask>, Externalizable {
 	public long createDate;
 	public long modifiedDate;
 	public String description;
-	public String taskName;
+	public String activityName;
 }

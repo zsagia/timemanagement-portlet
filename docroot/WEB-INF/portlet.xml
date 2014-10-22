@@ -3,14 +3,14 @@
 <portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
 	
 	<portlet>
-		<portlet-name>task</portlet-name>
-		<display-name>Task</display-name>
+		<portlet-name>activity</portlet-name>
+		<display-name>Activity</display-name>
 		<portlet-class>
-			com.liferay.timemanagement.task.portlet.TaskPortlet
+			com.liferay.timemanagement.activity.portlet.ActivityPortlet
 		</portlet-class>
 		<init-param>
 			<name>view-template</name>
-			<value>/html/task/view.jsp</value>
+			<value>/activity/view.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
@@ -18,8 +18,8 @@
 			<portlet-mode>view</portlet-mode>
 		</supports>
 		<portlet-info>
-			<title>Task</title>
-			<short-title>Task</short-title>
+			<title>Activity</title>
+			<short-title>Activity</short-title>
 			<keywords></keywords>
 		</portlet-info>
 		<security-role-ref>

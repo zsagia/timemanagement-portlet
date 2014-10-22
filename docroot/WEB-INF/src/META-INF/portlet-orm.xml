@@ -7,9 +7,9 @@
 			<access>PROPERTY</access>
 		</persistence-unit-defaults>
 	</persistence-unit-metadata>
-	<mapped-superclass class="com.liferay.timemanagement.model.impl.TMTaskModelImpl">
+	<mapped-superclass class="com.liferay.timemanagement.model.impl.TMActivityModelImpl">
 		<attributes>
-			<id name="taskId" />
+			<id name="activityId" />
 			<basic name="groupId" />
 			<basic name="companyId" />
 			<basic name="userId" />
@@ -21,19 +21,19 @@
 				<temporal>TIMESTAMP</temporal>
 			</basic>
 			<basic name="description" />
-			<basic name="taskName" />
+			<basic name="activityName" />
+			<transient name="activityNameCurrentLanguageId" />
+			<transient name="activityNameMap" />
 			<transient name="descriptionCurrentLanguageId" />
 			<transient name="descriptionMap" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
-			<transient name="taskNameCurrentLanguageId" />
-			<transient name="taskNameMap" />
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<entity class="com.liferay.timemanagement.model.impl.TMTaskImpl" name="TMTask">
-		<table name="timemanagement_TMTask" />
+	<entity class="com.liferay.timemanagement.model.impl.TMActivityImpl" name="TMActivity">
+		<table name="timemanagement_TMActivity" />
 		<attributes />
 	</entity>
 </entity-mappings>

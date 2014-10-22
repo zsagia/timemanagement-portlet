@@ -20,28 +20,29 @@ import com.liferay.portal.service.InvokableLocalService;
  * @author Istvan Sajtos, Zsolt Szabo
  * @generated
  */
-public class TMTaskLocalServiceClp implements TMTaskLocalService {
-	public TMTaskLocalServiceClp(InvokableLocalService invokableLocalService) {
+public class TMActivityLocalServiceClp implements TMActivityLocalService {
+	public TMActivityLocalServiceClp(
+		InvokableLocalService invokableLocalService) {
 		_invokableLocalService = invokableLocalService;
 
-		_methodName0 = "addTMTask";
+		_methodName0 = "addTMActivity";
 
 		_methodParameterTypes0 = new String[] {
-				"com.liferay.timemanagement.model.TMTask"
+				"com.liferay.timemanagement.model.TMActivity"
 			};
 
-		_methodName1 = "createTMTask";
+		_methodName1 = "createTMActivity";
 
 		_methodParameterTypes1 = new String[] { "long" };
 
-		_methodName2 = "deleteTMTask";
+		_methodName2 = "deleteTMActivity";
 
 		_methodParameterTypes2 = new String[] { "long" };
 
-		_methodName3 = "deleteTMTask";
+		_methodName3 = "deleteTMActivity";
 
 		_methodParameterTypes3 = new String[] {
-				"com.liferay.timemanagement.model.TMTask"
+				"com.liferay.timemanagement.model.TMActivity"
 			};
 
 		_methodName4 = "dynamicQuery";
@@ -80,11 +81,11 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 				"com.liferay.portal.kernel.dao.orm.Projection"
 			};
 
-		_methodName10 = "fetchTMTask";
+		_methodName10 = "fetchTMActivity";
 
 		_methodParameterTypes10 = new String[] { "long" };
 
-		_methodName11 = "getTMTask";
+		_methodName11 = "getTMActivity";
 
 		_methodParameterTypes11 = new String[] { "long" };
 
@@ -92,18 +93,18 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 
 		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-		_methodName13 = "getTMTasks";
+		_methodName13 = "getTMActivities";
 
 		_methodParameterTypes13 = new String[] { "int", "int" };
 
-		_methodName14 = "getTMTasksCount";
+		_methodName14 = "getTMActivitiesCount";
 
 		_methodParameterTypes14 = new String[] {  };
 
-		_methodName15 = "updateTMTask";
+		_methodName15 = "updateTMActivity";
 
 		_methodParameterTypes15 = new String[] {
-				"com.liferay.timemanagement.model.TMTask"
+				"com.liferay.timemanagement.model.TMActivity"
 			};
 
 		_methodName16 = "getBeanIdentifier";
@@ -116,15 +117,15 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask addTMTask(
-		com.liferay.timemanagement.model.TMTask tmTask)
+	public com.liferay.timemanagement.model.TMActivity addTMActivity(
+		com.liferay.timemanagement.model.TMActivity tmActivity)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName0,
 					_methodParameterTypes0,
-					new Object[] { ClpSerializer.translateInput(tmTask) });
+					new Object[] { ClpSerializer.translateInput(tmActivity) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -142,16 +143,17 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask createTMTask(long taskId) {
+	public com.liferay.timemanagement.model.TMActivity createTMActivity(
+		long activityId) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName1,
-					_methodParameterTypes1, new Object[] { taskId });
+					_methodParameterTypes1, new Object[] { activityId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -165,18 +167,19 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask deleteTMTask(long taskId)
+	public com.liferay.timemanagement.model.TMActivity deleteTMActivity(
+		long activityId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName2,
-					_methodParameterTypes2, new Object[] { taskId });
+					_methodParameterTypes2, new Object[] { activityId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -198,19 +201,19 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask deleteTMTask(
-		com.liferay.timemanagement.model.TMTask tmTask)
+	public com.liferay.timemanagement.model.TMActivity deleteTMActivity(
+		com.liferay.timemanagement.model.TMActivity tmActivity)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName3,
 					_methodParameterTypes3,
-					new Object[] { ClpSerializer.translateInput(tmTask) });
+					new Object[] { ClpSerializer.translateInput(tmActivity) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -228,7 +231,7 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
@@ -429,13 +432,14 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask fetchTMTask(long taskId)
+	public com.liferay.timemanagement.model.TMActivity fetchTMActivity(
+		long activityId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName10,
-					_methodParameterTypes10, new Object[] { taskId });
+					_methodParameterTypes10, new Object[] { activityId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -453,18 +457,19 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask getTMTask(long taskId)
+	public com.liferay.timemanagement.model.TMActivity getTMActivity(
+		long activityId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName11,
-					_methodParameterTypes11, new Object[] { taskId });
+					_methodParameterTypes11, new Object[] { activityId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -486,7 +491,7 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
@@ -525,7 +530,7 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 	}
 
 	@Override
-	public java.util.List<com.liferay.timemanagement.model.TMTask> getTMTasks(
+	public java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivities(
 		int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -550,11 +555,11 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (java.util.List<com.liferay.timemanagement.model.TMTask>)ClpSerializer.translateOutput(returnObj);
+		return (java.util.List<com.liferay.timemanagement.model.TMActivity>)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override
-	public int getTMTasksCount()
+	public int getTMActivitiesCount()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
@@ -582,15 +587,15 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask updateTMTask(
-		com.liferay.timemanagement.model.TMTask tmTask)
+	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
+		com.liferay.timemanagement.model.TMActivity tmActivity)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName15,
 					_methodParameterTypes15,
-					new Object[] { ClpSerializer.translateInput(tmTask) });
+					new Object[] { ClpSerializer.translateInput(tmActivity) });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -608,7 +613,7 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 			}
 		}
 
-		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override

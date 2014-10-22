@@ -17,18 +17,18 @@ package com.liferay.timemanagement.model;
 import com.liferay.portal.model.PersistedModel;
 
 /**
- * The extended model interface for the TMTask service. Represents a row in the &quot;timemanagement_TMTask&quot; database table, with each column mapped to a property of this class.
+ * The extended model interface for the TMActivity service. Represents a row in the &quot;timemanagement_TMActivity&quot; database table, with each column mapped to a property of this class.
  *
  * @author Istvan Sajtos, Zsolt Szabo
- * @see TMTaskModel
- * @see com.liferay.timemanagement.model.impl.TMTaskImpl
- * @see com.liferay.timemanagement.model.impl.TMTaskModelImpl
+ * @see TMActivityModel
+ * @see com.liferay.timemanagement.model.impl.TMActivityImpl
+ * @see com.liferay.timemanagement.model.impl.TMActivityModelImpl
  * @generated
  */
-public interface TMTask extends TMTaskModel, PersistedModel {
+public interface TMActivity extends TMActivityModel, PersistedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add methods to {@link com.liferay.timemanagement.model.impl.TMTaskImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify this interface directly. Add methods to {@link com.liferay.timemanagement.model.impl.TMActivityImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 }
