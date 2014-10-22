@@ -24,11 +24,13 @@ package com.liferay.timemanagement.model.impl;
  * @author Istvan Sajtos, Zsolt Szabo
  */
 public class TMActivityImpl extends TMActivityBaseImpl {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. All methods that expect a t m activity model instance should use the {@link com.liferay.timemanagement.model.TMActivity} interface instead.
 	 */
 	public TMActivityImpl() {
 	}
+
 }
