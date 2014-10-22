@@ -14,7 +14,15 @@
 
 package com.liferay.timemanagement.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.ResourceConstants;
+import com.liferay.portal.model.User;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.timemanagement.model.TMActivity;
 import com.liferay.timemanagement.service.base.TMActivityLocalServiceBaseImpl;
+
+import java.util.Date;
 
 /**
  * The implementation of the t m activity local service.
@@ -31,9 +39,91 @@ import com.liferay.timemanagement.service.base.TMActivityLocalServiceBaseImpl;
  * @see com.liferay.timemanagement.service.TMActivityLocalServiceUtil
  */
 public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this interface directly. Always use {@link com.liferay.timemanagement.service.TMActivityLocalServiceUtil} to access the t m activity local service.
-	 */
+
+	public TMActivity addTMActivity(
+			long companyId, long userId, String taskName, String description,
+			ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		TMActivity tmActivity = createTMActivity(
+			companyId, userId, taskName, description, serviceContext);
+
+		return tmActivity;
+	}
+
+	public void addTMActivityResources(
+			TMActivity tmActivity, boolean addGroupPermissions,
+			boolean addGuestPermissions)
+		throws PortalException, SystemException {
+
+		resourceLocalService.addResources(
+			tmActivity.getCompanyId(), tmActivity.getGroupId(),
+			tmActivity.getUserId(), TMActivity.class.getName(),
+			tmActivity.getActivityId(), false, addGroupPermissions,
+			addGuestPermissions);
+	}
+
+	public void addTMActivityResources(
+			TMActivity tmActivity, String[] groupPermissions,
+			String[] guestPermissions)
+		throws PortalException, SystemException {
+
+		resourceLocalService.addModelResources(
+			tmActivity.getCompanyId(), tmActivity.getGroupId(),
+			tmActivity.getUserId(), TMActivity.class.getName(),
+			tmActivity.getActivityId(), groupPermissions, guestPermissions);
+	}
+
+	public TMActivity deleteTMActivity(long tmActivityId)
+		throws PortalException, SystemException {
+
+		TMActivity tmActivity = tmActivityPersistence.findByPrimaryKey(
+			tmActivityId);
+
+		resourceLocalService.deleteResource(
+			tmActivity.getCompanyId(), TMActivity.class.getName(),
+			ResourceConstants.SCOPE_COMPANY, tmActivity.getActivityId());
+
+		return deleteTMActivity(tmActivityId);
+	}
+
+	public TMActivity updateTMActivity(TMActivity tmActivity)
+		throws SystemException {
+
+		tmActivityPersistence.update(tmActivity);
+
+		return tmActivity;
+	}
+
+	protected TMActivity createTMActivity(
+			long companyId, long userId, String tmActivityName,
+			String description, ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		User user = userPersistence.findByPrimaryKey(userId);
+		long groupId = serviceContext.getScopeGroupId();
+
+		long tmActivityId = counterLocalService.increment();
+
+		TMActivity tmActivity = tmActivityPersistence.create(tmActivityId);
+
+		Date now = new Date();
+
+		tmActivity.setCompanyId(user.getCompanyId());
+		tmActivity.setCreateDate(now);
+		tmActivity.setGroupId(groupId);
+		tmActivity.setModifiedDate(now);
+		tmActivity.setActivityName(tmActivityName);
+		tmActivity.setUserId(userId);
+		tmActivity.setUserName(user.getFullName());
+
+		tmActivityPersistence.update(tmActivity);
+
+		addTMActivityResources(
+			tmActivity, serviceContext.getGroupPermissions(),
+			serviceContext.getGuestPermissions());
+
+		return tmActivity;
+	}
+
 }
