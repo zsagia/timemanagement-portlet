@@ -32,8 +32,38 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="com.liferay.timemanagement.model.impl.TMActivitySessionModelImpl">
+		<attributes>
+			<id name="activitySessionId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="activityId" />
+			<basic name="endTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="startTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
 	<entity class="com.liferay.timemanagement.model.impl.TMActivityImpl" name="TMActivity">
 		<table name="timemanagement_TMActivity" />
+		<attributes />
+	</entity>
+	<entity class="com.liferay.timemanagement.model.impl.TMActivitySessionImpl" name="TMActivitySession">
+		<table name="timemanagement_TMActivitySession" />
 		<attributes />
 	</entity>
 </entity-mappings>

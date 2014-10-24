@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
 import com.liferay.timemanagement.model.TMActivityClp;
+import com.liferay.timemanagement.model.TMActivitySessionClp;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -106,6 +107,10 @@ public class ClpSerializer {
 			return translateInputTMActivity(oldModel);
 		}
 
+		if (oldModelClassName.equals(TMActivitySessionClp.class.getName())) {
+			return translateInputTMActivitySession(oldModel);
+		}
+
 		return oldModel;
 	}
 
@@ -125,6 +130,16 @@ public class ClpSerializer {
 		TMActivityClp oldClpModel = (TMActivityClp)oldModel;
 
 		BaseModel<?> newModel = oldClpModel.getTMActivityRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
+	public static Object translateInputTMActivitySession(BaseModel<?> oldModel) {
+		TMActivitySessionClp oldClpModel = (TMActivitySessionClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getTMActivitySessionRemoteModel();
 
 		newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -151,6 +166,11 @@ public class ClpSerializer {
 		if (oldModelClassName.equals(
 					"com.liferay.timemanagement.model.impl.TMActivityImpl")) {
 			return translateOutputTMActivity(oldModel);
+		}
+
+		if (oldModelClassName.equals(
+					"com.liferay.timemanagement.model.impl.TMActivitySessionImpl")) {
+			return translateOutputTMActivitySession(oldModel);
 		}
 
 		return oldModel;
@@ -238,6 +258,11 @@ public class ClpSerializer {
 			return new com.liferay.timemanagement.NoSuchTMActivityException();
 		}
 
+		if (className.equals(
+					"com.liferay.timemanagement.NoSuchTMActivitySessionException")) {
+			return new com.liferay.timemanagement.NoSuchTMActivitySessionException();
+		}
+
 		return throwable;
 	}
 
@@ -247,6 +272,16 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setTMActivityRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputTMActivitySession(BaseModel<?> oldModel) {
+		TMActivitySessionClp newModel = new TMActivitySessionClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setTMActivitySessionRemoteModel(oldModel);
 
 		return newModel;
 	}

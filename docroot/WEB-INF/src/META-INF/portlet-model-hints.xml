@@ -12,4 +12,16 @@
 		<field name="description" type="String" localized="true" />
 		<field name="activityName" type="String" localized="true" />
 	</model>
+	<model name="com.liferay.timemanagement.model.TMActivitySession">
+		<field name="activitySessionId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="activityId" type="long" />
+		<field name="endTime" type="Date" />
+		<field name="startTime" type="Date" />
+	</model>
 </model-hints>

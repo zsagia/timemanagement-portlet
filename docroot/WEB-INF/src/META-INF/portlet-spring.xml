@@ -3,4 +3,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	<bean id="com.liferay.timemanagement.service.TMActivityLocalService" class="com.liferay.timemanagement.service.impl.TMActivityLocalServiceImpl" />
 	<bean id="com.liferay.timemanagement.service.persistence.TMActivityPersistence" class="com.liferay.timemanagement.service.persistence.TMActivityPersistenceImpl" parent="basePersistence" />
+	<bean id="com.liferay.timemanagement.service.TMActivitySessionLocalService" class="com.liferay.timemanagement.service.impl.TMActivitySessionLocalServiceImpl" />
+	<bean id="com.liferay.timemanagement.service.persistence.TMActivitySessionPersistence" class="com.liferay.timemanagement.service.persistence.TMActivitySessionPersistenceImpl" parent="basePersistence" />
 </beans>

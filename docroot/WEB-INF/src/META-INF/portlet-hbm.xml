@@ -3,6 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="com.liferay.timemanagement.model.TMActivity" />
+	<import class="com.liferay.timemanagement.model.TMActivitySession" />
 	<class name="com.liferay.timemanagement.model.impl.TMActivityImpl" table="timemanagement_TMActivity">
 		<cache usage="read-write" />
 		<id name="activityId" type="long">
@@ -16,5 +17,20 @@
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
 		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="activityName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.timemanagement.model.impl.TMActivitySessionImpl" table="timemanagement_TMActivitySession">
+		<cache usage="read-write" />
+		<id name="activitySessionId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="activityId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="endTime" type="org.hibernate.type.TimestampType" />
+		<property name="startTime" type="org.hibernate.type.TimestampType" />
 	</class>
 </hibernate-mapping>

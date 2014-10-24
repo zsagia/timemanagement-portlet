@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.messaging.Message;
 
 import com.liferay.timemanagement.service.ClpSerializer;
 import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
+import com.liferay.timemanagement.service.TMActivitySessionLocalServiceUtil;
 
 /**
  * @author Istvan Sajtos, Zsolt Szabo
@@ -36,6 +37,8 @@ public class ClpMessageListener extends BaseMessageListener {
 		if (command.equals("undeploy") &&
 				servletContextName.equals(getServletContextName())) {
 			TMActivityLocalServiceUtil.clearService();
+
+			TMActivitySessionLocalServiceUtil.clearService();
 		}
 	}
 }

@@ -76,7 +76,7 @@
 
 		<finder name="U_T" return-type="Collection">
 			<finder-column name="userId" />
-			<finder-column name="taskId" />
+			<finder-column name="activityId" />
 		</finder>
 	</entity>
 </service-builder>
