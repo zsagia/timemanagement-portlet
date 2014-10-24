@@ -14,7 +14,15 @@
 
 package com.liferay.timemanagement.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.User;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.timemanagement.model.TMActivitySession;
 import com.liferay.timemanagement.service.base.TMActivitySessionLocalServiceBaseImpl;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * The implementation of the t m activity session local service.
@@ -32,5 +40,58 @@ import com.liferay.timemanagement.service.base.TMActivitySessionLocalServiceBase
  */
 public class TMActivitySessionLocalServiceImpl
 	extends TMActivitySessionLocalServiceBaseImpl {
+
+	public TMActivitySession addActivitySession(
+			long userId, Date startTime, Date endTime, long tmActivityId,
+			ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		User user = userPersistence.findByPrimaryKey(userId);
+		long groupId = serviceContext.getScopeGroupId();
+
+		long activitySessionId = counterLocalService.increment();
+
+		TMActivitySession tmActivitySession =
+			tmActivitySessionPersistence.create(activitySessionId);
+
+		Date now = new Date();
+
+		tmActivitySession.setCompanyId(user.getCompanyId());
+		tmActivitySession.setCreateDate(now);
+		tmActivitySession.setEndTime(endTime);
+		tmActivitySession.setGroupId(groupId);
+		tmActivitySession.setModifiedDate(now);
+		tmActivitySession.setStartTime(startTime);
+		tmActivitySession.setActivityId(tmActivityId);
+		tmActivitySession.setUserId(user.getUserId());
+		tmActivitySession.setUserName(user.getFullName());
+
+		tmActivitySessionPersistence.update(tmActivitySession);
+
+		return tmActivitySession;
+	}
+
+	public List<TMActivitySession> getActivitySessionsByU_T(
+			long userId, long tmActivityId)
+		throws SystemException {
+
+		List<TMActivitySession> tmActivitySessions =
+			tmActivitySessionPersistence.findByU_T(userId, tmActivityId);
+
+		return tmActivitySessions;
+	}
+
+	public TMActivitySession updateTaskSession(
+			TMActivitySession tmActivitySession)
+		throws SystemException {
+
+		Date now = new Date();
+
+		tmActivitySession.setModifiedDate(now);
+
+		tmActivitySessionPersistence.update(tmActivitySession);
+
+		return tmActivitySession;
+	}
 
 }

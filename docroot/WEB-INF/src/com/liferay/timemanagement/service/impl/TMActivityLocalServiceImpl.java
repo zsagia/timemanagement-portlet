@@ -95,6 +95,22 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 		return tmActivity;
 	}
 
+	public TMActivity updateTMActivity(
+			long activityId, String activityName, String description,
+			ServiceContext serviceContext)
+		throws SystemException {
+
+		TMActivity tmActivity = tmActivityPersistence.fetchByPrimaryKey(
+			activityId);
+
+		tmActivity.setActivityName(activityName);
+		tmActivity.setDescription(description);
+
+		tmActivityPersistence.update(tmActivity);
+
+		return tmActivity;
+	}
+
 	protected TMActivity createTMActivity(
 			long companyId, long userId, String tmActivityName,
 			String description, ServiceContext serviceContext)
