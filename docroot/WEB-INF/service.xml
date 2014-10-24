@@ -41,4 +41,42 @@
 			<finder-column name="groupId" />
 		</finder>
 	</entity>
+
+	<entity name="TMActivitySession" local-service="true" remote-service="false">
+
+		<!-- PK fields -->
+
+		<column name="activitySessionId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="activityId" type="long" />
+		<column name="endTime" type="Date" />
+		<column name="startTime" type="Date" />
+
+		<!-- Order -->
+
+		<order>
+			<order-column name="startTime" order-by="desc" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="U_T" return-type="Collection">
+			<finder-column name="userId" />
+			<finder-column name="taskId" />
+		</finder>
+	</entity>
 </service-builder>
