@@ -87,14 +87,6 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 		return deleteTMActivity(tmActivityId);
 	}
 
-	public TMActivity updateTMActivity(TMActivity tmActivity)
-		throws SystemException {
-
-		tmActivityPersistence.update(tmActivity);
-
-		return tmActivity;
-	}
-
 	public TMActivity updateTMActivity(
 			long activityId, String activityName, String description,
 			ServiceContext serviceContext)
@@ -105,6 +97,14 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 
 		tmActivity.setActivityName(activityName);
 		tmActivity.setDescription(description);
+
+		tmActivityPersistence.update(tmActivity);
+
+		return tmActivity;
+	}
+
+	public TMActivity updateTMActivity(TMActivity tmActivity)
+		throws SystemException {
 
 		tmActivityPersistence.update(tmActivity);
 
