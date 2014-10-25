@@ -14,11 +14,132 @@
 
 package com.liferay.timemanagement.activity.portlet;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.model.Layout;
+import com.liferay.portal.service.ServiceContext;
+import com.liferay.portal.service.ServiceContextFactory;
+import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portlet.PortletURLFactoryUtil;
+import com.liferay.timemanagement.model.TMActivity;
+import com.liferay.timemanagement.model.TMActivitySession;
+import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
+import com.liferay.timemanagement.service.TMActivitySessionLocalServiceUtil;
+import com.liferay.timemanagement.util.PortletKeys;
+import com.liferay.timemanagement.util.TMDateTimeUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
+import java.util.Calendar;
+
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletRequest;
+import javax.portlet.PortletURL;
+
 /**
- * Portlet implementation class ActivityPortlet
+ * @author Zsolt Szabo
  */
 public class ActivityPortlet extends MVCPortlet {
+
+	public void updateActivity(
+			ActionRequest actionRequest, ActionResponse actionResponse)
+		throws Exception {
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		long activityId = ParamUtil.getLong(actionRequest, "activityId");
+
+		String activityName = ParamUtil.getString(
+			actionRequest, "activityName");
+		String description = ParamUtil.getString(actionRequest, "description");
+
+		ServiceContext serviceContext = ServiceContextFactory.getInstance(
+			TMActivity.class.getName(), actionRequest);
+
+		TMActivity tmActivity = null;
+
+		try {
+			if (activityId <= 0) {
+				tmActivity = TMActivityLocalServiceUtil.addTMActivity(
+					themeDisplay.getCompanyId(), themeDisplay.getUserId(),
+					activityName, description, serviceContext);
+			}
+			else {
+				tmActivity = TMActivityLocalServiceUtil.updateTMActivity(
+					tmActivity);
+			}
+
+			Layout layout = themeDisplay.getLayout();
+
+			PortletURL portletURL = PortletURLFactoryUtil.create(
+				actionRequest, PortletKeys.TIME_MANAGEMENT_ACTIVITY,
+				layout.getPlid(), PortletRequest.RENDER_PHASE);
+
+			portletURL.setParameter("mvcPath", "/activity/view.jsp");
+
+			actionResponse.sendRedirect(portletURL.toString());
+		}
+		catch (Exception e) {
+			actionResponse.setRenderParameter("mvcPath", "/activity/view.jsp");
+
+			actionResponse.setRenderParameters(actionRequest.getParameterMap());
+
+			SessionErrors.add(actionRequest, e.getClass(), e);
+		}
+	}
+
+	public void updateActivitySession(
+			ActionRequest actionRequest, ActionResponse actionResponse)
+		throws Exception {
+
+		updateTMActivitySession(actionRequest);
+	}
+
+	protected TMActivitySession updateTMActivitySession(
+			PortletRequest portletRequest)
+		throws PortalException, SystemException {
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)portletRequest.getAttribute(
+				WebKeys.THEME_DISPLAY);
+
+		long tmActivitySessionId = ParamUtil.getLong(
+			portletRequest, "activitySessionId");
+
+		Calendar startTimeCalendar = TMDateTimeUtil.getCalendar(
+			portletRequest, "startTime");
+		Calendar endTimeCalendar = TMDateTimeUtil.getCalendar(
+			portletRequest, "endTime");
+
+		TMActivitySession tmActivitySession = null;
+
+		if (tmActivitySessionId <= 0) {
+			long tmActivityId = ParamUtil.getLong(portletRequest, "activityId");
+
+			ServiceContext serviceContext = ServiceContextFactory.getInstance(
+				TMActivity.class.getName(), portletRequest);
+
+			tmActivitySession =
+				TMActivitySessionLocalServiceUtil.addActivitySession(
+					themeDisplay.getUserId(), startTimeCalendar.getTime(),
+					endTimeCalendar.getTime(), tmActivityId, serviceContext);
+		}
+		else {
+			tmActivitySession =
+				TMActivitySessionLocalServiceUtil.getTMActivitySession(
+					tmActivitySessionId);
+
+			tmActivitySession.setStartTime(startTimeCalendar.getTime());
+			tmActivitySession.setEndTime(endTimeCalendar.getTime());
+
+			TMActivitySessionLocalServiceUtil.updateTaskSession(
+				tmActivitySession);
+		}
+
+		return tmActivitySession;
+	}
 
 }
