@@ -318,6 +318,16 @@ public class TMActivityLocalServiceWrapper implements TMActivityLocalService,
 			groupPermissions, guestPermissions);
 	}
 
+	@Override
+	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
+		long activityId, java.lang.String activityName,
+		java.lang.String description,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivityLocalService.updateTMActivity(activityId,
+			activityName, description, serviceContext);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

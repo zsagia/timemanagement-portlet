@@ -433,7 +433,8 @@ public class TMActivitySessionWrapper implements TMActivitySession,
 	}
 
 	@Override
-	public int compareTo(TMActivitySession tmActivitySession) {
+	public int compareTo(
+		com.liferay.timemanagement.model.TMActivitySession tmActivitySession) {
 		return _tmActivitySession.compareTo(tmActivitySession);
 	}
 
@@ -443,17 +444,17 @@ public class TMActivitySessionWrapper implements TMActivitySession,
 	}
 
 	@Override
-	public com.liferay.portal.model.CacheModel<TMActivitySession> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<com.liferay.timemanagement.model.TMActivitySession> toCacheModel() {
 		return _tmActivitySession.toCacheModel();
 	}
 
 	@Override
-	public TMActivitySession toEscapedModel() {
+	public com.liferay.timemanagement.model.TMActivitySession toEscapedModel() {
 		return new TMActivitySessionWrapper(_tmActivitySession.toEscapedModel());
 	}
 
 	@Override
-	public TMActivitySession toUnescapedModel() {
+	public com.liferay.timemanagement.model.TMActivitySession toUnescapedModel() {
 		return new TMActivitySessionWrapper(_tmActivitySession.toUnescapedModel());
 	}
 

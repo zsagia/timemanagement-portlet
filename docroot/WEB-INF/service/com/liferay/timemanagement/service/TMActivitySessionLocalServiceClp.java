@@ -115,6 +115,23 @@ public class TMActivitySessionLocalServiceClp
 		_methodName17 = "setBeanIdentifier";
 
 		_methodParameterTypes17 = new String[] { "java.lang.String" };
+
+		_methodName19 = "addActivitySession";
+
+		_methodParameterTypes19 = new String[] {
+				"long", "java.util.Date", "java.util.Date", "long",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName20 = "getActivitySessionsByU_T";
+
+		_methodParameterTypes20 = new String[] { "long", "long" };
+
+		_methodName21 = "updateTaskSession";
+
+		_methodParameterTypes21 = new String[] {
+				"com.liferay.timemanagement.model.TMActivitySession"
+			};
 	}
 
 	@Override
@@ -670,6 +687,114 @@ public class TMActivitySessionLocalServiceClp
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public com.liferay.timemanagement.model.TMActivitySession addActivitySession(
+		long userId, java.util.Date startTime, java.util.Date endTime,
+		long tmActivityId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName19,
+					_methodParameterTypes19,
+					new Object[] {
+						userId,
+						
+					ClpSerializer.translateInput(startTime),
+						
+					ClpSerializer.translateInput(endTime),
+						
+					tmActivityId,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.liferay.timemanagement.model.TMActivitySession)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<com.liferay.timemanagement.model.TMActivitySession> getActivitySessionsByU_T(
+		long userId, long tmActivityId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20,
+					new Object[] { userId, tmActivityId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.liferay.timemanagement.model.TMActivitySession>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMActivitySession updateTaskSession(
+		com.liferay.timemanagement.model.TMActivitySession tmActivitySession)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName21,
+					_methodParameterTypes21,
+					new Object[] { ClpSerializer.translateInput(
+							tmActivitySession) });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.liferay.timemanagement.model.TMActivitySession)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -707,4 +832,10 @@ public class TMActivitySessionLocalServiceClp
 	private String[] _methodParameterTypes16;
 	private String _methodName17;
 	private String[] _methodParameterTypes17;
+	private String _methodName19;
+	private String[] _methodParameterTypes19;
+	private String _methodName20;
+	private String[] _methodParameterTypes20;
+	private String _methodName21;
+	private String[] _methodParameterTypes21;
 }

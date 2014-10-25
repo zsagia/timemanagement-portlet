@@ -267,4 +267,10 @@ public interface TMActivityLocalService extends BaseLocalService,
 		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
+
+	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
+		long activityId, java.lang.String activityName,
+		java.lang.String description,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

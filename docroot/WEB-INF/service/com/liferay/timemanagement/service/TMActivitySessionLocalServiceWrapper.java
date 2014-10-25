@@ -289,6 +289,32 @@ public class TMActivitySessionLocalServiceWrapper
 			parameterTypes, arguments);
 	}
 
+	@Override
+	public com.liferay.timemanagement.model.TMActivitySession addActivitySession(
+		long userId, java.util.Date startTime, java.util.Date endTime,
+		long tmActivityId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivitySessionLocalService.addActivitySession(userId,
+			startTime, endTime, tmActivityId, serviceContext);
+	}
+
+	@Override
+	public java.util.List<com.liferay.timemanagement.model.TMActivitySession> getActivitySessionsByU_T(
+		long userId, long tmActivityId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivitySessionLocalService.getActivitySessionsByU_T(userId,
+			tmActivityId);
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMActivitySession updateTaskSession(
+		com.liferay.timemanagement.model.TMActivitySession tmActivitySession)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivitySessionLocalService.updateTaskSession(tmActivitySession);
+	}
+
 	/**
 	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
 	 */

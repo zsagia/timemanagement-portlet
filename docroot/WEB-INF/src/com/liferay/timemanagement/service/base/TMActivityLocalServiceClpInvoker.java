@@ -144,6 +144,13 @@ public class TMActivityLocalServiceClpInvoker {
 		_methodParameterTypes46 = new String[] {
 				"com.liferay.timemanagement.model.TMActivity"
 			};
+
+		_methodName47 = "updateTMActivity";
+
+		_methodParameterTypes47 = new String[] {
+				"long", "java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -283,6 +290,13 @@ public class TMActivityLocalServiceClpInvoker {
 			return TMActivityLocalServiceUtil.updateTMActivity((com.liferay.timemanagement.model.TMActivity)arguments[0]);
 		}
 
+		if (_methodName47.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
+			return TMActivityLocalServiceUtil.updateTMActivity(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
+				(com.liferay.portal.service.ServiceContext)arguments[3]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -332,4 +346,6 @@ public class TMActivityLocalServiceClpInvoker {
 	private String[] _methodParameterTypes45;
 	private String _methodName46;
 	private String[] _methodParameterTypes46;
+	private String _methodName47;
+	private String[] _methodParameterTypes47;
 }

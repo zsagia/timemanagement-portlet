@@ -135,6 +135,13 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 				"com.liferay.timemanagement.model.TMActivity",
 				"java.lang.String[][]", "java.lang.String[][]"
 			};
+
+		_methodName22 = "updateTMActivity";
+
+		_methodParameterTypes22 = new String[] {
+				"long", "java.lang.String", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	@Override
@@ -810,6 +817,46 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		}
 	}
 
+	@Override
+	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
+		long activityId, java.lang.String activityName,
+		java.lang.String description,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName22,
+					_methodParameterTypes22,
+					new Object[] {
+						activityId,
+						
+					ClpSerializer.translateInput(activityName),
+						
+					ClpSerializer.translateInput(description),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
+	}
+
 	private InvokableLocalService _invokableLocalService;
 	private String _methodName0;
 	private String[] _methodParameterTypes0;
@@ -853,4 +900,6 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
+	private String _methodName22;
+	private String[] _methodParameterTypes22;
 }

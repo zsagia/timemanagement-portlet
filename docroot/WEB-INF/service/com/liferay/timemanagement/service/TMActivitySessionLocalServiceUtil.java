@@ -275,6 +275,29 @@ public class TMActivitySessionLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static com.liferay.timemanagement.model.TMActivitySession addActivitySession(
+		long userId, java.util.Date startTime, java.util.Date endTime,
+		long tmActivityId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addActivitySession(userId, startTime, endTime,
+			tmActivityId, serviceContext);
+	}
+
+	public static java.util.List<com.liferay.timemanagement.model.TMActivitySession> getActivitySessionsByU_T(
+		long userId, long tmActivityId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getActivitySessionsByU_T(userId, tmActivityId);
+	}
+
+	public static com.liferay.timemanagement.model.TMActivitySession updateTaskSession(
+		com.liferay.timemanagement.model.TMActivitySession tmActivitySession)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().updateTaskSession(tmActivitySession);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

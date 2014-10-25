@@ -248,4 +248,20 @@ public interface TMActivitySessionLocalService extends BaseLocalService,
 	public java.lang.Object invokeMethod(java.lang.String name,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
+
+	public com.liferay.timemanagement.model.TMActivitySession addActivitySession(
+		long userId, java.util.Date startTime, java.util.Date endTime,
+		long tmActivityId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.timemanagement.model.TMActivitySession> getActivitySessionsByU_T(
+		long userId, long tmActivityId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public com.liferay.timemanagement.model.TMActivitySession updateTaskSession(
+		com.liferay.timemanagement.model.TMActivitySession tmActivitySession)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

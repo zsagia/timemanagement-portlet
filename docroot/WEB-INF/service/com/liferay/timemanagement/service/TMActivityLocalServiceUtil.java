@@ -306,6 +306,16 @@ public class TMActivityLocalServiceUtil {
 			guestPermissions);
 	}
 
+	public static com.liferay.timemanagement.model.TMActivity updateTMActivity(
+		long activityId, java.lang.String activityName,
+		java.lang.String description,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .updateTMActivity(activityId, activityName, description,
+			serviceContext);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

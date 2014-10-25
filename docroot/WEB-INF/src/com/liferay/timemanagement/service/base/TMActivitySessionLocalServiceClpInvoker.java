@@ -113,6 +113,23 @@ public class TMActivitySessionLocalServiceClpInvoker {
 		_methodName37 = "setBeanIdentifier";
 
 		_methodParameterTypes37 = new String[] { "java.lang.String" };
+
+		_methodName42 = "addActivitySession";
+
+		_methodParameterTypes42 = new String[] {
+				"long", "java.util.Date", "java.util.Date", "long",
+				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName43 = "getActivitySessionsByU_T";
+
+		_methodParameterTypes43 = new String[] { "long", "long" };
+
+		_methodName44 = "updateTaskSession";
+
+		_methodParameterTypes44 = new String[] {
+				"com.liferay.timemanagement.model.TMActivitySession"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -216,6 +233,25 @@ public class TMActivitySessionLocalServiceClpInvoker {
 			return null;
 		}
 
+		if (_methodName42.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes42, parameterTypes)) {
+			return TMActivitySessionLocalServiceUtil.addActivitySession(((Long)arguments[0]).longValue(),
+				(java.util.Date)arguments[1], (java.util.Date)arguments[2],
+				((Long)arguments[3]).longValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[4]);
+		}
+
+		if (_methodName43.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes43, parameterTypes)) {
+			return TMActivitySessionLocalServiceUtil.getActivitySessionsByU_T(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName44.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
+			return TMActivitySessionLocalServiceUtil.updateTaskSession((com.liferay.timemanagement.model.TMActivitySession)arguments[0]);
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -255,4 +291,10 @@ public class TMActivitySessionLocalServiceClpInvoker {
 	private String[] _methodParameterTypes36;
 	private String _methodName37;
 	private String[] _methodParameterTypes37;
+	private String _methodName42;
+	private String[] _methodParameterTypes42;
+	private String _methodName43;
+	private String[] _methodParameterTypes43;
+	private String _methodName44;
+	private String[] _methodParameterTypes44;
 }
