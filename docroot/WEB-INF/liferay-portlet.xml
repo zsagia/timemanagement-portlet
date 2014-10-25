@@ -3,7 +3,7 @@
 
 <liferay-portlet-app>
 	<portlet>
-		<portlet-name>activity</portlet-name>
+		<portlet-name>1</portlet-name>
 		<icon>/icons/icon.png</icon>
 		<control-panel-entry-category>
 			Time Management
