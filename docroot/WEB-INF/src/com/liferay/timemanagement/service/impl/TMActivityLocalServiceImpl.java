@@ -16,6 +16,7 @@ package com.liferay.timemanagement.service.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
@@ -23,6 +24,7 @@ import com.liferay.timemanagement.model.TMActivity;
 import com.liferay.timemanagement.service.base.TMActivityLocalServiceBaseImpl;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * The implementation of the t m activity local service.
@@ -74,6 +76,10 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 			tmActivity.getActivityId(), groupPermissions, guestPermissions);
 	}
 
+	public int countByC_G(long companyId, long groupId) throws SystemException {
+		return tmActivityPersistence.countByC_G(companyId, groupId);
+	}
+
 	public TMActivity deleteTMActivity(long tmActivityId)
 		throws PortalException, SystemException {
 
@@ -85,6 +91,22 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 			ResourceConstants.SCOPE_COMPANY, tmActivity.getActivityId());
 
 		return deleteTMActivity(tmActivityId);
+	}
+
+	public List<TMActivity> getTMActivitiesByC_G(
+			long companyId, long groupId, int start, int end)
+		throws SystemException {
+
+		return tmActivityPersistence.findByC_G(companyId, groupId, start, end);
+	}
+
+	public List<TMActivity> getTMActivitiesByC_G(
+			long companyId, long groupId, int start, int end,
+			OrderByComparator orderByComparator)
+		throws SystemException {
+
+		return tmActivityPersistence.filterFindByC_G(
+			companyId, groupId, start, end, orderByComparator);
 	}
 
 	public TMActivity updateTMActivity(
