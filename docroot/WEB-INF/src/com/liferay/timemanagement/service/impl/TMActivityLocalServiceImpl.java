@@ -130,6 +130,7 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 		tmActivity.setGroupId(groupId);
 		tmActivity.setModifiedDate(now);
 		tmActivity.setActivityName(tmActivityName);
+		tmActivity.setDescription(description);
 		tmActivity.setUserId(userId);
 		tmActivity.setUserName(user.getFullName());
 
