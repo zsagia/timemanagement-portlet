@@ -81,6 +81,13 @@ public class TMActivitySessionLocalServiceImpl
 		return tmActivitySessions;
 	}
 
+	public List<TMActivitySession> getTMActivitySessionsByActivityId(
+			long activityId)
+		throws SystemException {
+
+		return tmActivitySessionPersistence.findByactivityId(activityId);
+	}
+
 	public TMActivitySession updateTaskSession(
 			TMActivitySession tmActivitySession)
 		throws SystemException {
