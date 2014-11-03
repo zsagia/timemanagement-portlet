@@ -14,6 +14,12 @@
 
 package com.liferay.timemanagement.model.impl;
 
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.timemanagement.model.TMActivitySession;
+import com.liferay.timemanagement.service.TMActivitySessionLocalServiceUtil;
+
+import java.util.List;
+
 /**
  * The extended model implementation for the TMActivity service. Represents a row in the &quot;timemanagement_TMActivity&quot; database table, with each column mapped to a property of this class.
  *
@@ -23,14 +29,18 @@ package com.liferay.timemanagement.model.impl;
  *
  * @author Istvan Sajtos, Zsolt Szabo
  */
+@SuppressWarnings("serial")
 public class TMActivityImpl extends TMActivityBaseImpl {
 
-	/**
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. All methods that expect a t m activity model instance should use the {@link com.liferay.timemanagement.model.TMActivity} interface instead.
-	 */
 	public TMActivityImpl() {
+	}
+
+	public TMActivitySession getTMActivitySession() throws SystemException {
+		List<TMActivitySession> tmActivitySessions =
+			TMActivitySessionLocalServiceUtil.getTMActivitySessionsByActivityId(
+				getActivityId());
+
+		return tmActivitySessions.get(0);
 	}
 
 }
