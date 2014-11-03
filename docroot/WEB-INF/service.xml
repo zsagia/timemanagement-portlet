@@ -74,6 +74,10 @@
 
 		<!-- Finder methods -->
 
+		<finder name="activityId" return-type="Collection">
+			<finder-column name="activityId" />
+		</finder>
+
 		<finder name="U_T" return-type="Collection">
 			<finder-column name="userId" />
 			<finder-column name="activityId" />
