@@ -74,6 +74,12 @@ public class ActivityPortlet extends MVCPortlet {
 					actionRequest, tmActivity.getActivityId());
 			}
 			else {
+				tmActivity = TMActivityLocalServiceUtil.getTMActivity(
+					activityId);
+
+				tmActivity.setActivityName(activityName);
+				tmActivity.setDescription(description);
+
 				tmActivity = TMActivityLocalServiceUtil.updateTMActivity(
 					tmActivity);
 			}
