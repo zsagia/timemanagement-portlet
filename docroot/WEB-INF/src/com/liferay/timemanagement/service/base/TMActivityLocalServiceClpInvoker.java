@@ -106,50 +106,65 @@ public class TMActivityLocalServiceClpInvoker {
 				"com.liferay.timemanagement.model.TMActivity"
 			};
 
-		_methodName36 = "getBeanIdentifier";
+		_methodName38 = "getBeanIdentifier";
 
-		_methodParameterTypes36 = new String[] {  };
+		_methodParameterTypes38 = new String[] {  };
 
-		_methodName37 = "setBeanIdentifier";
+		_methodName39 = "setBeanIdentifier";
 
-		_methodParameterTypes37 = new String[] { "java.lang.String" };
+		_methodParameterTypes39 = new String[] { "java.lang.String" };
 
-		_methodName42 = "addTMActivity";
+		_methodName44 = "addTMActivity";
 
-		_methodParameterTypes42 = new String[] {
+		_methodParameterTypes44 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName43 = "addTMActivityResources";
+		_methodName45 = "addTMActivityResources";
 
-		_methodParameterTypes43 = new String[] {
+		_methodParameterTypes45 = new String[] {
 				"com.liferay.timemanagement.model.TMActivity", "boolean",
 				"boolean"
 			};
 
-		_methodName44 = "addTMActivityResources";
+		_methodName46 = "addTMActivityResources";
 
-		_methodParameterTypes44 = new String[] {
+		_methodParameterTypes46 = new String[] {
 				"com.liferay.timemanagement.model.TMActivity",
 				"java.lang.String[][]", "java.lang.String[][]"
 			};
 
-		_methodName45 = "deleteTMActivity";
+		_methodName47 = "countByC_G";
 
-		_methodParameterTypes45 = new String[] { "long" };
+		_methodParameterTypes47 = new String[] { "long", "long" };
 
-		_methodName46 = "updateTMActivity";
+		_methodName48 = "deleteTMActivity";
 
-		_methodParameterTypes46 = new String[] {
-				"com.liferay.timemanagement.model.TMActivity"
+		_methodParameterTypes48 = new String[] { "long" };
+
+		_methodName49 = "getTMActivitiesByC_G";
+
+		_methodParameterTypes49 = new String[] { "long", "long", "int", "int" };
+
+		_methodName50 = "getTMActivitiesByC_G";
+
+		_methodParameterTypes50 = new String[] {
+				"long", "long", "int", "int",
+				"com.liferay.portal.kernel.util.OrderByComparator"
 			};
 
-		_methodName47 = "updateTMActivity";
+		_methodName51 = "updateTMActivity";
 
-		_methodParameterTypes47 = new String[] {
+		_methodParameterTypes51 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName52 = "updateTMActivity";
+
+		_methodParameterTypes52 = new String[] {
+				"com.liferay.timemanagement.model.TMActivity"
 			};
 	}
 
@@ -242,28 +257,28 @@ public class TMActivityLocalServiceClpInvoker {
 			return TMActivityLocalServiceUtil.updateTMActivity((com.liferay.timemanagement.model.TMActivity)arguments[0]);
 		}
 
-		if (_methodName36.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes36, parameterTypes)) {
+		if (_methodName38.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes38, parameterTypes)) {
 			return TMActivityLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName37.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes37, parameterTypes)) {
+		if (_methodName39.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes39, parameterTypes)) {
 			TMActivityLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName42.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes42, parameterTypes)) {
+		if (_methodName44.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
 			return TMActivityLocalServiceUtil.addTMActivity(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
 				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
-		if (_methodName43.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes43, parameterTypes)) {
+		if (_methodName45.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes45, parameterTypes)) {
 			TMActivityLocalServiceUtil.addTMActivityResources((com.liferay.timemanagement.model.TMActivity)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Boolean)arguments[2]).booleanValue());
@@ -271,8 +286,8 @@ public class TMActivityLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName44.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
+		if (_methodName46.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
 			TMActivityLocalServiceUtil.addTMActivityResources((com.liferay.timemanagement.model.TMActivity)arguments[0],
 				(java.lang.String[])arguments[1],
 				(java.lang.String[])arguments[2]);
@@ -280,21 +295,44 @@ public class TMActivityLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName45.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes45, parameterTypes)) {
+		if (_methodName47.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
+			return TMActivityLocalServiceUtil.countByC_G(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName48.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
 			return TMActivityLocalServiceUtil.deleteTMActivity(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName46.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
-			return TMActivityLocalServiceUtil.updateTMActivity((com.liferay.timemanagement.model.TMActivity)arguments[0]);
+		if (_methodName49.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
+			return TMActivityLocalServiceUtil.getTMActivitiesByC_G(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue());
 		}
 
-		if (_methodName47.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
+		if (_methodName50.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
+			return TMActivityLocalServiceUtil.getTMActivitiesByC_G(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Integer)arguments[2]).intValue(),
+				((Integer)arguments[3]).intValue(),
+				(com.liferay.portal.kernel.util.OrderByComparator)arguments[4]);
+		}
+
+		if (_methodName51.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
 			return TMActivityLocalServiceUtil.updateTMActivity(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(com.liferay.portal.service.ServiceContext)arguments[3]);
+		}
+
+		if (_methodName52.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
+			return TMActivityLocalServiceUtil.updateTMActivity((com.liferay.timemanagement.model.TMActivity)arguments[0]);
 		}
 
 		throw new UnsupportedOperationException();
@@ -332,14 +370,10 @@ public class TMActivityLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName36;
-	private String[] _methodParameterTypes36;
-	private String _methodName37;
-	private String[] _methodParameterTypes37;
-	private String _methodName42;
-	private String[] _methodParameterTypes42;
-	private String _methodName43;
-	private String[] _methodParameterTypes43;
+	private String _methodName38;
+	private String[] _methodParameterTypes38;
+	private String _methodName39;
+	private String[] _methodParameterTypes39;
 	private String _methodName44;
 	private String[] _methodParameterTypes44;
 	private String _methodName45;
@@ -348,4 +382,14 @@ public class TMActivityLocalServiceClpInvoker {
 	private String[] _methodParameterTypes46;
 	private String _methodName47;
 	private String[] _methodParameterTypes47;
+	private String _methodName48;
+	private String[] _methodParameterTypes48;
+	private String _methodName49;
+	private String[] _methodParameterTypes49;
+	private String _methodName50;
+	private String[] _methodParameterTypes50;
+	private String _methodName51;
+	private String[] _methodParameterTypes51;
+	private String _methodName52;
+	private String[] _methodParameterTypes52;
 }

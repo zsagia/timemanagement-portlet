@@ -301,6 +301,25 @@ public abstract class TMActivityLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the t m activity remote service.
+	 *
+	 * @return the t m activity remote service
+	 */
+	public com.liferay.timemanagement.service.TMActivityService getTMActivityService() {
+		return tmActivityService;
+	}
+
+	/**
+	 * Sets the t m activity remote service.
+	 *
+	 * @param tmActivityService the t m activity remote service
+	 */
+	public void setTMActivityService(
+		com.liferay.timemanagement.service.TMActivityService tmActivityService) {
+		this.tmActivityService = tmActivityService;
+	}
+
+	/**
 	 * Returns the t m activity persistence.
 	 *
 	 * @return the t m activity persistence
@@ -535,6 +554,8 @@ public abstract class TMActivityLocalServiceBaseImpl
 
 	@BeanReference(type = com.liferay.timemanagement.service.TMActivityLocalService.class)
 	protected com.liferay.timemanagement.service.TMActivityLocalService tmActivityLocalService;
+	@BeanReference(type = com.liferay.timemanagement.service.TMActivityService.class)
+	protected com.liferay.timemanagement.service.TMActivityService tmActivityService;
 	@BeanReference(type = TMActivityPersistence.class)
 	protected TMActivityPersistence tmActivityPersistence;
 	@BeanReference(type = com.liferay.timemanagement.service.TMActivitySessionLocalService.class)

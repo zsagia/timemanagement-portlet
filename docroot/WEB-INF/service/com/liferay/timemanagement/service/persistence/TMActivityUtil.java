@@ -261,6 +261,85 @@ public class TMActivityUtil {
 	}
 
 	/**
+	* Returns all the t m activities that the user has permission to view where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @return the matching t m activities that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.timemanagement.model.TMActivity> filterFindByC_G(
+		long companyId, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByC_G(companyId, groupId);
+	}
+
+	/**
+	* Returns a range of all the t m activities that the user has permission to view where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of t m activities
+	* @param end the upper bound of the range of t m activities (not inclusive)
+	* @return the range of matching t m activities that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.timemanagement.model.TMActivity> filterFindByC_G(
+		long companyId, long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByC_G(companyId, groupId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the t m activities that the user has permissions to view where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivityModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of t m activities
+	* @param end the upper bound of the range of t m activities (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching t m activities that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.timemanagement.model.TMActivity> filterFindByC_G(
+		long companyId, long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .filterFindByC_G(companyId, groupId, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the t m activities before and after the current t m activity in the ordered set of t m activities that the user has permission to view where companyId = &#63; and groupId = &#63;.
+	*
+	* @param activityId the primary key of the current t m activity
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next t m activity
+	* @throws com.liferay.timemanagement.NoSuchTMActivityException if a t m activity with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.timemanagement.model.TMActivity[] filterFindByC_G_PrevAndNext(
+		long activityId, long companyId, long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			com.liferay.timemanagement.NoSuchTMActivityException {
+		return getPersistence()
+				   .filterFindByC_G_PrevAndNext(activityId, companyId, groupId,
+			orderByComparator);
+	}
+
+	/**
 	* Removes all the t m activities where companyId = &#63; and groupId = &#63; from the database.
 	*
 	* @param companyId the company ID
@@ -283,6 +362,19 @@ public class TMActivityUtil {
 	public static int countByC_G(long companyId, long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByC_G(companyId, groupId);
+	}
+
+	/**
+	* Returns the number of t m activities that the user has permission to view where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @return the number of matching t m activities that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int filterCountByC_G(long companyId, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterCountByC_G(companyId, groupId);
 	}
 
 	/**

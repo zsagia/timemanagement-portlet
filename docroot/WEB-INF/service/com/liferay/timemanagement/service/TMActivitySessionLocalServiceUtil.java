@@ -292,6 +292,12 @@ public class TMActivitySessionLocalServiceUtil {
 		return getService().getActivitySessionsByU_T(userId, tmActivityId);
 	}
 
+	public static java.util.List<com.liferay.timemanagement.model.TMActivitySession> getTMActivitySessionsByActivityId(
+		long activityId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTMActivitySessionsByActivityId(activityId);
+	}
+
 	public static com.liferay.timemanagement.model.TMActivitySession updateTaskSession(
 		com.liferay.timemanagement.model.TMActivitySession tmActivitySession)
 		throws com.liferay.portal.kernel.exception.SystemException {

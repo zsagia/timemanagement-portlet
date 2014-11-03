@@ -35,13 +35,16 @@ import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 
 import com.liferay.timemanagement.model.TMActivity;
 import com.liferay.timemanagement.model.TMActivityModel;
+import com.liferay.timemanagement.model.TMActivitySoap;
 
 import java.io.Serializable;
 
 import java.sql.Types;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -60,6 +63,7 @@ import java.util.TreeSet;
  * @see com.liferay.timemanagement.model.TMActivityModel
  * @generated
  */
+@JSON(strict = true)
 public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 	implements TMActivityModel {
 	/*
@@ -98,6 +102,53 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 	public static long COMPANYID_COLUMN_BITMASK = 1L;
 	public static long GROUPID_COLUMN_BITMASK = 2L;
 	public static long ACTIVITYNAME_COLUMN_BITMASK = 4L;
+
+	/**
+	 * Converts the soap model instance into a normal model instance.
+	 *
+	 * @param soapModel the soap model instance to convert
+	 * @return the normal model instance
+	 */
+	public static TMActivity toModel(TMActivitySoap soapModel) {
+		if (soapModel == null) {
+			return null;
+		}
+
+		TMActivity model = new TMActivityImpl();
+
+		model.setActivityId(soapModel.getActivityId());
+		model.setGroupId(soapModel.getGroupId());
+		model.setCompanyId(soapModel.getCompanyId());
+		model.setUserId(soapModel.getUserId());
+		model.setUserName(soapModel.getUserName());
+		model.setCreateDate(soapModel.getCreateDate());
+		model.setModifiedDate(soapModel.getModifiedDate());
+		model.setDescription(soapModel.getDescription());
+		model.setActivityName(soapModel.getActivityName());
+
+		return model;
+	}
+
+	/**
+	 * Converts the soap model instances into normal model instances.
+	 *
+	 * @param soapModels the soap model instances to convert
+	 * @return the normal model instances
+	 */
+	public static List<TMActivity> toModels(TMActivitySoap[] soapModels) {
+		if (soapModels == null) {
+			return null;
+		}
+
+		List<TMActivity> models = new ArrayList<TMActivity>(soapModels.length);
+
+		for (TMActivitySoap soapModel : soapModels) {
+			models.add(toModel(soapModel));
+		}
+
+		return models;
+	}
+
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.com.liferay.timemanagement.model.TMActivity"));
 
@@ -208,6 +259,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		}
 	}
 
+	@JSON
 	@Override
 	public long getActivityId() {
 		return _activityId;
@@ -218,6 +270,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		_activityId = activityId;
 	}
 
+	@JSON
 	@Override
 	public long getGroupId() {
 		return _groupId;
@@ -240,6 +293,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		return _originalGroupId;
 	}
 
+	@JSON
 	@Override
 	public long getCompanyId() {
 		return _companyId;
@@ -262,6 +316,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		return _originalCompanyId;
 	}
 
+	@JSON
 	@Override
 	public long getUserId() {
 		return _userId;
@@ -282,6 +337,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		_userUuid = userUuid;
 	}
 
+	@JSON
 	@Override
 	public String getUserName() {
 		if (_userName == null) {
@@ -297,6 +353,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		_userName = userName;
 	}
 
+	@JSON
 	@Override
 	public Date getCreateDate() {
 		return _createDate;
@@ -307,6 +364,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		_createDate = createDate;
 	}
 
+	@JSON
 	@Override
 	public Date getModifiedDate() {
 		return _modifiedDate;
@@ -317,6 +375,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		_modifiedDate = modifiedDate;
 	}
 
+	@JSON
 	@Override
 	public String getDescription() {
 		if (_description == null) {
@@ -419,6 +478,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 				LocaleUtil.toLanguageId(defaultLocale)));
 	}
 
+	@JSON
 	@Override
 	public String getActivityName() {
 		if (_activityName == null) {

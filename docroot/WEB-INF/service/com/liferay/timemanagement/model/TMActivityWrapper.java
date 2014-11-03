@@ -713,6 +713,12 @@ public class TMActivityWrapper implements TMActivity, ModelWrapper<TMActivity> {
 	}
 
 	@Override
+	public com.liferay.timemanagement.model.TMActivitySession getTMActivitySession()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivity.getTMActivitySession();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

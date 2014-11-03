@@ -319,6 +319,29 @@ public class TMActivityLocalServiceWrapper implements TMActivityLocalService,
 	}
 
 	@Override
+	public int countByC_G(long companyId, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivityLocalService.countByC_G(companyId, groupId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivitiesByC_G(
+		long companyId, long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivityLocalService.getTMActivitiesByC_G(companyId, groupId,
+			start, end);
+	}
+
+	@Override
+	public java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivitiesByC_G(
+		long companyId, long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivityLocalService.getTMActivitiesByC_G(companyId, groupId,
+			start, end, orderByComparator);
+	}
+
+	@Override
 	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
 		long activityId, java.lang.String activityName,
 		java.lang.String description,

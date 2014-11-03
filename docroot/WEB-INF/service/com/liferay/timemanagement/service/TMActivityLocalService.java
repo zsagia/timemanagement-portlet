@@ -268,6 +268,20 @@ public interface TMActivityLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	public int countByC_G(long companyId, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivitiesByC_G(
+		long companyId, long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivitiesByC_G(
+		long companyId, long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
 		long activityId, java.lang.String activityName,
 		java.lang.String description,

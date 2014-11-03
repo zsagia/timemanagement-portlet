@@ -577,6 +577,25 @@ public class TMActivityClp extends BaseModelImpl<TMActivity>
 		}
 	}
 
+	@Override
+	public com.liferay.timemanagement.model.TMActivitySession getTMActivitySession() {
+		try {
+			String methodName = "getTMActivitySession";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			com.liferay.timemanagement.model.TMActivitySession returnObj = (com.liferay.timemanagement.model.TMActivitySession)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
 	public BaseModel<?> getTMActivityRemoteModel() {
 		return _tmActivityRemoteModel;
 	}

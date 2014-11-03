@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.messaging.Message;
 
 import com.liferay.timemanagement.service.ClpSerializer;
 import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
+import com.liferay.timemanagement.service.TMActivityServiceUtil;
 import com.liferay.timemanagement.service.TMActivitySessionLocalServiceUtil;
 
 /**
@@ -38,6 +39,7 @@ public class ClpMessageListener extends BaseMessageListener {
 				servletContextName.equals(getServletContextName())) {
 			TMActivityLocalServiceUtil.clearService();
 
+			TMActivityServiceUtil.clearService();
 			TMActivitySessionLocalServiceUtil.clearService();
 		}
 	}

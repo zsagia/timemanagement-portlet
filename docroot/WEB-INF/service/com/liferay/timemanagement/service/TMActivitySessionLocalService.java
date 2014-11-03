@@ -261,6 +261,11 @@ public interface TMActivitySessionLocalService extends BaseLocalService,
 		long userId, long tmActivityId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.timemanagement.model.TMActivitySession> getTMActivitySessionsByActivityId(
+		long activityId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	public com.liferay.timemanagement.model.TMActivitySession updateTaskSession(
 		com.liferay.timemanagement.model.TMActivitySession tmActivitySession)
 		throws com.liferay.portal.kernel.exception.SystemException;

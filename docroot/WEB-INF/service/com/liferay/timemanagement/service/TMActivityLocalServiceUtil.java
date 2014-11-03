@@ -306,6 +306,26 @@ public class TMActivityLocalServiceUtil {
 			guestPermissions);
 	}
 
+	public static int countByC_G(long companyId, long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByC_G(companyId, groupId);
+	}
+
+	public static java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivitiesByC_G(
+		long companyId, long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getTMActivitiesByC_G(companyId, groupId, start, end);
+	}
+
+	public static java.util.List<com.liferay.timemanagement.model.TMActivity> getTMActivitiesByC_G(
+		long companyId, long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .getTMActivitiesByC_G(companyId, groupId, start, end,
+			orderByComparator);
+	}
+
 	public static com.liferay.timemanagement.model.TMActivity updateTMActivity(
 		long activityId, java.lang.String activityName,
 		java.lang.String description,

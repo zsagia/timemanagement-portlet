@@ -309,6 +309,13 @@ public class TMActivitySessionLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.liferay.timemanagement.model.TMActivitySession> getTMActivitySessionsByActivityId(
+		long activityId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivitySessionLocalService.getTMActivitySessionsByActivityId(activityId);
+	}
+
+	@Override
 	public com.liferay.timemanagement.model.TMActivitySession updateTaskSession(
 		com.liferay.timemanagement.model.TMActivitySession tmActivitySession)
 		throws com.liferay.portal.kernel.exception.SystemException {

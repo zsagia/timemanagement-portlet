@@ -84,6 +84,502 @@ public class TMActivitySessionPersistenceImpl extends BasePersistenceImpl<TMActi
 	public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(TMActivitySessionModelImpl.ENTITY_CACHE_ENABLED,
 			TMActivitySessionModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_ACTIVITYID =
+		new FinderPath(TMActivitySessionModelImpl.ENTITY_CACHE_ENABLED,
+			TMActivitySessionModelImpl.FINDER_CACHE_ENABLED,
+			TMActivitySessionImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByactivityId",
+			new String[] {
+				Long.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ACTIVITYID =
+		new FinderPath(TMActivitySessionModelImpl.ENTITY_CACHE_ENABLED,
+			TMActivitySessionModelImpl.FINDER_CACHE_ENABLED,
+			TMActivitySessionImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByactivityId",
+			new String[] { Long.class.getName() },
+			TMActivitySessionModelImpl.ACTIVITYID_COLUMN_BITMASK |
+			TMActivitySessionModelImpl.STARTTIME_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_ACTIVITYID = new FinderPath(TMActivitySessionModelImpl.ENTITY_CACHE_ENABLED,
+			TMActivitySessionModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByactivityId",
+			new String[] { Long.class.getName() });
+
+	/**
+	 * Returns all the t m activity sessions where activityId = &#63;.
+	 *
+	 * @param activityId the activity ID
+	 * @return the matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<TMActivitySession> findByactivityId(long activityId)
+		throws SystemException {
+		return findByactivityId(activityId, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the t m activity sessions where activityId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivitySessionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param activityId the activity ID
+	 * @param start the lower bound of the range of t m activity sessions
+	 * @param end the upper bound of the range of t m activity sessions (not inclusive)
+	 * @return the range of matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<TMActivitySession> findByactivityId(long activityId, int start,
+		int end) throws SystemException {
+		return findByactivityId(activityId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the t m activity sessions where activityId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivitySessionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param activityId the activity ID
+	 * @param start the lower bound of the range of t m activity sessions
+	 * @param end the upper bound of the range of t m activity sessions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<TMActivitySession> findByactivityId(long activityId, int start,
+		int end, OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ACTIVITYID;
+			finderArgs = new Object[] { activityId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_ACTIVITYID;
+			finderArgs = new Object[] { activityId, start, end, orderByComparator };
+		}
+
+		List<TMActivitySession> list = (List<TMActivitySession>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (TMActivitySession tmActivitySession : list) {
+				if ((activityId != tmActivitySession.getActivityId())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_TMACTIVITYSESSION_WHERE);
+
+			query.append(_FINDER_COLUMN_ACTIVITYID_ACTIVITYID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(TMActivitySessionModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(activityId);
+
+				if (!pagination) {
+					list = (List<TMActivitySession>)QueryUtil.list(q,
+							getDialect(), start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<TMActivitySession>(list);
+				}
+				else {
+					list = (List<TMActivitySession>)QueryUtil.list(q,
+							getDialect(), start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first t m activity session in the ordered set where activityId = &#63;.
+	 *
+	 * @param activityId the activity ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching t m activity session
+	 * @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession findByactivityId_First(long activityId,
+		OrderByComparator orderByComparator)
+		throws NoSuchTMActivitySessionException, SystemException {
+		TMActivitySession tmActivitySession = fetchByactivityId_First(activityId,
+				orderByComparator);
+
+		if (tmActivitySession != null) {
+			return tmActivitySession;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("activityId=");
+		msg.append(activityId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchTMActivitySessionException(msg.toString());
+	}
+
+	/**
+	 * Returns the first t m activity session in the ordered set where activityId = &#63;.
+	 *
+	 * @param activityId the activity ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching t m activity session, or <code>null</code> if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession fetchByactivityId_First(long activityId,
+		OrderByComparator orderByComparator) throws SystemException {
+		List<TMActivitySession> list = findByactivityId(activityId, 0, 1,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last t m activity session in the ordered set where activityId = &#63;.
+	 *
+	 * @param activityId the activity ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching t m activity session
+	 * @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession findByactivityId_Last(long activityId,
+		OrderByComparator orderByComparator)
+		throws NoSuchTMActivitySessionException, SystemException {
+		TMActivitySession tmActivitySession = fetchByactivityId_Last(activityId,
+				orderByComparator);
+
+		if (tmActivitySession != null) {
+			return tmActivitySession;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("activityId=");
+		msg.append(activityId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchTMActivitySessionException(msg.toString());
+	}
+
+	/**
+	 * Returns the last t m activity session in the ordered set where activityId = &#63;.
+	 *
+	 * @param activityId the activity ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching t m activity session, or <code>null</code> if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession fetchByactivityId_Last(long activityId,
+		OrderByComparator orderByComparator) throws SystemException {
+		int count = countByactivityId(activityId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<TMActivitySession> list = findByactivityId(activityId, count - 1,
+				count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the t m activity sessions before and after the current t m activity session in the ordered set where activityId = &#63;.
+	 *
+	 * @param activitySessionId the primary key of the current t m activity session
+	 * @param activityId the activity ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next t m activity session
+	 * @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a t m activity session with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession[] findByactivityId_PrevAndNext(
+		long activitySessionId, long activityId,
+		OrderByComparator orderByComparator)
+		throws NoSuchTMActivitySessionException, SystemException {
+		TMActivitySession tmActivitySession = findByPrimaryKey(activitySessionId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			TMActivitySession[] array = new TMActivitySessionImpl[3];
+
+			array[0] = getByactivityId_PrevAndNext(session, tmActivitySession,
+					activityId, orderByComparator, true);
+
+			array[1] = tmActivitySession;
+
+			array[2] = getByactivityId_PrevAndNext(session, tmActivitySession,
+					activityId, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected TMActivitySession getByactivityId_PrevAndNext(Session session,
+		TMActivitySession tmActivitySession, long activityId,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_TMACTIVITYSESSION_WHERE);
+
+		query.append(_FINDER_COLUMN_ACTIVITYID_ACTIVITYID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(TMActivitySessionModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(activityId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(tmActivitySession);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<TMActivitySession> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the t m activity sessions where activityId = &#63; from the database.
+	 *
+	 * @param activityId the activity ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByactivityId(long activityId) throws SystemException {
+		for (TMActivitySession tmActivitySession : findByactivityId(
+				activityId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(tmActivitySession);
+		}
+	}
+
+	/**
+	 * Returns the number of t m activity sessions where activityId = &#63;.
+	 *
+	 * @param activityId the activity ID
+	 * @return the number of matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByactivityId(long activityId) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_ACTIVITYID;
+
+		Object[] finderArgs = new Object[] { activityId };
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_TMACTIVITYSESSION_WHERE);
+
+			query.append(_FINDER_COLUMN_ACTIVITYID_ACTIVITYID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(activityId);
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_ACTIVITYID_ACTIVITYID_2 = "tmActivitySession.activityId = ?";
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_U_T = new FinderPath(TMActivitySessionModelImpl.ENTITY_CACHE_ENABLED,
 			TMActivitySessionModelImpl.FINDER_CACHE_ENABLED,
 			TMActivitySessionImpl.class,
@@ -843,6 +1339,25 @@ public class TMActivitySessionPersistenceImpl extends BasePersistenceImpl<TMActi
 		}
 
 		else {
+			if ((tmActivitySessionModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ACTIVITYID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						tmActivitySessionModelImpl.getOriginalActivityId()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_ACTIVITYID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ACTIVITYID,
+					args);
+
+				args = new Object[] { tmActivitySessionModelImpl.getActivityId() };
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_ACTIVITYID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ACTIVITYID,
+					args);
+			}
+
 			if ((tmActivitySessionModelImpl.getColumnBitmask() &
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_U_T.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
