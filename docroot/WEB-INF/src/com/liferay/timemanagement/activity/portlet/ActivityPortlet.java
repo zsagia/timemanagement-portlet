@@ -62,11 +62,16 @@ public class ActivityPortlet extends MVCPortlet {
 
 		TMActivity tmActivity = null;
 
+		TMActivitySession tmActivitySession = null;
+
 		try {
 			if (activityId <= 0) {
 				tmActivity = TMActivityLocalServiceUtil.addTMActivity(
 					themeDisplay.getCompanyId(), themeDisplay.getUserId(),
 					activityName, description, serviceContext);
+
+				tmActivitySession = updateTMActivitySession(
+					actionRequest, tmActivity.getActivityId());
 			}
 			else {
 				tmActivity = TMActivityLocalServiceUtil.updateTMActivity(
@@ -96,11 +101,11 @@ public class ActivityPortlet extends MVCPortlet {
 			ActionRequest actionRequest, ActionResponse actionResponse)
 		throws Exception {
 
-		updateTMActivitySession(actionRequest);
+		updateTMActivitySession(actionRequest, 0);
 	}
 
 	protected TMActivitySession updateTMActivitySession(
-			PortletRequest portletRequest)
+			PortletRequest portletRequest, long tmActivityId)
 		throws PortalException, SystemException {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)portletRequest.getAttribute(
@@ -110,14 +115,16 @@ public class ActivityPortlet extends MVCPortlet {
 			portletRequest, "activitySessionId");
 
 		Calendar startTimeCalendar = TMDateTimeUtil.getCalendar(
-			portletRequest, "startTime");
+			portletRequest, "startDate");
 		Calendar endTimeCalendar = TMDateTimeUtil.getCalendar(
-			portletRequest, "endTime");
+			portletRequest, "endDate");
 
 		TMActivitySession tmActivitySession = null;
 
 		if (tmActivitySessionId <= 0) {
-			long tmActivityId = ParamUtil.getLong(portletRequest, "activityId");
+			if (tmActivityId <= 0) {
+				tmActivityId = ParamUtil.getLong(portletRequest, "activityId");
+			}
 
 			ServiceContext serviceContext = ServiceContextFactory.getInstance(
 				TMActivity.class.getName(), portletRequest);
