@@ -62,16 +62,17 @@ public class ActivityPortlet extends MVCPortlet {
 
 		TMActivity tmActivity = null;
 
-		TMActivitySession tmActivitySession = null;
-
 		try {
 			if (activityId <= 0) {
+				Calendar startTimeCalendar = TMDateTimeUtil.getCalendar(
+					actionRequest, "startDate");
+				Calendar endTimeCalendar = TMDateTimeUtil.getCalendar(
+					actionRequest, "endDate");
+
 				tmActivity = TMActivityLocalServiceUtil.addTMActivity(
 					themeDisplay.getCompanyId(), themeDisplay.getUserId(),
-					activityName, description, serviceContext);
-
-				tmActivitySession = updateTMActivitySession(
-					actionRequest, tmActivity.getActivityId());
+					activityName, description, startTimeCalendar.getTime(),
+					endTimeCalendar.getTime(), serviceContext);
 			}
 			else {
 				tmActivity = TMActivityLocalServiceUtil.getTMActivity(
