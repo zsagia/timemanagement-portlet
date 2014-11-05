@@ -14,6 +14,8 @@
  */
 --%>
 
+<%@page import="com.liferay.timemanagement.TMDateTimeException"%>
+<%@page import="com.liferay.timemanagement.TMActivityNameException"%>
 <%@ include file="/init.jsp" %>
 
 <%
@@ -55,6 +57,9 @@ int startDateYearRangeStart = today.get(Calendar.YEAR) - 50;
 
 <aui:form action="<%= updateActivityURL %>" method="post" name="fm1">
 	<aui:input name="mvcPath" type="hidden" value="/activity/view.jsp" />
+
+	<liferay-ui:error exception="<%= TMActivityNameException.class %>" message="please-enter-an-activity-name" />
+	<liferay-ui:error exception="<%= TMDateTimeException.class %>" message="please-enter-a-start-date-that-comes-before-the-end-date" />
 
 	<liferay-ui:panel-container accordion="<%= true %>" extended="<%= false %>">
 		<liferay-ui:panel collapsible="<%= true %>" defaultState="open" extended="<%= true %>" persistState="<%= true %>" title="new-activity">
