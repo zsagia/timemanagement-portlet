@@ -83,4 +83,9 @@
 			<finder-column name="activityId" />
 		</finder>
 	</entity>
+
+	<exceptions>
+		<exception>TMActivityName</exception>
+		<exception>TMDateTime</exception>
+	</exceptions>
 </service-builder>
