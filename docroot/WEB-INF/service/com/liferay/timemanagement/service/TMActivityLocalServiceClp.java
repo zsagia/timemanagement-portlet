@@ -122,38 +122,46 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName20 = "addTMActivityResources";
+		_methodName20 = "addTMActivity";
 
 		_methodParameterTypes20 = new String[] {
-				"com.liferay.timemanagement.model.TMActivity", "boolean",
-				"boolean"
+				"long", "long", "java.lang.String", "java.lang.String",
+				"java.util.Date", "java.util.Date",
+				"com.liferay.portal.service.ServiceContext"
 			};
 
 		_methodName21 = "addTMActivityResources";
 
 		_methodParameterTypes21 = new String[] {
+				"com.liferay.timemanagement.model.TMActivity", "boolean",
+				"boolean"
+			};
+
+		_methodName22 = "addTMActivityResources";
+
+		_methodParameterTypes22 = new String[] {
 				"com.liferay.timemanagement.model.TMActivity",
 				"java.lang.String[][]", "java.lang.String[][]"
 			};
 
-		_methodName22 = "countByC_G";
+		_methodName23 = "countByC_G";
 
-		_methodParameterTypes22 = new String[] { "long", "long" };
-
-		_methodName23 = "getTMActivitiesByC_G";
-
-		_methodParameterTypes23 = new String[] { "long", "long", "int", "int" };
+		_methodParameterTypes23 = new String[] { "long", "long" };
 
 		_methodName24 = "getTMActivitiesByC_G";
 
-		_methodParameterTypes24 = new String[] {
+		_methodParameterTypes24 = new String[] { "long", "long", "int", "int" };
+
+		_methodName25 = "getTMActivitiesByC_G";
+
+		_methodParameterTypes25 = new String[] {
 				"long", "long", "int", "int",
 				"com.liferay.portal.kernel.util.OrderByComparator"
 			};
 
-		_methodName25 = "updateTMActivity";
+		_methodName26 = "updateTMActivity";
 
-		_methodParameterTypes25 = new String[] {
+		_methodParameterTypes26 = new String[] {
 				"long", "java.lang.String", "java.lang.String",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -757,14 +765,66 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 	}
 
 	@Override
+	public com.liferay.timemanagement.model.TMActivity addTMActivity(
+		long companyId, long userId, java.lang.String taskName,
+		java.lang.String description, java.util.Date startTime,
+		java.util.Date endTime,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName20,
+					_methodParameterTypes20,
+					new Object[] {
+						companyId,
+						
+					userId,
+						
+					ClpSerializer.translateInput(taskName),
+						
+					ClpSerializer.translateInput(description),
+						
+					ClpSerializer.translateInput(startTime),
+						
+					ClpSerializer.translateInput(endTime),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
 	public void addTMActivityResources(
 		com.liferay.timemanagement.model.TMActivity tmActivity,
 		boolean addGroupPermissions, boolean addGuestPermissions)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName20,
-				_methodParameterTypes20,
+			_invokableLocalService.invokeMethod(_methodName21,
+				_methodParameterTypes21,
 				new Object[] {
 					ClpSerializer.translateInput(tmActivity),
 					
@@ -801,8 +861,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName21,
-				_methodParameterTypes21,
+			_invokableLocalService.invokeMethod(_methodName22,
+				_methodParameterTypes22,
 				new Object[] {
 					ClpSerializer.translateInput(tmActivity),
 					
@@ -838,8 +898,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName22,
-					_methodParameterTypes22, new Object[] { companyId, groupId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23, new Object[] { companyId, groupId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -867,8 +927,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName23,
-					_methodParameterTypes23,
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
 					new Object[] { companyId, groupId, start, end });
 		}
 		catch (Throwable t) {
@@ -898,8 +958,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName24,
-					_methodParameterTypes24,
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25,
 					new Object[] {
 						companyId,
 						
@@ -940,8 +1000,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName25,
-					_methodParameterTypes25,
+			returnObj = _invokableLocalService.invokeMethod(_methodName26,
+					_methodParameterTypes26,
 					new Object[] {
 						activityId,
 						
@@ -1022,4 +1082,6 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 	private String[] _methodParameterTypes24;
 	private String _methodName25;
 	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
 }

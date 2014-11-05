@@ -286,6 +286,18 @@ public class TMActivityLocalServiceUtil {
 			serviceContext);
 	}
 
+	public static com.liferay.timemanagement.model.TMActivity addTMActivity(
+		long companyId, long userId, java.lang.String taskName,
+		java.lang.String description, java.util.Date startTime,
+		java.util.Date endTime,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addTMActivity(companyId, userId, taskName, description,
+			startTime, endTime, serviceContext);
+	}
+
 	public static void addTMActivityResources(
 		com.liferay.timemanagement.model.TMActivity tmActivity,
 		boolean addGroupPermissions, boolean addGuestPermissions)
