@@ -18,6 +18,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.timemanagement.TMDateTimeException;
 import com.liferay.timemanagement.model.TMActivitySession;
 import com.liferay.timemanagement.service.base.TMActivitySessionLocalServiceBaseImpl;
 
@@ -48,6 +49,8 @@ public class TMActivitySessionLocalServiceImpl
 
 		User user = userPersistence.findByPrimaryKey(userId);
 		long groupId = serviceContext.getScopeGroupId();
+
+		validate(startTime, endTime);
 
 		long activitySessionId = counterLocalService.increment();
 
@@ -99,6 +102,14 @@ public class TMActivitySessionLocalServiceImpl
 		tmActivitySessionPersistence.update(tmActivitySession);
 
 		return tmActivitySession;
+	}
+
+	protected void validate(Date startTime, Date endTime)
+		throws PortalException {
+
+		if (!startTime.before(endTime)) {
+			throw new TMDateTimeException();
+		}
 	}
 
 }

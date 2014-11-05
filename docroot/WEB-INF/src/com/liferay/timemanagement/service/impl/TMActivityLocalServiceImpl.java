@@ -17,9 +17,11 @@ package com.liferay.timemanagement.service.impl;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.timemanagement.TMActivityNameException;
 import com.liferay.timemanagement.model.TMActivity;
 import com.liferay.timemanagement.service.base.TMActivityLocalServiceBaseImpl;
 
@@ -49,6 +51,21 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 
 		TMActivity tmActivity = createTMActivity(
 			companyId, userId, taskName, description, serviceContext);
+
+		return tmActivity;
+	}
+
+	public TMActivity addTMActivity(
+			long companyId, long userId, String taskName, String description,
+			Date startTime, Date endTime, ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		TMActivity tmActivity = addTMActivity(
+			companyId, userId, taskName, description, serviceContext);
+
+		tmActivitySessionLocalService.addActivitySession(
+			userId, startTime, endTime, tmActivity.getActivityId(),
+			serviceContext);
 
 		return tmActivity;
 	}
@@ -141,6 +158,8 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 		User user = userPersistence.findByPrimaryKey(userId);
 		long groupId = serviceContext.getScopeGroupId();
 
+		validate(tmActivityName);
+
 		long tmActivityId = counterLocalService.increment();
 
 		TMActivity tmActivity = tmActivityPersistence.create(tmActivityId);
@@ -163,6 +182,14 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 			serviceContext.getGuestPermissions());
 
 		return tmActivity;
+	}
+
+	protected void validate(String activityName)
+		throws TMActivityNameException {
+
+		if (Validator.isNull(activityName)) {
+			throw new TMActivityNameException();
+		}
 	}
 
 }
