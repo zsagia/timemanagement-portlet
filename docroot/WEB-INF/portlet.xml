@@ -7,7 +7,7 @@
 		<portlet-class>com.liferay.timemanagement.timetracking.portlet.TimeTrackingPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
-			<value>/activity/view.jsp</value>
+			<value>/timetracking/view.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
