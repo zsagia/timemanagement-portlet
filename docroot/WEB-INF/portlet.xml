@@ -4,7 +4,7 @@
 	<portlet>
 		<portlet-name>1</portlet-name>
 		<display-name>Activity</display-name>
-		<portlet-class>com.liferay.timemanagement.activity.portlet.ActivityPortlet</portlet-class>
+		<portlet-class>com.liferay.timemanagement.timetracking.portlet.TimeTrackingPortlet</portlet-class>
 		<init-param>
 			<name>view-template</name>
 			<value>/activity/view.jsp</value>
@@ -16,8 +16,8 @@
 		</supports>
 		<resource-bundle>content.Language</resource-bundle>
 		<portlet-info>
-			<title>Activity</title>
-			<short-title>Activity</short-title>
+			<title>Time Tracking</title>
+			<short-title>Time Tracking</short-title>
 			<keywords/>
 		</portlet-info>
 		<security-role-ref>

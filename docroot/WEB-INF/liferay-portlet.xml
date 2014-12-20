@@ -6,14 +6,14 @@
 		<portlet-name>1</portlet-name>
 		<icon>/icons/icon.png</icon>
 		<control-panel-entry-category>
-			Time Management
+			Time Tracking
 		</control-panel-entry-category>
 		<control-panel-entry-weight>30</control-panel-entry-weight>
-		<header-portlet-css>/activity/css/main.css</header-portlet-css>
+		<header-portlet-css>/timetracking/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>
-			/activity/js/main.js
+			/timetracking/js/main.js
 		</footer-portlet-javascript>
-		<css-class-wrapper>activity-portlet</css-class-wrapper>
+		<css-class-wrapper>timetracking-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>

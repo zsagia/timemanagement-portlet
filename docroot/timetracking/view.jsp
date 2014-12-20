@@ -56,7 +56,7 @@ int startDateYearRangeStart = today.get(Calendar.YEAR) - 50;
 <portlet:actionURL name="updateActivity" var="updateActivityURL" />
 
 <aui:form action="<%= updateActivityURL %>" method="post" name="fm1">
-	<aui:input name="mvcPath" type="hidden" value="/activity/view.jsp" />
+	<aui:input name="mvcPath" type="hidden" value="/timetracking/view.jsp" />
 
 	<liferay-ui:error exception="<%= TMActivityNameException.class %>" message="please-enter-an-activity-name" />
 	<liferay-ui:error exception="<%= TMDateTimeException.class %>" message="please-enter-a-start-date-that-comes-before-the-end-date" />

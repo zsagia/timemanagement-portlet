@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.timemanagement.activity.portlet;
+package com.liferay.timemanagement.timetracking.portlet;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -42,7 +42,7 @@ import javax.portlet.PortletURL;
 /**
  * @author Zsolt Szabo
  */
-public class ActivityPortlet extends MVCPortlet {
+public class TimeTrackingPortlet extends MVCPortlet {
 
 	public void updateActivity(
 			ActionRequest actionRequest, ActionResponse actionResponse)
