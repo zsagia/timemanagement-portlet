@@ -91,12 +91,13 @@ public class TimeTrackingPortlet extends MVCPortlet {
 				actionRequest, PortletKeys.TIME_MANAGEMENT_ACTIVITY,
 				layout.getPlid(), PortletRequest.RENDER_PHASE);
 
-			portletURL.setParameter("mvcPath", "/activity/view.jsp");
+			portletURL.setParameter("mvcPath", "/timetracking/view.jsp");
 
 			actionResponse.sendRedirect(portletURL.toString());
 		}
 		catch (Exception e) {
-			actionResponse.setRenderParameter("mvcPath", "/activity/view.jsp");
+			actionResponse.setRenderParameter(
+				"mvcPath", "/timetracking/view.jsp");
 
 			actionResponse.setRenderParameters(actionRequest.getParameterMap());
 
