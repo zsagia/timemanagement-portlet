@@ -1265,8 +1265,17 @@ public class TMActivityPersistenceImpl extends BasePersistenceImpl<TMActivity>
 		tmActivityImpl.setUserName(tmActivity.getUserName());
 		tmActivityImpl.setCreateDate(tmActivity.getCreateDate());
 		tmActivityImpl.setModifiedDate(tmActivity.getModifiedDate());
-		tmActivityImpl.setDescription(tmActivity.getDescription());
 		tmActivityImpl.setActivityName(tmActivity.getActivityName());
+		tmActivityImpl.setClassNameId(tmActivity.getClassNameId());
+		tmActivityImpl.setClassPK(tmActivity.getClassPK());
+		tmActivityImpl.setClassUuid(tmActivity.getClassUuid());
+		tmActivityImpl.setDescription(tmActivity.getDescription());
+		tmActivityImpl.setEndDate(tmActivity.getEndDate());
+		tmActivityImpl.setPriority(tmActivity.getPriority());
+		tmActivityImpl.setReminderDate(tmActivity.getReminderDate());
+		tmActivityImpl.setScheduledDate(tmActivity.getScheduledDate());
+		tmActivityImpl.setStartDate(tmActivity.getStartDate());
+		tmActivityImpl.setVisible(tmActivity.isVisible());
 
 		return tmActivityImpl;
 	}

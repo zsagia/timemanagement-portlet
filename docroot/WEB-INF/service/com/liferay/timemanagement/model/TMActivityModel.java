@@ -17,6 +17,7 @@ package com.liferay.timemanagement.model;
 import com.liferay.portal.LocaleException;
 import com.liferay.portal.kernel.bean.AutoEscape;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.AttachedModel;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.GroupedModel;
@@ -43,7 +44,8 @@ import java.util.Map;
  * @see com.liferay.timemanagement.model.impl.TMActivityModelImpl
  * @generated
  */
-public interface TMActivityModel extends BaseModel<TMActivity>, GroupedModel {
+public interface TMActivityModel extends AttachedModel, BaseModel<TMActivity>,
+	GroupedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
@@ -193,6 +195,164 @@ public interface TMActivityModel extends BaseModel<TMActivity>, GroupedModel {
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
+	 * Returns the activity name of this t m activity.
+	 *
+	 * @return the activity name of this t m activity
+	 */
+	public String getActivityName();
+
+	/**
+	 * Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	 *
+	 * @param locale the locale of the language
+	 * @return the localized activity name of this t m activity
+	 */
+	@AutoEscape
+	public String getActivityName(Locale locale);
+
+	/**
+	 * Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	 *
+	 * @param locale the local of the language
+	 * @param useDefault whether to use the default language if no localization exists for the requested language
+	 * @return the localized activity name of this t m activity. If <code>useDefault</code> is <code>false</code> and no localization exists for the requested language, an empty string will be returned.
+	 */
+	@AutoEscape
+	public String getActivityName(Locale locale, boolean useDefault);
+
+	/**
+	 * Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	 *
+	 * @param languageId the ID of the language
+	 * @return the localized activity name of this t m activity
+	 */
+	@AutoEscape
+	public String getActivityName(String languageId);
+
+	/**
+	 * Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	 *
+	 * @param languageId the ID of the language
+	 * @param useDefault whether to use the default language if no localization exists for the requested language
+	 * @return the localized activity name of this t m activity
+	 */
+	@AutoEscape
+	public String getActivityName(String languageId, boolean useDefault);
+
+	@AutoEscape
+	public String getActivityNameCurrentLanguageId();
+
+	@AutoEscape
+	public String getActivityNameCurrentValue();
+
+	/**
+	 * Returns a map of the locales and localized activity names of this t m activity.
+	 *
+	 * @return the locales and localized activity names of this t m activity
+	 */
+	public Map<Locale, String> getActivityNameMap();
+
+	/**
+	 * Sets the activity name of this t m activity.
+	 *
+	 * @param activityName the activity name of this t m activity
+	 */
+	public void setActivityName(String activityName);
+
+	/**
+	 * Sets the localized activity name of this t m activity in the language.
+	 *
+	 * @param activityName the localized activity name of this t m activity
+	 * @param locale the locale of the language
+	 */
+	public void setActivityName(String activityName, Locale locale);
+
+	/**
+	 * Sets the localized activity name of this t m activity in the language, and sets the default locale.
+	 *
+	 * @param activityName the localized activity name of this t m activity
+	 * @param locale the locale of the language
+	 * @param defaultLocale the default locale
+	 */
+	public void setActivityName(String activityName, Locale locale,
+		Locale defaultLocale);
+
+	public void setActivityNameCurrentLanguageId(String languageId);
+
+	/**
+	 * Sets the localized activity names of this t m activity from the map of locales and localized activity names.
+	 *
+	 * @param activityNameMap the locales and localized activity names of this t m activity
+	 */
+	public void setActivityNameMap(Map<Locale, String> activityNameMap);
+
+	/**
+	 * Sets the localized activity names of this t m activity from the map of locales and localized activity names, and sets the default locale.
+	 *
+	 * @param activityNameMap the locales and localized activity names of this t m activity
+	 * @param defaultLocale the default locale
+	 */
+	public void setActivityNameMap(Map<Locale, String> activityNameMap,
+		Locale defaultLocale);
+
+	/**
+	 * Returns the fully qualified class name of this t m activity.
+	 *
+	 * @return the fully qualified class name of this t m activity
+	 */
+	@Override
+	public String getClassName();
+
+	public void setClassName(String className);
+
+	/**
+	 * Returns the class name ID of this t m activity.
+	 *
+	 * @return the class name ID of this t m activity
+	 */
+	@Override
+	public long getClassNameId();
+
+	/**
+	 * Sets the class name ID of this t m activity.
+	 *
+	 * @param classNameId the class name ID of this t m activity
+	 */
+	@Override
+	public void setClassNameId(long classNameId);
+
+	/**
+	 * Returns the class p k of this t m activity.
+	 *
+	 * @return the class p k of this t m activity
+	 */
+	@Override
+	public long getClassPK();
+
+	/**
+	 * Sets the class p k of this t m activity.
+	 *
+	 * @param classPK the class p k of this t m activity
+	 */
+	@Override
+	public void setClassPK(long classPK);
+
+	/**
+	 * Returns the class uuid of this t m activity.
+	 *
+	 * @return the class uuid of this t m activity
+	 */
+	@AutoEscape
+	public String getClassUuid();
+
+	/**
+	 * Sets the class uuid of this t m activity.
+	 *
+	 * @param classUuid the class uuid of this t m activity
+	 */
+	public void setClassUuid(String classUuid);
+
+	/**
 	 * Returns the description of this t m activity.
 	 *
 	 * @return the description of this t m activity
@@ -294,105 +454,95 @@ public interface TMActivityModel extends BaseModel<TMActivity>, GroupedModel {
 		Locale defaultLocale);
 
 	/**
-	 * Returns the activity name of this t m activity.
+	 * Returns the end date of this t m activity.
 	 *
-	 * @return the activity name of this t m activity
+	 * @return the end date of this t m activity
 	 */
-	public String getActivityName();
+	public Date getEndDate();
 
 	/**
-	 * Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	 * Sets the end date of this t m activity.
 	 *
-	 * @param locale the locale of the language
-	 * @return the localized activity name of this t m activity
+	 * @param endDate the end date of this t m activity
 	 */
-	@AutoEscape
-	public String getActivityName(Locale locale);
+	public void setEndDate(Date endDate);
 
 	/**
-	 * Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	 * Returns the priority of this t m activity.
 	 *
-	 * @param locale the local of the language
-	 * @param useDefault whether to use the default language if no localization exists for the requested language
-	 * @return the localized activity name of this t m activity. If <code>useDefault</code> is <code>false</code> and no localization exists for the requested language, an empty string will be returned.
+	 * @return the priority of this t m activity
 	 */
-	@AutoEscape
-	public String getActivityName(Locale locale, boolean useDefault);
+	public int getPriority();
 
 	/**
-	 * Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	 * Sets the priority of this t m activity.
 	 *
-	 * @param languageId the ID of the language
-	 * @return the localized activity name of this t m activity
+	 * @param priority the priority of this t m activity
 	 */
-	@AutoEscape
-	public String getActivityName(String languageId);
+	public void setPriority(int priority);
 
 	/**
-	 * Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	 * Returns the reminder date of this t m activity.
 	 *
-	 * @param languageId the ID of the language
-	 * @param useDefault whether to use the default language if no localization exists for the requested language
-	 * @return the localized activity name of this t m activity
+	 * @return the reminder date of this t m activity
 	 */
-	@AutoEscape
-	public String getActivityName(String languageId, boolean useDefault);
-
-	@AutoEscape
-	public String getActivityNameCurrentLanguageId();
-
-	@AutoEscape
-	public String getActivityNameCurrentValue();
+	public Date getReminderDate();
 
 	/**
-	 * Returns a map of the locales and localized activity names of this t m activity.
+	 * Sets the reminder date of this t m activity.
 	 *
-	 * @return the locales and localized activity names of this t m activity
+	 * @param reminderDate the reminder date of this t m activity
 	 */
-	public Map<Locale, String> getActivityNameMap();
+	public void setReminderDate(Date reminderDate);
 
 	/**
-	 * Sets the activity name of this t m activity.
+	 * Returns the scheduled date of this t m activity.
 	 *
-	 * @param activityName the activity name of this t m activity
+	 * @return the scheduled date of this t m activity
 	 */
-	public void setActivityName(String activityName);
+	public Date getScheduledDate();
 
 	/**
-	 * Sets the localized activity name of this t m activity in the language.
+	 * Sets the scheduled date of this t m activity.
 	 *
-	 * @param activityName the localized activity name of this t m activity
-	 * @param locale the locale of the language
+	 * @param scheduledDate the scheduled date of this t m activity
 	 */
-	public void setActivityName(String activityName, Locale locale);
+	public void setScheduledDate(Date scheduledDate);
 
 	/**
-	 * Sets the localized activity name of this t m activity in the language, and sets the default locale.
+	 * Returns the start date of this t m activity.
 	 *
-	 * @param activityName the localized activity name of this t m activity
-	 * @param locale the locale of the language
-	 * @param defaultLocale the default locale
+	 * @return the start date of this t m activity
 	 */
-	public void setActivityName(String activityName, Locale locale,
-		Locale defaultLocale);
-
-	public void setActivityNameCurrentLanguageId(String languageId);
+	public Date getStartDate();
 
 	/**
-	 * Sets the localized activity names of this t m activity from the map of locales and localized activity names.
+	 * Sets the start date of this t m activity.
 	 *
-	 * @param activityNameMap the locales and localized activity names of this t m activity
+	 * @param startDate the start date of this t m activity
 	 */
-	public void setActivityNameMap(Map<Locale, String> activityNameMap);
+	public void setStartDate(Date startDate);
 
 	/**
-	 * Sets the localized activity names of this t m activity from the map of locales and localized activity names, and sets the default locale.
+	 * Returns the visible of this t m activity.
 	 *
-	 * @param activityNameMap the locales and localized activity names of this t m activity
-	 * @param defaultLocale the default locale
+	 * @return the visible of this t m activity
 	 */
-	public void setActivityNameMap(Map<Locale, String> activityNameMap,
-		Locale defaultLocale);
+	public boolean getVisible();
+
+	/**
+	 * Returns <code>true</code> if this t m activity is visible.
+	 *
+	 * @return <code>true</code> if this t m activity is visible; <code>false</code> otherwise
+	 */
+	public boolean isVisible();
+
+	/**
+	 * Sets whether this t m activity is visible.
+	 *
+	 * @param visible the visible of this t m activity
+	 */
+	public void setVisible(boolean visible);
 
 	@Override
 	public boolean isNew();

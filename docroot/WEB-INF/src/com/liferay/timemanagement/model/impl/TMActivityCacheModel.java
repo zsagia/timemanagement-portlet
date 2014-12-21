@@ -38,7 +38,7 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 	Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{activityId=");
 		sb.append(activityId);
@@ -54,10 +54,28 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", description=");
-		sb.append(description);
 		sb.append(", activityName=");
 		sb.append(activityName);
+		sb.append(", classNameId=");
+		sb.append(classNameId);
+		sb.append(", classPK=");
+		sb.append(classPK);
+		sb.append(", classUuid=");
+		sb.append(classUuid);
+		sb.append(", description=");
+		sb.append(description);
+		sb.append(", endDate=");
+		sb.append(endDate);
+		sb.append(", priority=");
+		sb.append(priority);
+		sb.append(", reminderDate=");
+		sb.append(reminderDate);
+		sb.append(", scheduledDate=");
+		sb.append(scheduledDate);
+		sb.append(", startDate=");
+		sb.append(startDate);
+		sb.append(", visible=");
+		sb.append(visible);
 		sb.append("}");
 
 		return sb.toString();
@@ -93,6 +111,23 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 			tmActivityImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
+		if (activityName == null) {
+			tmActivityImpl.setActivityName(StringPool.BLANK);
+		}
+		else {
+			tmActivityImpl.setActivityName(activityName);
+		}
+
+		tmActivityImpl.setClassNameId(classNameId);
+		tmActivityImpl.setClassPK(classPK);
+
+		if (classUuid == null) {
+			tmActivityImpl.setClassUuid(StringPool.BLANK);
+		}
+		else {
+			tmActivityImpl.setClassUuid(classUuid);
+		}
+
 		if (description == null) {
 			tmActivityImpl.setDescription(StringPool.BLANK);
 		}
@@ -100,12 +135,37 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 			tmActivityImpl.setDescription(description);
 		}
 
-		if (activityName == null) {
-			tmActivityImpl.setActivityName(StringPool.BLANK);
+		if (endDate == Long.MIN_VALUE) {
+			tmActivityImpl.setEndDate(null);
 		}
 		else {
-			tmActivityImpl.setActivityName(activityName);
+			tmActivityImpl.setEndDate(new Date(endDate));
 		}
+
+		tmActivityImpl.setPriority(priority);
+
+		if (reminderDate == Long.MIN_VALUE) {
+			tmActivityImpl.setReminderDate(null);
+		}
+		else {
+			tmActivityImpl.setReminderDate(new Date(reminderDate));
+		}
+
+		if (scheduledDate == Long.MIN_VALUE) {
+			tmActivityImpl.setScheduledDate(null);
+		}
+		else {
+			tmActivityImpl.setScheduledDate(new Date(scheduledDate));
+		}
+
+		if (startDate == Long.MIN_VALUE) {
+			tmActivityImpl.setStartDate(null);
+		}
+		else {
+			tmActivityImpl.setStartDate(new Date(startDate));
+		}
+
+		tmActivityImpl.setVisible(visible);
 
 		tmActivityImpl.resetOriginalValues();
 
@@ -121,8 +181,17 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 		userName = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		description = objectInput.readUTF();
 		activityName = objectInput.readUTF();
+		classNameId = objectInput.readLong();
+		classPK = objectInput.readLong();
+		classUuid = objectInput.readUTF();
+		description = objectInput.readUTF();
+		endDate = objectInput.readLong();
+		priority = objectInput.readInt();
+		reminderDate = objectInput.readLong();
+		scheduledDate = objectInput.readLong();
+		startDate = objectInput.readLong();
+		visible = objectInput.readBoolean();
 	}
 
 	@Override
@@ -143,6 +212,23 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
+		if (activityName == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(activityName);
+		}
+
+		objectOutput.writeLong(classNameId);
+		objectOutput.writeLong(classPK);
+
+		if (classUuid == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(classUuid);
+		}
+
 		if (description == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
@@ -150,12 +236,12 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 			objectOutput.writeUTF(description);
 		}
 
-		if (activityName == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(activityName);
-		}
+		objectOutput.writeLong(endDate);
+		objectOutput.writeInt(priority);
+		objectOutput.writeLong(reminderDate);
+		objectOutput.writeLong(scheduledDate);
+		objectOutput.writeLong(startDate);
+		objectOutput.writeBoolean(visible);
 	}
 
 	public long activityId;
@@ -165,6 +251,15 @@ public class TMActivityCacheModel implements CacheModel<TMActivity>,
 	public String userName;
 	public long createDate;
 	public long modifiedDate;
-	public String description;
 	public String activityName;
+	public long classNameId;
+	public long classPK;
+	public String classUuid;
+	public String description;
+	public long endDate;
+	public int priority;
+	public long reminderDate;
+	public long scheduledDate;
+	public long startDate;
+	public boolean visible;
 }

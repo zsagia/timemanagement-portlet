@@ -20,10 +20,28 @@
 			<basic name="modifiedDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="description" />
 			<basic name="activityName" />
+			<basic name="classNameId" />
+			<basic name="classPK" />
+			<basic name="classUuid" />
+			<basic name="description" />
+			<basic name="endDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="priority" />
+			<basic name="reminderDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="scheduledDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="startDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="visible" />
 			<transient name="activityNameCurrentLanguageId" />
 			<transient name="activityNameMap" />
+			<transient name="className" />
 			<transient name="descriptionCurrentLanguageId" />
 			<transient name="descriptionMap" />
 			<transient name="modelAttributes" />

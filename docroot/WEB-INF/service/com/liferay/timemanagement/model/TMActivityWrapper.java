@@ -56,8 +56,17 @@ public class TMActivityWrapper implements TMActivity, ModelWrapper<TMActivity> {
 		attributes.put("userName", getUserName());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("description", getDescription());
 		attributes.put("activityName", getActivityName());
+		attributes.put("classNameId", getClassNameId());
+		attributes.put("classPK", getClassPK());
+		attributes.put("classUuid", getClassUuid());
+		attributes.put("description", getDescription());
+		attributes.put("endDate", getEndDate());
+		attributes.put("priority", getPriority());
+		attributes.put("reminderDate", getReminderDate());
+		attributes.put("scheduledDate", getScheduledDate());
+		attributes.put("startDate", getStartDate());
+		attributes.put("visible", getVisible());
 
 		return attributes;
 	}
@@ -106,16 +115,70 @@ public class TMActivityWrapper implements TMActivity, ModelWrapper<TMActivity> {
 			setModifiedDate(modifiedDate);
 		}
 
+		String activityName = (String)attributes.get("activityName");
+
+		if (activityName != null) {
+			setActivityName(activityName);
+		}
+
+		Long classNameId = (Long)attributes.get("classNameId");
+
+		if (classNameId != null) {
+			setClassNameId(classNameId);
+		}
+
+		Long classPK = (Long)attributes.get("classPK");
+
+		if (classPK != null) {
+			setClassPK(classPK);
+		}
+
+		String classUuid = (String)attributes.get("classUuid");
+
+		if (classUuid != null) {
+			setClassUuid(classUuid);
+		}
+
 		String description = (String)attributes.get("description");
 
 		if (description != null) {
 			setDescription(description);
 		}
 
-		String activityName = (String)attributes.get("activityName");
+		Date endDate = (Date)attributes.get("endDate");
 
-		if (activityName != null) {
-			setActivityName(activityName);
+		if (endDate != null) {
+			setEndDate(endDate);
+		}
+
+		Integer priority = (Integer)attributes.get("priority");
+
+		if (priority != null) {
+			setPriority(priority);
+		}
+
+		Date reminderDate = (Date)attributes.get("reminderDate");
+
+		if (reminderDate != null) {
+			setReminderDate(reminderDate);
+		}
+
+		Date scheduledDate = (Date)attributes.get("scheduledDate");
+
+		if (scheduledDate != null) {
+			setScheduledDate(scheduledDate);
+		}
+
+		Date startDate = (Date)attributes.get("startDate");
+
+		if (startDate != null) {
+			setStartDate(startDate);
+		}
+
+		Boolean visible = (Boolean)attributes.get("visible");
+
+		if (visible != null) {
+			setVisible(visible);
 		}
 	}
 
@@ -302,6 +365,223 @@ public class TMActivityWrapper implements TMActivity, ModelWrapper<TMActivity> {
 	}
 
 	/**
+	* Returns the activity name of this t m activity.
+	*
+	* @return the activity name of this t m activity
+	*/
+	@Override
+	public java.lang.String getActivityName() {
+		return _tmActivity.getActivityName();
+	}
+
+	/**
+	* Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	*
+	* @param locale the locale of the language
+	* @return the localized activity name of this t m activity
+	*/
+	@Override
+	public java.lang.String getActivityName(java.util.Locale locale) {
+		return _tmActivity.getActivityName(locale);
+	}
+
+	/**
+	* Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	*
+	* @param locale the local of the language
+	* @param useDefault whether to use the default language if no localization exists for the requested language
+	* @return the localized activity name of this t m activity. If <code>useDefault</code> is <code>false</code> and no localization exists for the requested language, an empty string will be returned.
+	*/
+	@Override
+	public java.lang.String getActivityName(java.util.Locale locale,
+		boolean useDefault) {
+		return _tmActivity.getActivityName(locale, useDefault);
+	}
+
+	/**
+	* Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	*
+	* @param languageId the ID of the language
+	* @return the localized activity name of this t m activity
+	*/
+	@Override
+	public java.lang.String getActivityName(java.lang.String languageId) {
+		return _tmActivity.getActivityName(languageId);
+	}
+
+	/**
+	* Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	*
+	* @param languageId the ID of the language
+	* @param useDefault whether to use the default language if no localization exists for the requested language
+	* @return the localized activity name of this t m activity
+	*/
+	@Override
+	public java.lang.String getActivityName(java.lang.String languageId,
+		boolean useDefault) {
+		return _tmActivity.getActivityName(languageId, useDefault);
+	}
+
+	@Override
+	public java.lang.String getActivityNameCurrentLanguageId() {
+		return _tmActivity.getActivityNameCurrentLanguageId();
+	}
+
+	@Override
+	public java.lang.String getActivityNameCurrentValue() {
+		return _tmActivity.getActivityNameCurrentValue();
+	}
+
+	/**
+	* Returns a map of the locales and localized activity names of this t m activity.
+	*
+	* @return the locales and localized activity names of this t m activity
+	*/
+	@Override
+	public java.util.Map<java.util.Locale, java.lang.String> getActivityNameMap() {
+		return _tmActivity.getActivityNameMap();
+	}
+
+	/**
+	* Sets the activity name of this t m activity.
+	*
+	* @param activityName the activity name of this t m activity
+	*/
+	@Override
+	public void setActivityName(java.lang.String activityName) {
+		_tmActivity.setActivityName(activityName);
+	}
+
+	/**
+	* Sets the localized activity name of this t m activity in the language.
+	*
+	* @param activityName the localized activity name of this t m activity
+	* @param locale the locale of the language
+	*/
+	@Override
+	public void setActivityName(java.lang.String activityName,
+		java.util.Locale locale) {
+		_tmActivity.setActivityName(activityName, locale);
+	}
+
+	/**
+	* Sets the localized activity name of this t m activity in the language, and sets the default locale.
+	*
+	* @param activityName the localized activity name of this t m activity
+	* @param locale the locale of the language
+	* @param defaultLocale the default locale
+	*/
+	@Override
+	public void setActivityName(java.lang.String activityName,
+		java.util.Locale locale, java.util.Locale defaultLocale) {
+		_tmActivity.setActivityName(activityName, locale, defaultLocale);
+	}
+
+	@Override
+	public void setActivityNameCurrentLanguageId(java.lang.String languageId) {
+		_tmActivity.setActivityNameCurrentLanguageId(languageId);
+	}
+
+	/**
+	* Sets the localized activity names of this t m activity from the map of locales and localized activity names.
+	*
+	* @param activityNameMap the locales and localized activity names of this t m activity
+	*/
+	@Override
+	public void setActivityNameMap(
+		java.util.Map<java.util.Locale, java.lang.String> activityNameMap) {
+		_tmActivity.setActivityNameMap(activityNameMap);
+	}
+
+	/**
+	* Sets the localized activity names of this t m activity from the map of locales and localized activity names, and sets the default locale.
+	*
+	* @param activityNameMap the locales and localized activity names of this t m activity
+	* @param defaultLocale the default locale
+	*/
+	@Override
+	public void setActivityNameMap(
+		java.util.Map<java.util.Locale, java.lang.String> activityNameMap,
+		java.util.Locale defaultLocale) {
+		_tmActivity.setActivityNameMap(activityNameMap, defaultLocale);
+	}
+
+	/**
+	* Returns the fully qualified class name of this t m activity.
+	*
+	* @return the fully qualified class name of this t m activity
+	*/
+	@Override
+	public java.lang.String getClassName() {
+		return _tmActivity.getClassName();
+	}
+
+	@Override
+	public void setClassName(java.lang.String className) {
+		_tmActivity.setClassName(className);
+	}
+
+	/**
+	* Returns the class name ID of this t m activity.
+	*
+	* @return the class name ID of this t m activity
+	*/
+	@Override
+	public long getClassNameId() {
+		return _tmActivity.getClassNameId();
+	}
+
+	/**
+	* Sets the class name ID of this t m activity.
+	*
+	* @param classNameId the class name ID of this t m activity
+	*/
+	@Override
+	public void setClassNameId(long classNameId) {
+		_tmActivity.setClassNameId(classNameId);
+	}
+
+	/**
+	* Returns the class p k of this t m activity.
+	*
+	* @return the class p k of this t m activity
+	*/
+	@Override
+	public long getClassPK() {
+		return _tmActivity.getClassPK();
+	}
+
+	/**
+	* Sets the class p k of this t m activity.
+	*
+	* @param classPK the class p k of this t m activity
+	*/
+	@Override
+	public void setClassPK(long classPK) {
+		_tmActivity.setClassPK(classPK);
+	}
+
+	/**
+	* Returns the class uuid of this t m activity.
+	*
+	* @return the class uuid of this t m activity
+	*/
+	@Override
+	public java.lang.String getClassUuid() {
+		return _tmActivity.getClassUuid();
+	}
+
+	/**
+	* Sets the class uuid of this t m activity.
+	*
+	* @param classUuid the class uuid of this t m activity
+	*/
+	@Override
+	public void setClassUuid(java.lang.String classUuid) {
+		_tmActivity.setClassUuid(classUuid);
+	}
+
+	/**
 	* Returns the description of this t m activity.
 	*
 	* @return the description of this t m activity
@@ -444,145 +724,133 @@ public class TMActivityWrapper implements TMActivity, ModelWrapper<TMActivity> {
 	}
 
 	/**
-	* Returns the activity name of this t m activity.
+	* Returns the end date of this t m activity.
 	*
-	* @return the activity name of this t m activity
+	* @return the end date of this t m activity
 	*/
 	@Override
-	public java.lang.String getActivityName() {
-		return _tmActivity.getActivityName();
+	public java.util.Date getEndDate() {
+		return _tmActivity.getEndDate();
 	}
 
 	/**
-	* Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	* Sets the end date of this t m activity.
 	*
-	* @param locale the locale of the language
-	* @return the localized activity name of this t m activity
+	* @param endDate the end date of this t m activity
 	*/
 	@Override
-	public java.lang.String getActivityName(java.util.Locale locale) {
-		return _tmActivity.getActivityName(locale);
+	public void setEndDate(java.util.Date endDate) {
+		_tmActivity.setEndDate(endDate);
 	}
 
 	/**
-	* Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	* Returns the priority of this t m activity.
 	*
-	* @param locale the local of the language
-	* @param useDefault whether to use the default language if no localization exists for the requested language
-	* @return the localized activity name of this t m activity. If <code>useDefault</code> is <code>false</code> and no localization exists for the requested language, an empty string will be returned.
+	* @return the priority of this t m activity
 	*/
 	@Override
-	public java.lang.String getActivityName(java.util.Locale locale,
-		boolean useDefault) {
-		return _tmActivity.getActivityName(locale, useDefault);
+	public int getPriority() {
+		return _tmActivity.getPriority();
 	}
 
 	/**
-	* Returns the localized activity name of this t m activity in the language. Uses the default language if no localization exists for the requested language.
+	* Sets the priority of this t m activity.
 	*
-	* @param languageId the ID of the language
-	* @return the localized activity name of this t m activity
+	* @param priority the priority of this t m activity
 	*/
 	@Override
-	public java.lang.String getActivityName(java.lang.String languageId) {
-		return _tmActivity.getActivityName(languageId);
+	public void setPriority(int priority) {
+		_tmActivity.setPriority(priority);
 	}
 
 	/**
-	* Returns the localized activity name of this t m activity in the language, optionally using the default language if no localization exists for the requested language.
+	* Returns the reminder date of this t m activity.
 	*
-	* @param languageId the ID of the language
-	* @param useDefault whether to use the default language if no localization exists for the requested language
-	* @return the localized activity name of this t m activity
+	* @return the reminder date of this t m activity
 	*/
 	@Override
-	public java.lang.String getActivityName(java.lang.String languageId,
-		boolean useDefault) {
-		return _tmActivity.getActivityName(languageId, useDefault);
-	}
-
-	@Override
-	public java.lang.String getActivityNameCurrentLanguageId() {
-		return _tmActivity.getActivityNameCurrentLanguageId();
-	}
-
-	@Override
-	public java.lang.String getActivityNameCurrentValue() {
-		return _tmActivity.getActivityNameCurrentValue();
+	public java.util.Date getReminderDate() {
+		return _tmActivity.getReminderDate();
 	}
 
 	/**
-	* Returns a map of the locales and localized activity names of this t m activity.
+	* Sets the reminder date of this t m activity.
 	*
-	* @return the locales and localized activity names of this t m activity
+	* @param reminderDate the reminder date of this t m activity
 	*/
 	@Override
-	public java.util.Map<java.util.Locale, java.lang.String> getActivityNameMap() {
-		return _tmActivity.getActivityNameMap();
+	public void setReminderDate(java.util.Date reminderDate) {
+		_tmActivity.setReminderDate(reminderDate);
 	}
 
 	/**
-	* Sets the activity name of this t m activity.
+	* Returns the scheduled date of this t m activity.
 	*
-	* @param activityName the activity name of this t m activity
+	* @return the scheduled date of this t m activity
 	*/
 	@Override
-	public void setActivityName(java.lang.String activityName) {
-		_tmActivity.setActivityName(activityName);
+	public java.util.Date getScheduledDate() {
+		return _tmActivity.getScheduledDate();
 	}
 
 	/**
-	* Sets the localized activity name of this t m activity in the language.
+	* Sets the scheduled date of this t m activity.
 	*
-	* @param activityName the localized activity name of this t m activity
-	* @param locale the locale of the language
+	* @param scheduledDate the scheduled date of this t m activity
 	*/
 	@Override
-	public void setActivityName(java.lang.String activityName,
-		java.util.Locale locale) {
-		_tmActivity.setActivityName(activityName, locale);
+	public void setScheduledDate(java.util.Date scheduledDate) {
+		_tmActivity.setScheduledDate(scheduledDate);
 	}
 
 	/**
-	* Sets the localized activity name of this t m activity in the language, and sets the default locale.
+	* Returns the start date of this t m activity.
 	*
-	* @param activityName the localized activity name of this t m activity
-	* @param locale the locale of the language
-	* @param defaultLocale the default locale
+	* @return the start date of this t m activity
 	*/
 	@Override
-	public void setActivityName(java.lang.String activityName,
-		java.util.Locale locale, java.util.Locale defaultLocale) {
-		_tmActivity.setActivityName(activityName, locale, defaultLocale);
-	}
-
-	@Override
-	public void setActivityNameCurrentLanguageId(java.lang.String languageId) {
-		_tmActivity.setActivityNameCurrentLanguageId(languageId);
+	public java.util.Date getStartDate() {
+		return _tmActivity.getStartDate();
 	}
 
 	/**
-	* Sets the localized activity names of this t m activity from the map of locales and localized activity names.
+	* Sets the start date of this t m activity.
 	*
-	* @param activityNameMap the locales and localized activity names of this t m activity
+	* @param startDate the start date of this t m activity
 	*/
 	@Override
-	public void setActivityNameMap(
-		java.util.Map<java.util.Locale, java.lang.String> activityNameMap) {
-		_tmActivity.setActivityNameMap(activityNameMap);
+	public void setStartDate(java.util.Date startDate) {
+		_tmActivity.setStartDate(startDate);
 	}
 
 	/**
-	* Sets the localized activity names of this t m activity from the map of locales and localized activity names, and sets the default locale.
+	* Returns the visible of this t m activity.
 	*
-	* @param activityNameMap the locales and localized activity names of this t m activity
-	* @param defaultLocale the default locale
+	* @return the visible of this t m activity
 	*/
 	@Override
-	public void setActivityNameMap(
-		java.util.Map<java.util.Locale, java.lang.String> activityNameMap,
-		java.util.Locale defaultLocale) {
-		_tmActivity.setActivityNameMap(activityNameMap, defaultLocale);
+	public boolean getVisible() {
+		return _tmActivity.getVisible();
+	}
+
+	/**
+	* Returns <code>true</code> if this t m activity is visible.
+	*
+	* @return <code>true</code> if this t m activity is visible; <code>false</code> otherwise
+	*/
+	@Override
+	public boolean isVisible() {
+		return _tmActivity.isVisible();
+	}
+
+	/**
+	* Sets whether this t m activity is visible.
+	*
+	* @param visible the visible of this t m activity
+	*/
+	@Override
+	public void setVisible(boolean visible) {
+		_tmActivity.setVisible(visible);
 	}
 
 	@Override

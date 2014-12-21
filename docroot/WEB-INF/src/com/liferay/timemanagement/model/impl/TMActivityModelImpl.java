@@ -80,10 +80,19 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 			{ "userName", Types.VARCHAR },
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
+			{ "activityName", Types.VARCHAR },
+			{ "classNameId", Types.BIGINT },
+			{ "classPK", Types.BIGINT },
+			{ "classUuid", Types.VARCHAR },
 			{ "description", Types.VARCHAR },
-			{ "activityName", Types.VARCHAR }
+			{ "endDate", Types.TIMESTAMP },
+			{ "priority", Types.INTEGER },
+			{ "reminderDate", Types.TIMESTAMP },
+			{ "scheduledDate", Types.TIMESTAMP },
+			{ "startDate", Types.TIMESTAMP },
+			{ "visible", Types.BOOLEAN }
 		};
-	public static final String TABLE_SQL_CREATE = "create table timemanagement_TMActivity (activityId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,description STRING null,activityName STRING null)";
+	public static final String TABLE_SQL_CREATE = "create table timemanagement_TMActivity (activityId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,activityName STRING null,classNameId LONG,classPK LONG,classUuid VARCHAR(75) null,description STRING null,endDate DATE null,priority INTEGER,reminderDate DATE null,scheduledDate DATE null,startDate DATE null,visible BOOLEAN)";
 	public static final String TABLE_SQL_DROP = "drop table timemanagement_TMActivity";
 	public static final String ORDER_BY_JPQL = " ORDER BY tmActivity.activityName ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY timemanagement_TMActivity.activityName ASC";
@@ -123,8 +132,17 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		model.setUserName(soapModel.getUserName());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
-		model.setDescription(soapModel.getDescription());
 		model.setActivityName(soapModel.getActivityName());
+		model.setClassNameId(soapModel.getClassNameId());
+		model.setClassPK(soapModel.getClassPK());
+		model.setClassUuid(soapModel.getClassUuid());
+		model.setDescription(soapModel.getDescription());
+		model.setEndDate(soapModel.getEndDate());
+		model.setPriority(soapModel.getPriority());
+		model.setReminderDate(soapModel.getReminderDate());
+		model.setScheduledDate(soapModel.getScheduledDate());
+		model.setStartDate(soapModel.getStartDate());
+		model.setVisible(soapModel.getVisible());
 
 		return model;
 	}
@@ -196,8 +214,17 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		attributes.put("userName", getUserName());
 		attributes.put("createDate", getCreateDate());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("description", getDescription());
 		attributes.put("activityName", getActivityName());
+		attributes.put("classNameId", getClassNameId());
+		attributes.put("classPK", getClassPK());
+		attributes.put("classUuid", getClassUuid());
+		attributes.put("description", getDescription());
+		attributes.put("endDate", getEndDate());
+		attributes.put("priority", getPriority());
+		attributes.put("reminderDate", getReminderDate());
+		attributes.put("scheduledDate", getScheduledDate());
+		attributes.put("startDate", getStartDate());
+		attributes.put("visible", getVisible());
 
 		return attributes;
 	}
@@ -246,16 +273,70 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 			setModifiedDate(modifiedDate);
 		}
 
+		String activityName = (String)attributes.get("activityName");
+
+		if (activityName != null) {
+			setActivityName(activityName);
+		}
+
+		Long classNameId = (Long)attributes.get("classNameId");
+
+		if (classNameId != null) {
+			setClassNameId(classNameId);
+		}
+
+		Long classPK = (Long)attributes.get("classPK");
+
+		if (classPK != null) {
+			setClassPK(classPK);
+		}
+
+		String classUuid = (String)attributes.get("classUuid");
+
+		if (classUuid != null) {
+			setClassUuid(classUuid);
+		}
+
 		String description = (String)attributes.get("description");
 
 		if (description != null) {
 			setDescription(description);
 		}
 
-		String activityName = (String)attributes.get("activityName");
+		Date endDate = (Date)attributes.get("endDate");
 
-		if (activityName != null) {
-			setActivityName(activityName);
+		if (endDate != null) {
+			setEndDate(endDate);
+		}
+
+		Integer priority = (Integer)attributes.get("priority");
+
+		if (priority != null) {
+			setPriority(priority);
+		}
+
+		Date reminderDate = (Date)attributes.get("reminderDate");
+
+		if (reminderDate != null) {
+			setReminderDate(reminderDate);
+		}
+
+		Date scheduledDate = (Date)attributes.get("scheduledDate");
+
+		if (scheduledDate != null) {
+			setScheduledDate(scheduledDate);
+		}
+
+		Date startDate = (Date)attributes.get("startDate");
+
+		if (startDate != null) {
+			setStartDate(startDate);
+		}
+
+		Boolean visible = (Boolean)attributes.get("visible");
+
+		if (visible != null) {
+			setVisible(visible);
 		}
 	}
 
@@ -377,109 +458,6 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 
 	@JSON
 	@Override
-	public String getDescription() {
-		if (_description == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _description;
-		}
-	}
-
-	@Override
-	public String getDescription(Locale locale) {
-		String languageId = LocaleUtil.toLanguageId(locale);
-
-		return getDescription(languageId);
-	}
-
-	@Override
-	public String getDescription(Locale locale, boolean useDefault) {
-		String languageId = LocaleUtil.toLanguageId(locale);
-
-		return getDescription(languageId, useDefault);
-	}
-
-	@Override
-	public String getDescription(String languageId) {
-		return LocalizationUtil.getLocalization(getDescription(), languageId);
-	}
-
-	@Override
-	public String getDescription(String languageId, boolean useDefault) {
-		return LocalizationUtil.getLocalization(getDescription(), languageId,
-			useDefault);
-	}
-
-	@Override
-	public String getDescriptionCurrentLanguageId() {
-		return _descriptionCurrentLanguageId;
-	}
-
-	@JSON
-	@Override
-	public String getDescriptionCurrentValue() {
-		Locale locale = getLocale(_descriptionCurrentLanguageId);
-
-		return getDescription(locale);
-	}
-
-	@Override
-	public Map<Locale, String> getDescriptionMap() {
-		return LocalizationUtil.getLocalizationMap(getDescription());
-	}
-
-	@Override
-	public void setDescription(String description) {
-		_description = description;
-	}
-
-	@Override
-	public void setDescription(String description, Locale locale) {
-		setDescription(description, locale, LocaleUtil.getSiteDefault());
-	}
-
-	@Override
-	public void setDescription(String description, Locale locale,
-		Locale defaultLocale) {
-		String languageId = LocaleUtil.toLanguageId(locale);
-		String defaultLanguageId = LocaleUtil.toLanguageId(defaultLocale);
-
-		if (Validator.isNotNull(description)) {
-			setDescription(LocalizationUtil.updateLocalization(
-					getDescription(), "Description", description, languageId,
-					defaultLanguageId));
-		}
-		else {
-			setDescription(LocalizationUtil.removeLocalization(
-					getDescription(), "Description", languageId));
-		}
-	}
-
-	@Override
-	public void setDescriptionCurrentLanguageId(String languageId) {
-		_descriptionCurrentLanguageId = languageId;
-	}
-
-	@Override
-	public void setDescriptionMap(Map<Locale, String> descriptionMap) {
-		setDescriptionMap(descriptionMap, LocaleUtil.getSiteDefault());
-	}
-
-	@Override
-	public void setDescriptionMap(Map<Locale, String> descriptionMap,
-		Locale defaultLocale) {
-		if (descriptionMap == null) {
-			return;
-		}
-
-		setDescription(LocalizationUtil.updateLocalization(descriptionMap,
-				getDescription(), "Description",
-				LocaleUtil.toLanguageId(defaultLocale)));
-	}
-
-	@JSON
-	@Override
 	public String getActivityName() {
 		if (_activityName == null) {
 			return StringPool.BLANK;
@@ -583,6 +561,238 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 				LocaleUtil.toLanguageId(defaultLocale)));
 	}
 
+	@Override
+	public String getClassName() {
+		if (getClassNameId() <= 0) {
+			return StringPool.BLANK;
+		}
+
+		return PortalUtil.getClassName(getClassNameId());
+	}
+
+	@Override
+	public void setClassName(String className) {
+		long classNameId = 0;
+
+		if (Validator.isNotNull(className)) {
+			classNameId = PortalUtil.getClassNameId(className);
+		}
+
+		setClassNameId(classNameId);
+	}
+
+	@JSON
+	@Override
+	public long getClassNameId() {
+		return _classNameId;
+	}
+
+	@Override
+	public void setClassNameId(long classNameId) {
+		_classNameId = classNameId;
+	}
+
+	@JSON
+	@Override
+	public long getClassPK() {
+		return _classPK;
+	}
+
+	@Override
+	public void setClassPK(long classPK) {
+		_classPK = classPK;
+	}
+
+	@JSON
+	@Override
+	public String getClassUuid() {
+		if (_classUuid == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _classUuid;
+		}
+	}
+
+	@Override
+	public void setClassUuid(String classUuid) {
+		_classUuid = classUuid;
+	}
+
+	@JSON
+	@Override
+	public String getDescription() {
+		if (_description == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _description;
+		}
+	}
+
+	@Override
+	public String getDescription(Locale locale) {
+		String languageId = LocaleUtil.toLanguageId(locale);
+
+		return getDescription(languageId);
+	}
+
+	@Override
+	public String getDescription(Locale locale, boolean useDefault) {
+		String languageId = LocaleUtil.toLanguageId(locale);
+
+		return getDescription(languageId, useDefault);
+	}
+
+	@Override
+	public String getDescription(String languageId) {
+		return LocalizationUtil.getLocalization(getDescription(), languageId);
+	}
+
+	@Override
+	public String getDescription(String languageId, boolean useDefault) {
+		return LocalizationUtil.getLocalization(getDescription(), languageId,
+			useDefault);
+	}
+
+	@Override
+	public String getDescriptionCurrentLanguageId() {
+		return _descriptionCurrentLanguageId;
+	}
+
+	@JSON
+	@Override
+	public String getDescriptionCurrentValue() {
+		Locale locale = getLocale(_descriptionCurrentLanguageId);
+
+		return getDescription(locale);
+	}
+
+	@Override
+	public Map<Locale, String> getDescriptionMap() {
+		return LocalizationUtil.getLocalizationMap(getDescription());
+	}
+
+	@Override
+	public void setDescription(String description) {
+		_description = description;
+	}
+
+	@Override
+	public void setDescription(String description, Locale locale) {
+		setDescription(description, locale, LocaleUtil.getSiteDefault());
+	}
+
+	@Override
+	public void setDescription(String description, Locale locale,
+		Locale defaultLocale) {
+		String languageId = LocaleUtil.toLanguageId(locale);
+		String defaultLanguageId = LocaleUtil.toLanguageId(defaultLocale);
+
+		if (Validator.isNotNull(description)) {
+			setDescription(LocalizationUtil.updateLocalization(
+					getDescription(), "Description", description, languageId,
+					defaultLanguageId));
+		}
+		else {
+			setDescription(LocalizationUtil.removeLocalization(
+					getDescription(), "Description", languageId));
+		}
+	}
+
+	@Override
+	public void setDescriptionCurrentLanguageId(String languageId) {
+		_descriptionCurrentLanguageId = languageId;
+	}
+
+	@Override
+	public void setDescriptionMap(Map<Locale, String> descriptionMap) {
+		setDescriptionMap(descriptionMap, LocaleUtil.getSiteDefault());
+	}
+
+	@Override
+	public void setDescriptionMap(Map<Locale, String> descriptionMap,
+		Locale defaultLocale) {
+		if (descriptionMap == null) {
+			return;
+		}
+
+		setDescription(LocalizationUtil.updateLocalization(descriptionMap,
+				getDescription(), "Description",
+				LocaleUtil.toLanguageId(defaultLocale)));
+	}
+
+	@JSON
+	@Override
+	public Date getEndDate() {
+		return _endDate;
+	}
+
+	@Override
+	public void setEndDate(Date endDate) {
+		_endDate = endDate;
+	}
+
+	@JSON
+	@Override
+	public int getPriority() {
+		return _priority;
+	}
+
+	@Override
+	public void setPriority(int priority) {
+		_priority = priority;
+	}
+
+	@JSON
+	@Override
+	public Date getReminderDate() {
+		return _reminderDate;
+	}
+
+	@Override
+	public void setReminderDate(Date reminderDate) {
+		_reminderDate = reminderDate;
+	}
+
+	@JSON
+	@Override
+	public Date getScheduledDate() {
+		return _scheduledDate;
+	}
+
+	@Override
+	public void setScheduledDate(Date scheduledDate) {
+		_scheduledDate = scheduledDate;
+	}
+
+	@JSON
+	@Override
+	public Date getStartDate() {
+		return _startDate;
+	}
+
+	@Override
+	public void setStartDate(Date startDate) {
+		_startDate = startDate;
+	}
+
+	@JSON
+	@Override
+	public boolean getVisible() {
+		return _visible;
+	}
+
+	@Override
+	public boolean isVisible() {
+		return _visible;
+	}
+
+	@Override
+	public void setVisible(boolean visible) {
+		_visible = visible;
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -604,9 +814,9 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 	public String[] getAvailableLanguageIds() {
 		Set<String> availableLanguageIds = new TreeSet<String>();
 
-		Map<Locale, String> descriptionMap = getDescriptionMap();
+		Map<Locale, String> activityNameMap = getActivityNameMap();
 
-		for (Map.Entry<Locale, String> entry : descriptionMap.entrySet()) {
+		for (Map.Entry<Locale, String> entry : activityNameMap.entrySet()) {
 			Locale locale = entry.getKey();
 			String value = entry.getValue();
 
@@ -615,9 +825,9 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 			}
 		}
 
-		Map<Locale, String> activityNameMap = getActivityNameMap();
+		Map<Locale, String> descriptionMap = getDescriptionMap();
 
-		for (Map.Entry<Locale, String> entry : activityNameMap.entrySet()) {
+		for (Map.Entry<Locale, String> entry : descriptionMap.entrySet()) {
 			Locale locale = entry.getKey();
 			String value = entry.getValue();
 
@@ -631,7 +841,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 
 	@Override
 	public String getDefaultLanguageId() {
-		String xml = getDescription();
+		String xml = getActivityName();
 
 		if (xml == null) {
 			return StringPool.BLANK;
@@ -653,16 +863,6 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 
 		String modelDefaultLanguageId = getDefaultLanguageId();
 
-		String description = getDescription(defaultLocale);
-
-		if (Validator.isNull(description)) {
-			setDescription(getDescription(modelDefaultLanguageId), defaultLocale);
-		}
-		else {
-			setDescription(getDescription(defaultLocale), defaultLocale,
-				defaultLocale);
-		}
-
 		String activityName = getActivityName(defaultLocale);
 
 		if (Validator.isNull(activityName)) {
@@ -671,6 +871,16 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		}
 		else {
 			setActivityName(getActivityName(defaultLocale), defaultLocale,
+				defaultLocale);
+		}
+
+		String description = getDescription(defaultLocale);
+
+		if (Validator.isNull(description)) {
+			setDescription(getDescription(modelDefaultLanguageId), defaultLocale);
+		}
+		else {
+			setDescription(getDescription(defaultLocale), defaultLocale,
 				defaultLocale);
 		}
 	}
@@ -696,8 +906,17 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		tmActivityImpl.setUserName(getUserName());
 		tmActivityImpl.setCreateDate(getCreateDate());
 		tmActivityImpl.setModifiedDate(getModifiedDate());
-		tmActivityImpl.setDescription(getDescription());
 		tmActivityImpl.setActivityName(getActivityName());
+		tmActivityImpl.setClassNameId(getClassNameId());
+		tmActivityImpl.setClassPK(getClassPK());
+		tmActivityImpl.setClassUuid(getClassUuid());
+		tmActivityImpl.setDescription(getDescription());
+		tmActivityImpl.setEndDate(getEndDate());
+		tmActivityImpl.setPriority(getPriority());
+		tmActivityImpl.setReminderDate(getReminderDate());
+		tmActivityImpl.setScheduledDate(getScheduledDate());
+		tmActivityImpl.setStartDate(getStartDate());
+		tmActivityImpl.setVisible(getVisible());
 
 		tmActivityImpl.resetOriginalValues();
 
@@ -797,14 +1016,6 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 			tmActivityCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
-		tmActivityCacheModel.description = getDescription();
-
-		String description = tmActivityCacheModel.description;
-
-		if ((description != null) && (description.length() == 0)) {
-			tmActivityCacheModel.description = null;
-		}
-
 		tmActivityCacheModel.activityName = getActivityName();
 
 		String activityName = tmActivityCacheModel.activityName;
@@ -813,12 +1024,72 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 			tmActivityCacheModel.activityName = null;
 		}
 
+		tmActivityCacheModel.classNameId = getClassNameId();
+
+		tmActivityCacheModel.classPK = getClassPK();
+
+		tmActivityCacheModel.classUuid = getClassUuid();
+
+		String classUuid = tmActivityCacheModel.classUuid;
+
+		if ((classUuid != null) && (classUuid.length() == 0)) {
+			tmActivityCacheModel.classUuid = null;
+		}
+
+		tmActivityCacheModel.description = getDescription();
+
+		String description = tmActivityCacheModel.description;
+
+		if ((description != null) && (description.length() == 0)) {
+			tmActivityCacheModel.description = null;
+		}
+
+		Date endDate = getEndDate();
+
+		if (endDate != null) {
+			tmActivityCacheModel.endDate = endDate.getTime();
+		}
+		else {
+			tmActivityCacheModel.endDate = Long.MIN_VALUE;
+		}
+
+		tmActivityCacheModel.priority = getPriority();
+
+		Date reminderDate = getReminderDate();
+
+		if (reminderDate != null) {
+			tmActivityCacheModel.reminderDate = reminderDate.getTime();
+		}
+		else {
+			tmActivityCacheModel.reminderDate = Long.MIN_VALUE;
+		}
+
+		Date scheduledDate = getScheduledDate();
+
+		if (scheduledDate != null) {
+			tmActivityCacheModel.scheduledDate = scheduledDate.getTime();
+		}
+		else {
+			tmActivityCacheModel.scheduledDate = Long.MIN_VALUE;
+		}
+
+		Date startDate = getStartDate();
+
+		if (startDate != null) {
+			tmActivityCacheModel.startDate = startDate.getTime();
+		}
+		else {
+			tmActivityCacheModel.startDate = Long.MIN_VALUE;
+		}
+
+		tmActivityCacheModel.visible = getVisible();
+
 		return tmActivityCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("{activityId=");
 		sb.append(getActivityId());
@@ -834,10 +1105,28 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		sb.append(getCreateDate());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", description=");
-		sb.append(getDescription());
 		sb.append(", activityName=");
 		sb.append(getActivityName());
+		sb.append(", classNameId=");
+		sb.append(getClassNameId());
+		sb.append(", classPK=");
+		sb.append(getClassPK());
+		sb.append(", classUuid=");
+		sb.append(getClassUuid());
+		sb.append(", description=");
+		sb.append(getDescription());
+		sb.append(", endDate=");
+		sb.append(getEndDate());
+		sb.append(", priority=");
+		sb.append(getPriority());
+		sb.append(", reminderDate=");
+		sb.append(getReminderDate());
+		sb.append(", scheduledDate=");
+		sb.append(getScheduledDate());
+		sb.append(", startDate=");
+		sb.append(getStartDate());
+		sb.append(", visible=");
+		sb.append(getVisible());
 		sb.append("}");
 
 		return sb.toString();
@@ -845,7 +1134,7 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(58);
 
 		sb.append("<model><model-name>");
 		sb.append("com.liferay.timemanagement.model.TMActivity");
@@ -880,12 +1169,48 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>activityName</column-name><column-value><![CDATA[");
+		sb.append(getActivityName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>classNameId</column-name><column-value><![CDATA[");
+		sb.append(getClassNameId());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>classPK</column-name><column-value><![CDATA[");
+		sb.append(getClassPK());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>classUuid</column-name><column-value><![CDATA[");
+		sb.append(getClassUuid());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>description</column-name><column-value><![CDATA[");
 		sb.append(getDescription());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>activityName</column-name><column-value><![CDATA[");
-		sb.append(getActivityName());
+			"<column><column-name>endDate</column-name><column-value><![CDATA[");
+		sb.append(getEndDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>priority</column-name><column-value><![CDATA[");
+		sb.append(getPriority());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>reminderDate</column-name><column-value><![CDATA[");
+		sb.append(getReminderDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>scheduledDate</column-name><column-value><![CDATA[");
+		sb.append(getScheduledDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>startDate</column-name><column-value><![CDATA[");
+		sb.append(getStartDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>visible</column-name><column-value><![CDATA[");
+		sb.append(getVisible());
 		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
@@ -909,10 +1234,19 @@ public class TMActivityModelImpl extends BaseModelImpl<TMActivity>
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _description;
-	private String _descriptionCurrentLanguageId;
 	private String _activityName;
 	private String _activityNameCurrentLanguageId;
+	private long _classNameId;
+	private long _classPK;
+	private String _classUuid;
+	private String _description;
+	private String _descriptionCurrentLanguageId;
+	private Date _endDate;
+	private int _priority;
+	private Date _reminderDate;
+	private Date _scheduledDate;
+	private Date _startDate;
+	private boolean _visible;
 	private long _columnBitmask;
 	private TMActivity _escapedModel;
 }

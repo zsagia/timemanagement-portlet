@@ -9,8 +9,17 @@
 		<field name="userName" type="String" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
-		<field name="description" type="String" localized="true" />
 		<field name="activityName" type="String" localized="true" />
+		<field name="classNameId" type="long" />
+		<field name="classPK" type="long" />
+		<field name="classUuid" type="String" />
+		<field name="description" type="String" localized="true" />
+		<field name="endDate" type="Date" />
+		<field name="priority" type="int" />
+		<field name="reminderDate" type="Date" />
+		<field name="scheduledDate" type="Date" />
+		<field name="startDate" type="Date" />
+		<field name="visible" type="boolean" />
 	</model>
 	<model name="com.liferay.timemanagement.model.TMActivitySession">
 		<field name="activitySessionId" type="long" />

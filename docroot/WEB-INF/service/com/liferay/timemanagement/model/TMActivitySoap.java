@@ -38,8 +38,17 @@ public class TMActivitySoap implements Serializable {
 		soapModel.setUserName(model.getUserName());
 		soapModel.setCreateDate(model.getCreateDate());
 		soapModel.setModifiedDate(model.getModifiedDate());
-		soapModel.setDescription(model.getDescription());
 		soapModel.setActivityName(model.getActivityName());
+		soapModel.setClassNameId(model.getClassNameId());
+		soapModel.setClassPK(model.getClassPK());
+		soapModel.setClassUuid(model.getClassUuid());
+		soapModel.setDescription(model.getDescription());
+		soapModel.setEndDate(model.getEndDate());
+		soapModel.setPriority(model.getPriority());
+		soapModel.setReminderDate(model.getReminderDate());
+		soapModel.setScheduledDate(model.getScheduledDate());
+		soapModel.setStartDate(model.getStartDate());
+		soapModel.setVisible(model.getVisible());
 
 		return soapModel;
 	}
@@ -148,6 +157,38 @@ public class TMActivitySoap implements Serializable {
 		_modifiedDate = modifiedDate;
 	}
 
+	public String getActivityName() {
+		return _activityName;
+	}
+
+	public void setActivityName(String activityName) {
+		_activityName = activityName;
+	}
+
+	public long getClassNameId() {
+		return _classNameId;
+	}
+
+	public void setClassNameId(long classNameId) {
+		_classNameId = classNameId;
+	}
+
+	public long getClassPK() {
+		return _classPK;
+	}
+
+	public void setClassPK(long classPK) {
+		_classPK = classPK;
+	}
+
+	public String getClassUuid() {
+		return _classUuid;
+	}
+
+	public void setClassUuid(String classUuid) {
+		_classUuid = classUuid;
+	}
+
 	public String getDescription() {
 		return _description;
 	}
@@ -156,12 +197,56 @@ public class TMActivitySoap implements Serializable {
 		_description = description;
 	}
 
-	public String getActivityName() {
-		return _activityName;
+	public Date getEndDate() {
+		return _endDate;
 	}
 
-	public void setActivityName(String activityName) {
-		_activityName = activityName;
+	public void setEndDate(Date endDate) {
+		_endDate = endDate;
+	}
+
+	public int getPriority() {
+		return _priority;
+	}
+
+	public void setPriority(int priority) {
+		_priority = priority;
+	}
+
+	public Date getReminderDate() {
+		return _reminderDate;
+	}
+
+	public void setReminderDate(Date reminderDate) {
+		_reminderDate = reminderDate;
+	}
+
+	public Date getScheduledDate() {
+		return _scheduledDate;
+	}
+
+	public void setScheduledDate(Date scheduledDate) {
+		_scheduledDate = scheduledDate;
+	}
+
+	public Date getStartDate() {
+		return _startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		_startDate = startDate;
+	}
+
+	public boolean getVisible() {
+		return _visible;
+	}
+
+	public boolean isVisible() {
+		return _visible;
+	}
+
+	public void setVisible(boolean visible) {
+		_visible = visible;
 	}
 
 	private long _activityId;
@@ -171,6 +256,15 @@ public class TMActivitySoap implements Serializable {
 	private String _userName;
 	private Date _createDate;
 	private Date _modifiedDate;
-	private String _description;
 	private String _activityName;
+	private long _classNameId;
+	private long _classPK;
+	private String _classUuid;
+	private String _description;
+	private Date _endDate;
+	private int _priority;
+	private Date _reminderDate;
+	private Date _scheduledDate;
+	private Date _startDate;
+	private boolean _visible;
 }

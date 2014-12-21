@@ -6,8 +6,17 @@ create table timemanagement_TMActivity (
 	userName VARCHAR(75) null,
 	createDate DATE null,
 	modifiedDate DATE null,
+	activityName STRING null,
+	classNameId LONG,
+	classPK LONG,
+	classUuid VARCHAR(75) null,
 	description STRING null,
-	activityName STRING null
+	endDate DATE null,
+	priority INTEGER,
+	reminderDate DATE null,
+	scheduledDate DATE null,
+	startDate DATE null,
+	visible BOOLEAN
 );
 
 create table timemanagement_TMActivitySession (
