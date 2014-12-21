@@ -21,6 +21,7 @@ import com.liferay.timemanagement.service.ClpSerializer;
 import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
 import com.liferay.timemanagement.service.TMActivityServiceUtil;
 import com.liferay.timemanagement.service.TMActivitySessionLocalServiceUtil;
+import com.liferay.timemanagement.service.TMTaskLocalServiceUtil;
 
 /**
  * @author Istvan Sajtos, Zsolt Szabo
@@ -41,6 +42,8 @@ public class ClpMessageListener extends BaseMessageListener {
 
 			TMActivityServiceUtil.clearService();
 			TMActivitySessionLocalServiceUtil.clearService();
+
+			TMTaskLocalServiceUtil.clearService();
 		}
 	}
 }

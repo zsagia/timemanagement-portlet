@@ -27,6 +27,7 @@ import com.liferay.portal.model.BaseModel;
 
 import com.liferay.timemanagement.model.TMActivityClp;
 import com.liferay.timemanagement.model.TMActivitySessionClp;
+import com.liferay.timemanagement.model.TMTaskClp;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -111,6 +112,10 @@ public class ClpSerializer {
 			return translateInputTMActivitySession(oldModel);
 		}
 
+		if (oldModelClassName.equals(TMTaskClp.class.getName())) {
+			return translateInputTMTask(oldModel);
+		}
+
 		return oldModel;
 	}
 
@@ -146,6 +151,16 @@ public class ClpSerializer {
 		return newModel;
 	}
 
+	public static Object translateInputTMTask(BaseModel<?> oldModel) {
+		TMTaskClp oldClpModel = (TMTaskClp)oldModel;
+
+		BaseModel<?> newModel = oldClpModel.getTMTaskRemoteModel();
+
+		newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+		return newModel;
+	}
+
 	public static Object translateInput(Object obj) {
 		if (obj instanceof BaseModel<?>) {
 			return translateInput((BaseModel<?>)obj);
@@ -171,6 +186,11 @@ public class ClpSerializer {
 		if (oldModelClassName.equals(
 					"com.liferay.timemanagement.model.impl.TMActivitySessionImpl")) {
 			return translateOutputTMActivitySession(oldModel);
+		}
+
+		if (oldModelClassName.equals(
+					"com.liferay.timemanagement.model.impl.TMTaskImpl")) {
+			return translateOutputTMTask(oldModel);
 		}
 
 		return oldModel;
@@ -272,6 +292,10 @@ public class ClpSerializer {
 			return new com.liferay.timemanagement.NoSuchTMActivitySessionException();
 		}
 
+		if (className.equals("com.liferay.timemanagement.NoSuchTMTaskException")) {
+			return new com.liferay.timemanagement.NoSuchTMTaskException();
+		}
+
 		return throwable;
 	}
 
@@ -291,6 +315,16 @@ public class ClpSerializer {
 		newModel.setModelAttributes(oldModel.getModelAttributes());
 
 		newModel.setTMActivitySessionRemoteModel(oldModel);
+
+		return newModel;
+	}
+
+	public static Object translateOutputTMTask(BaseModel<?> oldModel) {
+		TMTaskClp newModel = new TMTaskClp();
+
+		newModel.setModelAttributes(oldModel.getModelAttributes());
+
+		newModel.setTMTaskRemoteModel(oldModel);
 
 		return newModel;
 	}

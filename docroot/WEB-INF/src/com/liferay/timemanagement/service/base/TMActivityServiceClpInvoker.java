@@ -24,24 +24,24 @@ import java.util.Arrays;
  */
 public class TMActivityServiceClpInvoker {
 	public TMActivityServiceClpInvoker() {
-		_methodName22 = "getBeanIdentifier";
+		_methodName26 = "getBeanIdentifier";
 
-		_methodParameterTypes22 = new String[] {  };
+		_methodParameterTypes26 = new String[] {  };
 
-		_methodName23 = "setBeanIdentifier";
+		_methodName27 = "setBeanIdentifier";
 
-		_methodParameterTypes23 = new String[] { "java.lang.String" };
+		_methodParameterTypes27 = new String[] { "java.lang.String" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-		if (_methodName22.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes22, parameterTypes)) {
+		if (_methodName26.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes26, parameterTypes)) {
 			return TMActivityServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName23.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes23, parameterTypes)) {
+		if (_methodName27.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes27, parameterTypes)) {
 			TMActivityServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
@@ -50,8 +50,8 @@ public class TMActivityServiceClpInvoker {
 		throw new UnsupportedOperationException();
 	}
 
-	private String _methodName22;
-	private String[] _methodParameterTypes22;
-	private String _methodName23;
-	private String[] _methodParameterTypes23;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
 }

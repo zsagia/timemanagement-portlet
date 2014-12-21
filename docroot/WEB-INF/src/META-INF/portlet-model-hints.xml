@@ -24,4 +24,18 @@
 		<field name="endTime" type="Date" />
 		<field name="startTime" type="Date" />
 	</model>
+	<model name="com.liferay.timemanagement.model.TMTask">
+		<field name="taskId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="dueDate" type="Date" />
+		<field name="folderId" type="long" />
+		<field name="priority" type="int" />
+		<field name="status" type="int" />
+		<field name="taskName" type="String" />
+	</model>
 </model-hints>

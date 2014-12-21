@@ -14,7 +14,7 @@
 
 package com.liferay.timemanagement.service.base;
 
-import com.liferay.timemanagement.service.TMActivitySessionLocalServiceUtil;
+import com.liferay.timemanagement.service.TMTaskLocalServiceUtil;
 
 import java.util.Arrays;
 
@@ -22,26 +22,26 @@ import java.util.Arrays;
  * @author Istvan Sajtos, Zsolt Szabo
  * @generated
  */
-public class TMActivitySessionLocalServiceClpInvoker {
-	public TMActivitySessionLocalServiceClpInvoker() {
-		_methodName0 = "addTMActivitySession";
+public class TMTaskLocalServiceClpInvoker {
+	public TMTaskLocalServiceClpInvoker() {
+		_methodName0 = "addTMTask";
 
 		_methodParameterTypes0 = new String[] {
-				"com.liferay.timemanagement.model.TMActivitySession"
+				"com.liferay.timemanagement.model.TMTask"
 			};
 
-		_methodName1 = "createTMActivitySession";
+		_methodName1 = "createTMTask";
 
 		_methodParameterTypes1 = new String[] { "long" };
 
-		_methodName2 = "deleteTMActivitySession";
+		_methodName2 = "deleteTMTask";
 
 		_methodParameterTypes2 = new String[] { "long" };
 
-		_methodName3 = "deleteTMActivitySession";
+		_methodName3 = "deleteTMTask";
 
 		_methodParameterTypes3 = new String[] {
-				"com.liferay.timemanagement.model.TMActivitySession"
+				"com.liferay.timemanagement.model.TMTask"
 			};
 
 		_methodName4 = "dynamicQuery";
@@ -80,11 +80,11 @@ public class TMActivitySessionLocalServiceClpInvoker {
 				"com.liferay.portal.kernel.dao.orm.Projection"
 			};
 
-		_methodName10 = "fetchTMActivitySession";
+		_methodName10 = "fetchTMTask";
 
 		_methodParameterTypes10 = new String[] { "long" };
 
-		_methodName11 = "getTMActivitySession";
+		_methodName11 = "getTMTask";
 
 		_methodParameterTypes11 = new String[] { "long" };
 
@@ -92,18 +92,18 @@ public class TMActivitySessionLocalServiceClpInvoker {
 
 		_methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-		_methodName13 = "getTMActivitySessions";
+		_methodName13 = "getTMTasks";
 
 		_methodParameterTypes13 = new String[] { "int", "int" };
 
-		_methodName14 = "getTMActivitySessionsCount";
+		_methodName14 = "getTMTasksCount";
 
 		_methodParameterTypes14 = new String[] {  };
 
-		_methodName15 = "updateTMActivitySession";
+		_methodName15 = "updateTMTask";
 
 		_methodParameterTypes15 = new String[] {
-				"com.liferay.timemanagement.model.TMActivitySession"
+				"com.liferay.timemanagement.model.TMTask"
 			};
 
 		_methodName42 = "getBeanIdentifier";
@@ -114,70 +114,61 @@ public class TMActivitySessionLocalServiceClpInvoker {
 
 		_methodParameterTypes43 = new String[] { "java.lang.String" };
 
-		_methodName48 = "addActivitySession";
+		_methodName48 = "getTask";
 
-		_methodParameterTypes48 = new String[] {
-				"long", "java.util.Date", "java.util.Date", "long",
-				"com.liferay.portal.service.ServiceContext"
-			};
+		_methodParameterTypes48 = new String[] { "long" };
 
-		_methodName49 = "getActivitySessionsByU_T";
+		_methodName49 = "getTaskByC_T";
 
 		_methodParameterTypes49 = new String[] { "long", "long" };
 
-		_methodName50 = "getTMActivitySessionsByActivityId";
+		_methodName50 = "getTaskByC_T_F";
 
-		_methodParameterTypes50 = new String[] { "long" };
-
-		_methodName51 = "updateTaskSession";
-
-		_methodParameterTypes51 = new String[] {
-				"com.liferay.timemanagement.model.TMActivitySession"
-			};
+		_methodParameterTypes50 = new String[] { "long", "long", "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
 		if (_methodName0.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes0, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.addTMActivitySession((com.liferay.timemanagement.model.TMActivitySession)arguments[0]);
+			return TMTaskLocalServiceUtil.addTMTask((com.liferay.timemanagement.model.TMTask)arguments[0]);
 		}
 
 		if (_methodName1.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.createTMActivitySession(((Long)arguments[0]).longValue());
+			return TMTaskLocalServiceUtil.createTMTask(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName2.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.deleteTMActivitySession(((Long)arguments[0]).longValue());
+			return TMTaskLocalServiceUtil.deleteTMTask(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName3.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes3, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.deleteTMActivitySession((com.liferay.timemanagement.model.TMActivitySession)arguments[0]);
+			return TMTaskLocalServiceUtil.deleteTMTask((com.liferay.timemanagement.model.TMTask)arguments[0]);
 		}
 
 		if (_methodName4.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes4, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.dynamicQuery();
+			return TMTaskLocalServiceUtil.dynamicQuery();
 		}
 
 		if (_methodName5.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes5, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return TMTaskLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName6.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes6, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return TMTaskLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue());
 		}
 
 		if (_methodName7.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes7, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return TMTaskLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.kernel.util.OrderByComparator)arguments[3]);
@@ -185,80 +176,74 @@ public class TMActivitySessionLocalServiceClpInvoker {
 
 		if (_methodName8.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes8, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
+			return TMTaskLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0]);
 		}
 
 		if (_methodName9.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes9, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
+			return TMTaskLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery)arguments[0],
 				(com.liferay.portal.kernel.dao.orm.Projection)arguments[1]);
 		}
 
 		if (_methodName10.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.fetchTMActivitySession(((Long)arguments[0]).longValue());
+			return TMTaskLocalServiceUtil.fetchTMTask(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName11.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getTMActivitySession(((Long)arguments[0]).longValue());
+			return TMTaskLocalServiceUtil.getTMTask(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName12.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes12, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
+			return TMTaskLocalServiceUtil.getPersistedModel((java.io.Serializable)arguments[0]);
 		}
 
 		if (_methodName13.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes13, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getTMActivitySessions(((Integer)arguments[0]).intValue(),
+			return TMTaskLocalServiceUtil.getTMTasks(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue());
 		}
 
 		if (_methodName14.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes14, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getTMActivitySessionsCount();
+			return TMTaskLocalServiceUtil.getTMTasksCount();
 		}
 
 		if (_methodName15.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes15, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.updateTMActivitySession((com.liferay.timemanagement.model.TMActivitySession)arguments[0]);
+			return TMTaskLocalServiceUtil.updateTMTask((com.liferay.timemanagement.model.TMTask)arguments[0]);
 		}
 
 		if (_methodName42.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes42, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getBeanIdentifier();
+			return TMTaskLocalServiceUtil.getBeanIdentifier();
 		}
 
 		if (_methodName43.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes43, parameterTypes)) {
-			TMActivitySessionLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
+			TMTaskLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
 		if (_methodName48.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.addActivitySession(((Long)arguments[0]).longValue(),
-				(java.util.Date)arguments[1], (java.util.Date)arguments[2],
-				((Long)arguments[3]).longValue(),
-				(com.liferay.portal.service.ServiceContext)arguments[4]);
+			return TMTaskLocalServiceUtil.getTask(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName49.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getActivitySessionsByU_T(((Long)arguments[0]).longValue(),
+			return TMTaskLocalServiceUtil.getTaskByC_T(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue());
 		}
 
 		if (_methodName50.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getTMActivitySessionsByActivityId(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName51.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.updateTaskSession((com.liferay.timemanagement.model.TMActivitySession)arguments[0]);
+			return TMTaskLocalServiceUtil.getTaskByC_T_F(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue());
 		}
 
 		throw new UnsupportedOperationException();
@@ -306,6 +291,4 @@ public class TMActivitySessionLocalServiceClpInvoker {
 	private String[] _methodParameterTypes49;
 	private String _methodName50;
 	private String[] _methodParameterTypes50;
-	private String _methodName51;
-	private String[] _methodParameterTypes51;
 }

@@ -35,6 +35,7 @@ import com.liferay.timemanagement.model.TMActivitySession;
 import com.liferay.timemanagement.service.TMActivitySessionLocalService;
 import com.liferay.timemanagement.service.persistence.TMActivityPersistence;
 import com.liferay.timemanagement.service.persistence.TMActivitySessionPersistence;
+import com.liferay.timemanagement.service.persistence.TMTaskPersistence;
 
 import java.io.Serializable;
 
@@ -377,6 +378,43 @@ public abstract class TMActivitySessionLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the t m task local service.
+	 *
+	 * @return the t m task local service
+	 */
+	public com.liferay.timemanagement.service.TMTaskLocalService getTMTaskLocalService() {
+		return tmTaskLocalService;
+	}
+
+	/**
+	 * Sets the t m task local service.
+	 *
+	 * @param tmTaskLocalService the t m task local service
+	 */
+	public void setTMTaskLocalService(
+		com.liferay.timemanagement.service.TMTaskLocalService tmTaskLocalService) {
+		this.tmTaskLocalService = tmTaskLocalService;
+	}
+
+	/**
+	 * Returns the t m task persistence.
+	 *
+	 * @return the t m task persistence
+	 */
+	public TMTaskPersistence getTMTaskPersistence() {
+		return tmTaskPersistence;
+	}
+
+	/**
+	 * Sets the t m task persistence.
+	 *
+	 * @param tmTaskPersistence the t m task persistence
+	 */
+	public void setTMTaskPersistence(TMTaskPersistence tmTaskPersistence) {
+		this.tmTaskPersistence = tmTaskPersistence;
+	}
+
+	/**
 	 * Returns the counter local service.
 	 *
 	 * @return the counter local service
@@ -562,6 +600,10 @@ public abstract class TMActivitySessionLocalServiceBaseImpl
 	protected com.liferay.timemanagement.service.TMActivitySessionLocalService tmActivitySessionLocalService;
 	@BeanReference(type = TMActivitySessionPersistence.class)
 	protected TMActivitySessionPersistence tmActivitySessionPersistence;
+	@BeanReference(type = com.liferay.timemanagement.service.TMTaskLocalService.class)
+	protected com.liferay.timemanagement.service.TMTaskLocalService tmTaskLocalService;
+	@BeanReference(type = TMTaskPersistence.class)
+	protected TMTaskPersistence tmTaskPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)

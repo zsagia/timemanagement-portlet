@@ -26,6 +26,7 @@ import com.liferay.timemanagement.model.TMActivity;
 import com.liferay.timemanagement.service.TMActivityService;
 import com.liferay.timemanagement.service.persistence.TMActivityPersistence;
 import com.liferay.timemanagement.service.persistence.TMActivitySessionPersistence;
+import com.liferay.timemanagement.service.persistence.TMTaskPersistence;
 
 import javax.sql.DataSource;
 
@@ -142,6 +143,43 @@ public abstract class TMActivityServiceBaseImpl extends BaseServiceImpl
 	public void setTMActivitySessionPersistence(
 		TMActivitySessionPersistence tmActivitySessionPersistence) {
 		this.tmActivitySessionPersistence = tmActivitySessionPersistence;
+	}
+
+	/**
+	 * Returns the t m task local service.
+	 *
+	 * @return the t m task local service
+	 */
+	public com.liferay.timemanagement.service.TMTaskLocalService getTMTaskLocalService() {
+		return tmTaskLocalService;
+	}
+
+	/**
+	 * Sets the t m task local service.
+	 *
+	 * @param tmTaskLocalService the t m task local service
+	 */
+	public void setTMTaskLocalService(
+		com.liferay.timemanagement.service.TMTaskLocalService tmTaskLocalService) {
+		this.tmTaskLocalService = tmTaskLocalService;
+	}
+
+	/**
+	 * Returns the t m task persistence.
+	 *
+	 * @return the t m task persistence
+	 */
+	public TMTaskPersistence getTMTaskPersistence() {
+		return tmTaskPersistence;
+	}
+
+	/**
+	 * Sets the t m task persistence.
+	 *
+	 * @param tmTaskPersistence the t m task persistence
+	 */
+	public void setTMTaskPersistence(TMTaskPersistence tmTaskPersistence) {
+		this.tmTaskPersistence = tmTaskPersistence;
 	}
 
 	/**
@@ -325,6 +363,10 @@ public abstract class TMActivityServiceBaseImpl extends BaseServiceImpl
 	protected com.liferay.timemanagement.service.TMActivitySessionLocalService tmActivitySessionLocalService;
 	@BeanReference(type = TMActivitySessionPersistence.class)
 	protected TMActivitySessionPersistence tmActivitySessionPersistence;
+	@BeanReference(type = com.liferay.timemanagement.service.TMTaskLocalService.class)
+	protected com.liferay.timemanagement.service.TMTaskLocalService tmTaskLocalService;
+	@BeanReference(type = TMTaskPersistence.class)
+	protected TMTaskPersistence tmTaskPersistence;
 	@BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
 	protected com.liferay.counter.service.CounterLocalService counterLocalService;
 	@BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)
