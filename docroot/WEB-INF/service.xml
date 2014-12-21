@@ -133,5 +133,6 @@
 	<exceptions>
 		<exception>TMActivityName</exception>
 		<exception>TMDateTime</exception>
+		<exception>TMTaskName</exception>
 	</exceptions>
 </service-builder>
