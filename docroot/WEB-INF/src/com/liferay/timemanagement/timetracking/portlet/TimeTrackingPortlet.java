@@ -71,7 +71,8 @@ public class TimeTrackingPortlet extends MVCPortlet {
 
 				tmActivity = TMActivityLocalServiceUtil.addTMActivity(
 					themeDisplay.getCompanyId(), themeDisplay.getUserId(),
-					activityName, description, startTimeCalendar.getTime(),
+					activityName, 0, 0, null, description, null, 0, null, null,
+					null, true, startTimeCalendar.getTime(),
 					endTimeCalendar.getTime(), serviceContext);
 			}
 			else {
