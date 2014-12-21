@@ -118,6 +118,7 @@ public class TMActivityLocalServiceClpInvoker {
 
 		_methodParameterTypes48 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
+				"java.util.Date", "java.util.Date",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -125,7 +126,6 @@ public class TMActivityLocalServiceClpInvoker {
 
 		_methodParameterTypes49 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
-				"java.util.Date", "java.util.Date",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -282,7 +282,8 @@ public class TMActivityLocalServiceClpInvoker {
 			return TMActivityLocalServiceUtil.addTMActivity(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
-				(com.liferay.portal.service.ServiceContext)arguments[4]);
+				(java.util.Date)arguments[4], (java.util.Date)arguments[5],
+				(com.liferay.portal.service.ServiceContext)arguments[6]);
 		}
 
 		if (_methodName49.equals(name) &&
@@ -290,8 +291,7 @@ public class TMActivityLocalServiceClpInvoker {
 			return TMActivityLocalServiceUtil.addTMActivity(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
-				(java.util.Date)arguments[4], (java.util.Date)arguments[5],
-				(com.liferay.portal.service.ServiceContext)arguments[6]);
+				(com.liferay.portal.service.ServiceContext)arguments[4]);
 		}
 
 		if (_methodName50.equals(name) &&

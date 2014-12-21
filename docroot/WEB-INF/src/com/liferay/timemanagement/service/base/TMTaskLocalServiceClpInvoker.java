@@ -114,17 +114,54 @@ public class TMTaskLocalServiceClpInvoker {
 
 		_methodParameterTypes43 = new String[] { "java.lang.String" };
 
-		_methodName48 = "getTask";
+		_methodName48 = "addTMTask";
 
-		_methodParameterTypes48 = new String[] { "long" };
+		_methodParameterTypes48 = new String[] {
+				"long", "long", "java.util.Date", "long", "int", "int",
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+			};
 
-		_methodName49 = "getTaskByC_T";
+		_methodName49 = "addTMTaskResources";
 
-		_methodParameterTypes49 = new String[] { "long", "long" };
+		_methodParameterTypes49 = new String[] {
+				"com.liferay.timemanagement.model.TMTask", "boolean", "boolean"
+			};
 
-		_methodName50 = "getTaskByC_T_F";
+		_methodName50 = "addTMTaskResources";
 
-		_methodParameterTypes50 = new String[] { "long", "long", "long" };
+		_methodParameterTypes50 = new String[] {
+				"com.liferay.timemanagement.model.TMTask",
+				"java.lang.String[][]", "java.lang.String[][]"
+			};
+
+		_methodName51 = "deleteTMTask";
+
+		_methodParameterTypes51 = new String[] { "long" };
+
+		_methodName52 = "getTask";
+
+		_methodParameterTypes52 = new String[] { "long" };
+
+		_methodName53 = "getTaskByC_T";
+
+		_methodParameterTypes53 = new String[] { "long", "long" };
+
+		_methodName54 = "getTaskByC_T_F";
+
+		_methodParameterTypes54 = new String[] { "long", "long", "long" };
+
+		_methodName55 = "updateTMTask";
+
+		_methodParameterTypes55 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName56 = "updateTMTask";
+
+		_methodParameterTypes56 = new String[] {
+				"long", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -230,20 +267,68 @@ public class TMTaskLocalServiceClpInvoker {
 
 		if (_methodName48.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
-			return TMTaskLocalServiceUtil.getTask(((Long)arguments[0]).longValue());
+			return TMTaskLocalServiceUtil.addTMTask(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(), (java.util.Date)arguments[2],
+				((Long)arguments[3]).longValue(),
+				((Integer)arguments[4]).intValue(),
+				((Integer)arguments[5]).intValue(),
+				(java.lang.String)arguments[6],
+				(com.liferay.portal.service.ServiceContext)arguments[7]);
 		}
 
 		if (_methodName49.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
-			return TMTaskLocalServiceUtil.getTaskByC_T(((Long)arguments[0]).longValue(),
-				((Long)arguments[1]).longValue());
+			TMTaskLocalServiceUtil.addTMTaskResources((com.liferay.timemanagement.model.TMTask)arguments[0],
+				((Boolean)arguments[1]).booleanValue(),
+				((Boolean)arguments[2]).booleanValue());
+
+			return null;
 		}
 
 		if (_methodName50.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
+			TMTaskLocalServiceUtil.addTMTaskResources((com.liferay.timemanagement.model.TMTask)arguments[0],
+				(java.lang.String[])arguments[1],
+				(java.lang.String[])arguments[2]);
+
+			return null;
+		}
+
+		if (_methodName51.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
+			return TMTaskLocalServiceUtil.deleteTMTask(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName52.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
+			return TMTaskLocalServiceUtil.getTask(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName53.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes53, parameterTypes)) {
+			return TMTaskLocalServiceUtil.getTaskByC_T(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
+		}
+
+		if (_methodName54.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
 			return TMTaskLocalServiceUtil.getTaskByC_T_F(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue());
+		}
+
+		if (_methodName55.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
+			return TMTaskLocalServiceUtil.updateTMTask(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
+		}
+
+		if (_methodName56.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes56, parameterTypes)) {
+			return TMTaskLocalServiceUtil.updateTMTask(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1],
+				(com.liferay.portal.service.ServiceContext)arguments[2]);
 		}
 
 		throw new UnsupportedOperationException();
@@ -291,4 +376,16 @@ public class TMTaskLocalServiceClpInvoker {
 	private String[] _methodParameterTypes49;
 	private String _methodName50;
 	private String[] _methodParameterTypes50;
+	private String _methodName51;
+	private String[] _methodParameterTypes51;
+	private String _methodName52;
+	private String[] _methodParameterTypes52;
+	private String _methodName53;
+	private String[] _methodParameterTypes53;
+	private String _methodName54;
+	private String[] _methodParameterTypes54;
+	private String _methodName55;
+	private String[] _methodParameterTypes55;
+	private String _methodName56;
+	private String[] _methodParameterTypes56;
 }

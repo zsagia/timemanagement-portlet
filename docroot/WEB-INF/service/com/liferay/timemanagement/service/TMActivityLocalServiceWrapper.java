@@ -290,17 +290,6 @@ public class TMActivityLocalServiceWrapper implements TMActivityLocalService,
 	@Override
 	public com.liferay.timemanagement.model.TMActivity addTMActivity(
 		long companyId, long userId, java.lang.String taskName,
-		java.lang.String description,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return _tmActivityLocalService.addTMActivity(companyId, userId,
-			taskName, description, serviceContext);
-	}
-
-	@Override
-	public com.liferay.timemanagement.model.TMActivity addTMActivity(
-		long companyId, long userId, java.lang.String taskName,
 		java.lang.String description, java.util.Date startTime,
 		java.util.Date endTime,
 		com.liferay.portal.service.ServiceContext serviceContext)
@@ -308,6 +297,17 @@ public class TMActivityLocalServiceWrapper implements TMActivityLocalService,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _tmActivityLocalService.addTMActivity(companyId, userId,
 			taskName, description, startTime, endTime, serviceContext);
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMActivity addTMActivity(
+		long companyId, long userId, java.lang.String taskName,
+		java.lang.String description,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivityLocalService.addTMActivity(companyId, userId,
+			taskName, description, serviceContext);
 	}
 
 	@Override

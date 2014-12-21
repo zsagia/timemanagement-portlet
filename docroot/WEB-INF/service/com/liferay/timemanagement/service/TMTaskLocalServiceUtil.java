@@ -273,6 +273,35 @@ public class TMTaskLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static com.liferay.timemanagement.model.TMTask addTMTask(
+		long companyId, long userId, java.util.Date dueDate, long folderId,
+		int priority, int status, java.lang.String tmTaskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .addTMTask(companyId, userId, dueDate, folderId, priority,
+			status, tmTaskName, serviceContext);
+	}
+
+	public static void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addTMTaskResources(tmTask, addGroupPermissions, addGuestPermissions);
+	}
+
+	public static void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService()
+			.addTMTaskResources(tmTask, groupPermissions, guestPermissions);
+	}
+
 	public static com.liferay.timemanagement.model.TMTask getTask(long taskId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -289,6 +318,20 @@ public class TMTaskLocalServiceUtil {
 		long companyId, long taskId, long folderId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getTaskByC_T_F(companyId, taskId, folderId);
+	}
+
+	public static com.liferay.timemanagement.model.TMTask updateTMTask(
+		long taskId, long folderId,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().updateTMTask(taskId, folderId, serviceContext);
+	}
+
+	public static com.liferay.timemanagement.model.TMTask updateTMTask(
+		long taskId, java.lang.String taskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().updateTMTask(taskId, taskName, serviceContext);
 	}
 
 	public static void clearService() {

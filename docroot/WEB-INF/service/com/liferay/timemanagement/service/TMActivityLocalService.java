@@ -251,15 +251,15 @@ public interface TMActivityLocalService extends BaseLocalService,
 
 	public com.liferay.timemanagement.model.TMActivity addTMActivity(
 		long companyId, long userId, java.lang.String taskName,
-		java.lang.String description,
+		java.lang.String description, java.util.Date startTime,
+		java.util.Date endTime,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	public com.liferay.timemanagement.model.TMActivity addTMActivity(
 		long companyId, long userId, java.lang.String taskName,
-		java.lang.String description, java.util.Date startTime,
-		java.util.Date endTime,
+		java.lang.String description,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;

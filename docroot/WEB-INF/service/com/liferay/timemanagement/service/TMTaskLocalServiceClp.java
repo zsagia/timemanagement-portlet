@@ -114,17 +114,50 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 
 		_methodParameterTypes17 = new String[] { "java.lang.String" };
 
-		_methodName19 = "getTask";
+		_methodName19 = "addTMTask";
 
-		_methodParameterTypes19 = new String[] { "long" };
+		_methodParameterTypes19 = new String[] {
+				"long", "long", "java.util.Date", "long", "int", "int",
+				"java.lang.String", "com.liferay.portal.service.ServiceContext"
+			};
 
-		_methodName20 = "getTaskByC_T";
+		_methodName20 = "addTMTaskResources";
 
-		_methodParameterTypes20 = new String[] { "long", "long" };
+		_methodParameterTypes20 = new String[] {
+				"com.liferay.timemanagement.model.TMTask", "boolean", "boolean"
+			};
 
-		_methodName21 = "getTaskByC_T_F";
+		_methodName21 = "addTMTaskResources";
 
-		_methodParameterTypes21 = new String[] { "long", "long", "long" };
+		_methodParameterTypes21 = new String[] {
+				"com.liferay.timemanagement.model.TMTask",
+				"java.lang.String[][]", "java.lang.String[][]"
+			};
+
+		_methodName22 = "getTask";
+
+		_methodParameterTypes22 = new String[] { "long" };
+
+		_methodName23 = "getTaskByC_T";
+
+		_methodParameterTypes23 = new String[] { "long", "long" };
+
+		_methodName24 = "getTaskByC_T_F";
+
+		_methodParameterTypes24 = new String[] { "long", "long", "long" };
+
+		_methodName25 = "updateTMTask";
+
+		_methodParameterTypes25 = new String[] {
+				"long", "long", "com.liferay.portal.service.ServiceContext"
+			};
+
+		_methodName26 = "updateTMTask";
+
+		_methodParameterTypes26 = new String[] {
+				"long", "java.lang.String",
+				"com.liferay.portal.service.ServiceContext"
+			};
 	}
 
 	@Override
@@ -674,14 +707,143 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 	}
 
 	@Override
-	public com.liferay.timemanagement.model.TMTask getTask(long taskId)
+	public com.liferay.timemanagement.model.TMTask addTMTask(long companyId,
+		long userId, java.util.Date dueDate, long folderId, int priority,
+		int status, java.lang.String tmTaskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName19,
-					_methodParameterTypes19, new Object[] { taskId });
+					_methodParameterTypes19,
+					new Object[] {
+						companyId,
+						
+					userId,
+						
+					ClpSerializer.translateInput(dueDate),
+						
+					folderId,
+						
+					priority,
+						
+					status,
+						
+					ClpSerializer.translateInput(tmTaskName),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName20,
+				_methodParameterTypes20,
+				new Object[] {
+					ClpSerializer.translateInput(tmTask),
+					
+				addGroupPermissions,
+					
+				addGuestPermissions
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			_invokableLocalService.invokeMethod(_methodName21,
+				_methodParameterTypes21,
+				new Object[] {
+					ClpSerializer.translateInput(tmTask),
+					
+				ClpSerializer.translateInput(groupPermissions),
+					
+				ClpSerializer.translateInput(guestPermissions)
+				});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
+				throw (com.liferay.portal.kernel.exception.PortalException)t;
+			}
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMTask getTask(long taskId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName22,
+					_methodParameterTypes22, new Object[] { taskId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -713,8 +875,8 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName20,
-					_methodParameterTypes20, new Object[] { companyId, taskId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23, new Object[] { companyId, taskId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -742,8 +904,8 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName21,
-					_methodParameterTypes21,
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
 					new Object[] { companyId, taskId, folderId });
 		}
 		catch (Throwable t) {
@@ -763,6 +925,79 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 		}
 
 		return (java.util.List<com.liferay.timemanagement.model.TMTask>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMTask updateTMTask(long taskId,
+		long folderId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25,
+					new Object[] {
+						taskId,
+						
+					folderId,
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMTask updateTMTask(long taskId,
+		java.lang.String taskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName26,
+					_methodParameterTypes26,
+					new Object[] {
+						taskId,
+						
+					ClpSerializer.translateInput(taskName),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (com.liferay.timemanagement.model.TMTask)ClpSerializer.translateOutput(returnObj);
 	}
 
 	private InvokableLocalService _invokableLocalService;
@@ -808,4 +1043,14 @@ public class TMTaskLocalServiceClp implements TMTaskLocalService {
 	private String[] _methodParameterTypes20;
 	private String _methodName21;
 	private String[] _methodParameterTypes21;
+	private String _methodName22;
+	private String[] _methodParameterTypes22;
+	private String _methodName23;
+	private String[] _methodParameterTypes23;
+	private String _methodName24;
+	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
 }

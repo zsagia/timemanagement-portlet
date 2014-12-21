@@ -282,6 +282,10 @@ public class ClpSerializer {
 			return new com.liferay.timemanagement.TMDateTimeException();
 		}
 
+		if (className.equals("com.liferay.timemanagement.TMTaskNameException")) {
+			return new com.liferay.timemanagement.TMTaskNameException();
+		}
+
 		if (className.equals(
 					"com.liferay.timemanagement.NoSuchTMActivityException")) {
 			return new com.liferay.timemanagement.NoSuchTMActivityException();

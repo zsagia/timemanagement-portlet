@@ -245,6 +245,25 @@ public interface TMTaskLocalService extends BaseLocalService,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
 
+	public com.liferay.timemanagement.model.TMTask addTMTask(long companyId,
+		long userId, java.util.Date dueDate, long folderId, int priority,
+		int status, java.lang.String tmTaskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.timemanagement.model.TMTask getTask(long taskId)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -258,5 +277,14 @@ public interface TMTaskLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.timemanagement.model.TMTask> getTaskByC_T_F(
 		long companyId, long taskId, long folderId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public com.liferay.timemanagement.model.TMTask updateTMTask(long taskId,
+		long folderId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public com.liferay.timemanagement.model.TMTask updateTMTask(long taskId,
+		java.lang.String taskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException;
 }

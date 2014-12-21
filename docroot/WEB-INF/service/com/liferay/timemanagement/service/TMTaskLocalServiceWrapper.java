@@ -281,6 +281,37 @@ public class TMTaskLocalServiceWrapper implements TMTaskLocalService,
 	}
 
 	@Override
+	public com.liferay.timemanagement.model.TMTask addTMTask(long companyId,
+		long userId, java.util.Date dueDate, long folderId, int priority,
+		int status, java.lang.String tmTaskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tmTaskLocalService.addTMTask(companyId, userId, dueDate,
+			folderId, priority, status, tmTaskName, serviceContext);
+	}
+
+	@Override
+	public void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		boolean addGroupPermissions, boolean addGuestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tmTaskLocalService.addTMTaskResources(tmTask, addGroupPermissions,
+			addGuestPermissions);
+	}
+
+	@Override
+	public void addTMTaskResources(
+		com.liferay.timemanagement.model.TMTask tmTask,
+		java.lang.String[] groupPermissions, java.lang.String[] guestPermissions)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_tmTaskLocalService.addTMTaskResources(tmTask, groupPermissions,
+			guestPermissions);
+	}
+
+	@Override
 	public com.liferay.timemanagement.model.TMTask getTask(long taskId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -299,6 +330,21 @@ public class TMTaskLocalServiceWrapper implements TMTaskLocalService,
 		long companyId, long taskId, long folderId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _tmTaskLocalService.getTaskByC_T_F(companyId, taskId, folderId);
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMTask updateTMTask(long taskId,
+		long folderId, com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmTaskLocalService.updateTMTask(taskId, folderId, serviceContext);
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMTask updateTMTask(long taskId,
+		java.lang.String taskName,
+		com.liferay.portal.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmTaskLocalService.updateTMTask(taskId, taskName, serviceContext);
 	}
 
 	/**
