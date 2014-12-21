@@ -24,6 +24,7 @@ package com.liferay.timemanagement.model.impl;
  * @author Istvan Sajtos, Zsolt Szabo
  */
 public class TMTaskImpl extends TMTaskBaseImpl {
+
 	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
@@ -31,4 +32,5 @@ public class TMTaskImpl extends TMTaskBaseImpl {
 	 */
 	public TMTaskImpl() {
 	}
+
 }
