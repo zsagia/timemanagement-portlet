@@ -250,16 +250,22 @@ public interface TMActivityLocalService extends BaseLocalService,
 		throws java.lang.Throwable;
 
 	public com.liferay.timemanagement.model.TMActivity addTMActivity(
-		long companyId, long userId, java.lang.String taskName,
-		java.lang.String description, java.util.Date startTime,
+		long companyId, long userId, java.lang.String activityName,
+		long classNameId, long classPK, java.lang.String classUuid,
+		java.lang.String description, java.util.Date endDate, int priority,
+		java.util.Date reminderDate, java.util.Date scheduledDate,
+		java.util.Date startDate, boolean visible, java.util.Date startTime,
 		java.util.Date endTime,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
 	public com.liferay.timemanagement.model.TMActivity addTMActivity(
-		long companyId, long userId, java.lang.String taskName,
-		java.lang.String description,
+		long companyId, long userId, java.lang.String activityName,
+		long classNameId, long classPK, java.lang.String classUuid,
+		java.lang.String description, java.util.Date endDate, int priority,
+		java.util.Date reminderDate, java.util.Date scheduledDate,
+		java.util.Date startDate, boolean visible,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
@@ -291,8 +297,11 @@ public interface TMActivityLocalService extends BaseLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
-		long activityId, java.lang.String activityName,
-		java.lang.String description,
+		long activityId, java.lang.String activityName, long classNameId,
+		long classPK, java.lang.String classUuid, java.lang.String description,
+		java.util.Date endDate, int priority, java.util.Date reminderDate,
+		java.util.Date scheduledDate, java.util.Date startDate,
+		boolean visible,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException;
 }

@@ -118,7 +118,9 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		_methodName19 = "addTMActivity";
 
 		_methodParameterTypes19 = new String[] {
-				"long", "long", "java.lang.String", "java.lang.String",
+				"long", "long", "java.lang.String", "long", "long",
+				"java.lang.String", "java.lang.String", "java.util.Date", "int",
+				"java.util.Date", "java.util.Date", "java.util.Date", "boolean",
 				"java.util.Date", "java.util.Date",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -126,7 +128,9 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		_methodName20 = "addTMActivity";
 
 		_methodParameterTypes20 = new String[] {
-				"long", "long", "java.lang.String", "java.lang.String",
+				"long", "long", "java.lang.String", "long", "long",
+				"java.lang.String", "java.lang.String", "java.util.Date", "int",
+				"java.util.Date", "java.util.Date", "java.util.Date", "boolean",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -162,7 +166,9 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		_methodName26 = "updateTMActivity";
 
 		_methodParameterTypes26 = new String[] {
-				"long", "java.lang.String", "java.lang.String",
+				"long", "java.lang.String", "long", "long", "java.lang.String",
+				"java.lang.String", "java.util.Date", "int", "java.util.Date",
+				"java.util.Date", "java.util.Date", "boolean",
 				"com.liferay.portal.service.ServiceContext"
 			};
 	}
@@ -719,8 +725,11 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 
 	@Override
 	public com.liferay.timemanagement.model.TMActivity addTMActivity(
-		long companyId, long userId, java.lang.String taskName,
-		java.lang.String description, java.util.Date startTime,
+		long companyId, long userId, java.lang.String activityName,
+		long classNameId, long classPK, java.lang.String classUuid,
+		java.lang.String description, java.util.Date endDate, int priority,
+		java.util.Date reminderDate, java.util.Date scheduledDate,
+		java.util.Date startDate, boolean visible, java.util.Date startTime,
 		java.util.Date endTime,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -735,9 +744,27 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 						
 					userId,
 						
-					ClpSerializer.translateInput(taskName),
+					ClpSerializer.translateInput(activityName),
+						
+					classNameId,
+						
+					classPK,
+						
+					ClpSerializer.translateInput(classUuid),
 						
 					ClpSerializer.translateInput(description),
+						
+					ClpSerializer.translateInput(endDate),
+						
+					priority,
+						
+					ClpSerializer.translateInput(reminderDate),
+						
+					ClpSerializer.translateInput(scheduledDate),
+						
+					ClpSerializer.translateInput(startDate),
+						
+					visible,
 						
 					ClpSerializer.translateInput(startTime),
 						
@@ -771,8 +798,11 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 
 	@Override
 	public com.liferay.timemanagement.model.TMActivity addTMActivity(
-		long companyId, long userId, java.lang.String taskName,
-		java.lang.String description,
+		long companyId, long userId, java.lang.String activityName,
+		long classNameId, long classPK, java.lang.String classUuid,
+		java.lang.String description, java.util.Date endDate, int priority,
+		java.util.Date reminderDate, java.util.Date scheduledDate,
+		java.util.Date startDate, boolean visible,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -786,9 +816,27 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 						
 					userId,
 						
-					ClpSerializer.translateInput(taskName),
+					ClpSerializer.translateInput(activityName),
+						
+					classNameId,
+						
+					classPK,
+						
+					ClpSerializer.translateInput(classUuid),
 						
 					ClpSerializer.translateInput(description),
+						
+					ClpSerializer.translateInput(endDate),
+						
+					priority,
+						
+					ClpSerializer.translateInput(reminderDate),
+						
+					ClpSerializer.translateInput(scheduledDate),
+						
+					ClpSerializer.translateInput(startDate),
+						
+					visible,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});
@@ -993,8 +1041,11 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 
 	@Override
 	public com.liferay.timemanagement.model.TMActivity updateTMActivity(
-		long activityId, java.lang.String activityName,
-		java.lang.String description,
+		long activityId, java.lang.String activityName, long classNameId,
+		long classPK, java.lang.String classUuid, java.lang.String description,
+		java.util.Date endDate, int priority, java.util.Date reminderDate,
+		java.util.Date scheduledDate, java.util.Date startDate,
+		boolean visible,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -1007,7 +1058,25 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 						
 					ClpSerializer.translateInput(activityName),
 						
+					classNameId,
+						
+					classPK,
+						
+					ClpSerializer.translateInput(classUuid),
+						
 					ClpSerializer.translateInput(description),
+						
+					ClpSerializer.translateInput(endDate),
+						
+					priority,
+						
+					ClpSerializer.translateInput(reminderDate),
+						
+					ClpSerializer.translateInput(scheduledDate),
+						
+					ClpSerializer.translateInput(startDate),
+						
+					visible,
 						
 					ClpSerializer.translateInput(serviceContext)
 					});

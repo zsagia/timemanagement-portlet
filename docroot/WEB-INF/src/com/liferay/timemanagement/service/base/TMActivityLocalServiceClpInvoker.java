@@ -117,7 +117,9 @@ public class TMActivityLocalServiceClpInvoker {
 		_methodName48 = "addTMActivity";
 
 		_methodParameterTypes48 = new String[] {
-				"long", "long", "java.lang.String", "java.lang.String",
+				"long", "long", "java.lang.String", "long", "long",
+				"java.lang.String", "java.lang.String", "java.util.Date", "int",
+				"java.util.Date", "java.util.Date", "java.util.Date", "boolean",
 				"java.util.Date", "java.util.Date",
 				"com.liferay.portal.service.ServiceContext"
 			};
@@ -125,7 +127,9 @@ public class TMActivityLocalServiceClpInvoker {
 		_methodName49 = "addTMActivity";
 
 		_methodParameterTypes49 = new String[] {
-				"long", "long", "java.lang.String", "java.lang.String",
+				"long", "long", "java.lang.String", "long", "long",
+				"java.lang.String", "java.lang.String", "java.util.Date", "int",
+				"java.util.Date", "java.util.Date", "java.util.Date", "boolean",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -165,7 +169,9 @@ public class TMActivityLocalServiceClpInvoker {
 		_methodName56 = "updateTMActivity";
 
 		_methodParameterTypes56 = new String[] {
-				"long", "java.lang.String", "java.lang.String",
+				"long", "java.lang.String", "long", "long", "java.lang.String",
+				"java.lang.String", "java.util.Date", "int", "java.util.Date",
+				"java.util.Date", "java.util.Date", "boolean",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
@@ -281,17 +287,33 @@ public class TMActivityLocalServiceClpInvoker {
 				Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
 			return TMActivityLocalServiceUtil.addTMActivity(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
-				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
-				(java.util.Date)arguments[4], (java.util.Date)arguments[5],
-				(com.liferay.portal.service.ServiceContext)arguments[6]);
+				(java.lang.String)arguments[2],
+				((Long)arguments[3]).longValue(),
+				((Long)arguments[4]).longValue(),
+				(java.lang.String)arguments[5], (java.lang.String)arguments[6],
+				(java.util.Date)arguments[7],
+				((Integer)arguments[8]).intValue(),
+				(java.util.Date)arguments[9], (java.util.Date)arguments[10],
+				(java.util.Date)arguments[11],
+				((Boolean)arguments[12]).booleanValue(),
+				(java.util.Date)arguments[13], (java.util.Date)arguments[14],
+				(com.liferay.portal.service.ServiceContext)arguments[15]);
 		}
 
 		if (_methodName49.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
 			return TMActivityLocalServiceUtil.addTMActivity(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
-				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
-				(com.liferay.portal.service.ServiceContext)arguments[4]);
+				(java.lang.String)arguments[2],
+				((Long)arguments[3]).longValue(),
+				((Long)arguments[4]).longValue(),
+				(java.lang.String)arguments[5], (java.lang.String)arguments[6],
+				(java.util.Date)arguments[7],
+				((Integer)arguments[8]).intValue(),
+				(java.util.Date)arguments[9], (java.util.Date)arguments[10],
+				(java.util.Date)arguments[11],
+				((Boolean)arguments[12]).booleanValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[13]);
 		}
 
 		if (_methodName50.equals(name) &&
@@ -343,8 +365,16 @@ public class TMActivityLocalServiceClpInvoker {
 		if (_methodName56.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes56, parameterTypes)) {
 			return TMActivityLocalServiceUtil.updateTMActivity(((Long)arguments[0]).longValue(),
-				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
-				(com.liferay.portal.service.ServiceContext)arguments[3]);
+				(java.lang.String)arguments[1],
+				((Long)arguments[2]).longValue(),
+				((Long)arguments[3]).longValue(),
+				(java.lang.String)arguments[4], (java.lang.String)arguments[5],
+				(java.util.Date)arguments[6],
+				((Integer)arguments[7]).intValue(),
+				(java.util.Date)arguments[8], (java.util.Date)arguments[9],
+				(java.util.Date)arguments[10],
+				((Boolean)arguments[11]).booleanValue(),
+				(com.liferay.portal.service.ServiceContext)arguments[12]);
 		}
 
 		if (_methodName57.equals(name) &&
