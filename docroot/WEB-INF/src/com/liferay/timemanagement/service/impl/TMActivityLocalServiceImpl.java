@@ -46,17 +46,6 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 
 	public TMActivity addTMActivity(
 			long companyId, long userId, String taskName, String description,
-			ServiceContext serviceContext)
-		throws PortalException, SystemException {
-
-		TMActivity tmActivity = createTMActivity(
-			companyId, userId, taskName, description, serviceContext);
-
-		return tmActivity;
-	}
-
-	public TMActivity addTMActivity(
-			long companyId, long userId, String taskName, String description,
 			Date startTime, Date endTime, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -66,6 +55,17 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 		tmActivitySessionLocalService.addActivitySession(
 			userId, startTime, endTime, tmActivity.getActivityId(),
 			serviceContext);
+
+		return tmActivity;
+	}
+
+	public TMActivity addTMActivity(
+			long companyId, long userId, String taskName, String description,
+			ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		TMActivity tmActivity = createTMActivity(
+			companyId, userId, taskName, description, serviceContext);
 
 		return tmActivity;
 	}

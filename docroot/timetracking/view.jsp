@@ -14,8 +14,9 @@
  */
 --%>
 
-<%@page import="com.liferay.timemanagement.TMDateTimeException"%>
-<%@page import="com.liferay.timemanagement.TMActivityNameException"%>
+<%@ page import="com.liferay.timemanagement.TMActivityNameException" %>
+<%@ page import="com.liferay.timemanagement.TMDateTimeException" %>
+
 <%@ include file="/init.jsp" %>
 
 <%
