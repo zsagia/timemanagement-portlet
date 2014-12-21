@@ -25,8 +25,17 @@
 
 		<!-- Other fields -->
 
-		<column name="description" type="String" localized="true" />
 		<column name="activityName" type="String" localized="true" />
+		<column name="classNameId" type="long" />
+		<column name="classPK" type="long" />
+		<column name="classUuid" type="String" />
+		<column name="description" type="String" localized="true" />
+		<column name="endDate" type="Date" />
+		<column name="priority" type="int" />
+		<column name="reminderDate" type="Date" />
+		<column name="scheduledDate" type="Date" />
+		<column name="startDate" type="Date" />
+		<column name="visible" type="boolean" />
 
 		<!-- Order -->
 
