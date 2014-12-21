@@ -45,12 +45,17 @@ import java.util.List;
 public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 
 	public TMActivity addTMActivity(
-			long companyId, long userId, String taskName, String description,
-			Date startTime, Date endTime, ServiceContext serviceContext)
+			long companyId, long userId, String activityName, long classNameId,
+			long classPK, String classUuid, String description, Date endDate,
+			int priority, Date reminderDate, Date scheduledDate, Date startDate,
+			boolean visible, Date startTime, Date endTime,
+			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
 		TMActivity tmActivity = addTMActivity(
-			companyId, userId, taskName, description, serviceContext);
+			companyId, userId, activityName, classNameId, classPK, classUuid,
+			description, endDate, priority, reminderDate, scheduledDate,
+			startDate, visible, serviceContext);
 
 		tmActivitySessionLocalService.addActivitySession(
 			userId, startTime, endTime, tmActivity.getActivityId(),
@@ -60,12 +65,16 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 	}
 
 	public TMActivity addTMActivity(
-			long companyId, long userId, String taskName, String description,
-			ServiceContext serviceContext)
+			long companyId, long userId, String activityName, long classNameId,
+			long classPK, String classUuid, String description, Date endDate,
+			int priority, Date reminderDate, Date scheduledDate, Date startDate,
+			boolean visible, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
 		TMActivity tmActivity = createTMActivity(
-			companyId, userId, taskName, description, serviceContext);
+			companyId, userId, activityName, classNameId, classPK, classUuid,
+			description, endDate, priority, reminderDate, scheduledDate,
+			startDate, visible, serviceContext);
 
 		return tmActivity;
 	}
@@ -127,15 +136,26 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 	}
 
 	public TMActivity updateTMActivity(
-			long activityId, String activityName, String description,
-			ServiceContext serviceContext)
+			long activityId, String activityName, long classNameId,
+			long classPK, String classUuid, String description, Date endDate,
+			int priority, Date reminderDate, Date scheduledDate, Date startDate,
+			boolean visible, ServiceContext serviceContext)
 		throws SystemException {
 
 		TMActivity tmActivity = tmActivityPersistence.fetchByPrimaryKey(
 			activityId);
 
 		tmActivity.setActivityName(activityName);
+		tmActivity.setClassNameId(classNameId);
+		tmActivity.setClassPK(classPK);
+		tmActivity.setClassUuid(classUuid);
 		tmActivity.setDescription(description);
+		tmActivity.setEndDate(endDate);
+		tmActivity.setPriority(priority);
+		tmActivity.setReminderDate(reminderDate);
+		tmActivity.setScheduledDate(scheduledDate);
+		tmActivity.setStartDate(startDate);
+		tmActivity.setVisible(visible);
 
 		tmActivityPersistence.update(tmActivity);
 
@@ -151,14 +171,16 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 	}
 
 	protected TMActivity createTMActivity(
-			long companyId, long userId, String tmActivityName,
-			String description, ServiceContext serviceContext)
+			long companyId, long userId, String activityName, long classNameId,
+			long classPK, String classUuid, String description, Date endDate,
+			int priority, Date reminderDate, Date scheduledDate, Date startDate,
+			boolean visible, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
 		User user = userPersistence.findByPrimaryKey(userId);
 		long groupId = serviceContext.getScopeGroupId();
 
-		validate(tmActivityName);
+		validate(activityName);
 
 		long tmActivityId = counterLocalService.increment();
 
@@ -170,10 +192,19 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 		tmActivity.setCreateDate(now);
 		tmActivity.setGroupId(groupId);
 		tmActivity.setModifiedDate(now);
-		tmActivity.setActivityName(tmActivityName);
+		tmActivity.setActivityName(activityName);
+		tmActivity.setClassNameId(classNameId);
+		tmActivity.setClassPK(classPK);
+		tmActivity.setClassUuid(classUuid);
 		tmActivity.setDescription(description);
+		tmActivity.setEndDate(endDate);
+		tmActivity.setPriority(priority);
+		tmActivity.setReminderDate(reminderDate);
+		tmActivity.setScheduledDate(scheduledDate);
+		tmActivity.setStartDate(startDate);
 		tmActivity.setUserId(userId);
 		tmActivity.setUserName(user.getFullName());
+		tmActivity.setVisible(visible);
 
 		tmActivityPersistence.update(tmActivity);
 
