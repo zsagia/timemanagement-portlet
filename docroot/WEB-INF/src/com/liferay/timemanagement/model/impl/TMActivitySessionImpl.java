@@ -14,6 +14,14 @@
 
 package com.liferay.timemanagement.model.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.timemanagement.model.TMActivity;
+import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
+import com.liferay.timemanagement.util.DateTimeCalculatorUtil;
+
+import java.util.Date;
+
 /**
  * The extended model implementation for the TMActivitySession service. Represents a row in the &quot;timemanagement_TMActivitySession&quot; database table, with each column mapped to a property of this class.
  *
@@ -26,6 +34,36 @@ package com.liferay.timemanagement.model.impl;
 public class TMActivitySessionImpl extends TMActivitySessionBaseImpl {
 
 	public TMActivitySessionImpl() {
+	}
+
+	public long getDuration() throws Exception {
+		Date endTime = getEndTime();
+		Date startTime = getStartTime();
+
+		if (startTime == null) {
+			throw new Exception();
+		}
+
+		if (endTime == null) {
+			throw new Exception();
+		}
+
+		long endTimeValue = endTime.getTime();
+		long startTimeValue = startTime.getTime();
+
+		if (startTimeValue > endTimeValue) {
+			throw new Exception();
+		}
+
+		return endTimeValue - startTimeValue;
+	}
+
+	public String getDurationAsString() throws Exception {
+		return DateTimeCalculatorUtil.getStringFromTime(getDuration());
+	}
+
+	public TMActivity getTMActivity() throws PortalException, SystemException {
+		return TMActivityLocalServiceUtil.getTMActivity(getActivityId());
 	}
 
 }
