@@ -1,0 +1,31 @@
+.start-activity-btn {
+	margin-bottom: 6px !important;
+}
+
+.activity-item-actions-trigger {
+	background-image: url(@theme_image_path@/common/add_instance.png);
+	background-repeat: no-repeat;
+	clip: rect(0pt, 0pt, 0pt, 0pt);
+	display: block;
+	height: 16px;
+	margin-top: -8px;
+	padding: 0;
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	width: 16px;
+}
+
+.activity-item {
+	position: relative;
+
+	&:hover .activity-item-actions-trigger, &:focus .activity-item-actions-trigger, .activity-item-actions-trigger:focus {
+		clip: rect(auto auto auto auto);
+	}
+}
+
+.today-activity-session-list {
+	table {
+		width: 100%;
+	}
+}
