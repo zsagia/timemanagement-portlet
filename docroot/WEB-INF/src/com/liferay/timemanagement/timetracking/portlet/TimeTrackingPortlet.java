@@ -14,38 +14,176 @@
 
 package com.liferay.timemanagement.timetracking.portlet;
 
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.json.JSONArray;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.util.Constants;
+import com.liferay.portal.kernel.util.FastDateFormatFactoryUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
-import com.liferay.portal.model.Layout;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.portal.theme.ThemeDisplay;
-import com.liferay.portlet.PortletURLFactoryUtil;
 import com.liferay.timemanagement.model.TMActivity;
 import com.liferay.timemanagement.model.TMActivitySession;
 import com.liferay.timemanagement.service.TMActivityLocalServiceUtil;
 import com.liferay.timemanagement.service.TMActivitySessionLocalServiceUtil;
-import com.liferay.timemanagement.util.PortletKeys;
+import com.liferay.timemanagement.util.DateTimeUtil;
 import com.liferay.timemanagement.util.TMDateTimeUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
+import java.io.IOException;
+
+import java.text.Format;
+
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
 import javax.portlet.PortletRequest;
-import javax.portlet.PortletURL;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
 
 /**
  * @author Zsolt Szabo
  */
 public class TimeTrackingPortlet extends MVCPortlet {
 
-	public void updateActivity(
+	@Override
+	public void processAction(
 			ActionRequest actionRequest, ActionResponse actionResponse)
+		throws IOException, PortletException {
+
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
+
+		String cmd = ParamUtil.getString(actionRequest, Constants.CMD);
+
+		try {
+			if (cmd.equals(Constants.ADD) || cmd.equals(Constants.UPDATE)) {
+				updateActivity(actionRequest, actionResponse, jsonObject);
+			}
+			else if (cmd.equals("start_activity")) {
+				startActivity(actionRequest, actionResponse, jsonObject);
+			}
+		}
+		catch (Exception e) {
+			jsonObject.putException(e);
+		}
+
+		writeJSON(actionRequest, actionResponse, jsonObject);
+	}
+
+	@Override
+	public void serveResource(
+			ResourceRequest resourceRequest, ResourceResponse resourceResponse)
+		throws IOException, PortletException {
+
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
+
+		try {
+			String resourceID = resourceRequest.getResourceID();
+
+			if (resourceID.equals("getActivities")) {
+				getActivities(resourceRequest, resourceResponse, jsonObject);
+			}
+			else if (resourceID.equals("getTodayActivitySessions")) {
+				getTodayActivitySessions(
+					resourceRequest, resourceResponse, jsonObject);
+			}
+		}
+		catch (Exception e) {
+			jsonObject.putException(e);
+		}
+
+		writeJSON(resourceRequest, resourceResponse, jsonObject);
+	}
+
+	protected void getActivities(
+			ResourceRequest resourceRequest, ResourceResponse resourceResponse,
+			JSONObject jsonObject)
+		throws Exception {
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)resourceRequest.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		int start = ParamUtil.getInteger(resourceRequest, "start");
+		int end = ParamUtil.getInteger(resourceRequest, "end");
+		int total = TMActivityLocalServiceUtil.countByC_G(
+			themeDisplay.getCompanyId(), themeDisplay.getScopeGroupId());
+
+		List<TMActivity> activityList =
+			TMActivityLocalServiceUtil.getTMActivitiesByC_G(
+				themeDisplay.getCompanyId(), themeDisplay.getScopeGroupId(),
+				start, end);
+
+		JSONArray jsonArray = JSONFactoryUtil.createJSONArray();
+
+		for (TMActivity activity : activityList) {
+			JSONObject activityJSON = JSONFactoryUtil.createJSONObject();
+
+			activityJSON.put("activityId", activity.getActivityId());
+			activityJSON.put("activityName", activity.getActivityName());
+
+			jsonArray.put(activityJSON);
+		}
+
+		jsonObject.put("activities", jsonArray);
+
+		jsonObject.put("total", total);
+	}
+
+	protected void getTodayActivitySessions(
+			ResourceRequest resourceRequest, ResourceResponse resourceResponse,
+			JSONObject jsonObject)
+		throws Exception {
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)resourceRequest.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		Date now = new Date();
+		Date startInterval = DateTimeUtil.getDayWithoutTime(now);
+		Date endInterval = DateTimeUtil.getIncrementedDay(startInterval);
+
+		List<TMActivitySession> todayActivitySessionList =
+			TMActivitySessionLocalServiceUtil.getActivitySessionsByC_G_U_I(
+				themeDisplay.getCompanyId(), themeDisplay.getScopeGroupId(),
+				themeDisplay.getUserId(), startInterval, endInterval);
+
+		JSONArray jsonArray = JSONFactoryUtil.createJSONArray();
+
+		for (TMActivitySession activitySession : todayActivitySessionList) {
+			JSONObject activitySessionJSON = createActivitySessionJSON(
+				activitySession, themeDisplay);
+
+			jsonArray.put(activitySessionJSON);
+		}
+
+		jsonObject.put("todayActivitySessionList", jsonArray);
+
+		jsonObject.put("total", todayActivitySessionList.size());
+	}
+
+	protected void startActivity(
+			ActionRequest actionRequest, ActionResponse actionResponse,
+			JSONObject jsonObject)
+		throws Exception {
+
+		long activityId = ParamUtil.getLong(actionRequest, "activityId");
+
+		if (activityId <= 0) {
+			updateActivity(actionRequest, actionResponse, jsonObject);
+		}
+		else {
+			updateActivitySession(actionRequest, actionResponse, jsonObject);
+		}
+	}
+
+	protected void updateActivity(
+			ActionRequest actionRequest, ActionResponse actionResponse,
+			JSONObject jsonObject)
 		throws Exception {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
@@ -62,60 +200,50 @@ public class TimeTrackingPortlet extends MVCPortlet {
 
 		TMActivity tmActivity = null;
 
-		try {
-			if (activityId <= 0) {
-				Calendar startTimeCalendar = TMDateTimeUtil.getCalendar(
-					actionRequest, "startDate");
-				Calendar endTimeCalendar = TMDateTimeUtil.getCalendar(
-					actionRequest, "endDate");
+		if (activityId <= 0) {
+			Calendar startTimeCalendar = TMDateTimeUtil.getCalendar(
+				actionRequest, "startDate");
+			Calendar endTimeCalendar = TMDateTimeUtil.getCalendar(
+				actionRequest, "endDate");
 
-				tmActivity = TMActivityLocalServiceUtil.addTMActivity(
-					themeDisplay.getCompanyId(), themeDisplay.getUserId(),
-					activityName, 0, 0, null, description, null, 0, null, null,
-					null, true, startTimeCalendar.getTime(),
-					endTimeCalendar.getTime(), serviceContext);
-			}
-			else {
-				tmActivity = TMActivityLocalServiceUtil.getTMActivity(
-					activityId);
+			tmActivity = TMActivityLocalServiceUtil.addTMActivity(
+				themeDisplay.getCompanyId(), themeDisplay.getUserId(),
+				activityName, 0, 0, null, description, null, 0, null, null,
+				null, true, serviceContext);
 
-				tmActivity.setActivityName(activityName);
-				tmActivity.setDescription(description);
+			TMActivitySession activitySession =
+				TMActivitySessionLocalServiceUtil.addActivitySession(
+					themeDisplay.getUserId(), startTimeCalendar.getTime(),
+					endTimeCalendar.getTime(), tmActivity.getActivityId(),
+					serviceContext);
 
-				tmActivity = TMActivityLocalServiceUtil.updateTMActivity(
-					tmActivity);
-			}
-
-			Layout layout = themeDisplay.getLayout();
-
-			PortletURL portletURL = PortletURLFactoryUtil.create(
-				actionRequest, PortletKeys.TIME_MANAGEMENT_ACTIVITY,
-				layout.getPlid(), PortletRequest.RENDER_PHASE);
-
-			portletURL.setParameter("mvcPath", "/timetracking/view.jsp");
-
-			actionResponse.sendRedirect(portletURL.toString());
+			jsonObject.put(
+				"activitySessionItem", createActivitySessionJSON(
+					activitySession, themeDisplay));
 		}
-		catch (Exception e) {
-			actionResponse.setRenderParameter(
-				"mvcPath", "/timetracking/view.jsp");
+		else {
+			tmActivity = TMActivityLocalServiceUtil.getTMActivity(activityId);
 
-			actionResponse.setRenderParameters(actionRequest.getParameterMap());
+			tmActivity.setActivityName(activityName);
+			tmActivity.setDescription(description);
 
-			SessionErrors.add(actionRequest, e.getClass(), e);
+			tmActivity = TMActivityLocalServiceUtil.updateTMActivity(
+				tmActivity);
 		}
 	}
 
-	public void updateActivitySession(
-			ActionRequest actionRequest, ActionResponse actionResponse)
+	protected void updateActivitySession(
+			ActionRequest actionRequest, ActionResponse actionResponse,
+			JSONObject jsonObject)
 		throws Exception {
 
-		updateTMActivitySession(actionRequest, 0);
+		updateActivitySession(actionRequest, 0, jsonObject);
 	}
 
-	protected TMActivitySession updateTMActivitySession(
-			PortletRequest portletRequest, long tmActivityId)
-		throws PortalException, SystemException {
+	protected TMActivitySession updateActivitySession(
+			PortletRequest portletRequest, long tmActivityId,
+			JSONObject jsonObject)
+		throws Exception {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)portletRequest.getAttribute(
 				WebKeys.THEME_DISPLAY);
@@ -142,6 +270,10 @@ public class TimeTrackingPortlet extends MVCPortlet {
 				TMActivitySessionLocalServiceUtil.addActivitySession(
 					themeDisplay.getUserId(), startTimeCalendar.getTime(),
 					endTimeCalendar.getTime(), tmActivityId, serviceContext);
+
+			jsonObject.put(
+					"activitySessionItem", createActivitySessionJSON(
+						tmActivitySession, themeDisplay));
 		}
 		else {
 			tmActivitySession =
@@ -156,6 +288,33 @@ public class TimeTrackingPortlet extends MVCPortlet {
 		}
 
 		return tmActivitySession;
+	}
+
+	private JSONObject createActivitySessionJSON(
+			TMActivitySession activitySession, ThemeDisplay themeDisplay)
+		throws Exception {
+
+		JSONObject activitySessionJSON = JSONFactoryUtil.createJSONObject();
+
+		TMActivity activity = activitySession.getTMActivity();
+
+		Date startTime = activitySession.getStartTime();
+		Date endTime = activitySession.getEndTime();
+
+		Format dateTimeFormat =
+			FastDateFormatFactoryUtil.getTime(
+				themeDisplay.getLocale(), themeDisplay.getTimeZone());
+
+		activitySessionJSON.put(
+			"activitySessionId", activitySession.getActivitySessionId());
+		activitySessionJSON.put("activityId", activitySession.getActivityId());
+		activitySessionJSON.put("activityName", activity.getActivityName());
+		activitySessionJSON.put("startDate", startTime.getTime());
+		activitySessionJSON.put("endDate", endTime.getTime());
+		activitySessionJSON.put(
+			"duration", activitySession.getDurationAsString());
+
+		return activitySessionJSON;
 	}
 
 }
