@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.CalendarUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.OrderByComparator;
@@ -47,6 +48,7 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -1111,6 +1113,699 @@ public class TMActivitySessionPersistenceImpl extends BasePersistenceImpl<TMActi
 
 	private static final String _FINDER_COLUMN_U_T_USERID_2 = "tmActivitySession.userId = ? AND ";
 	private static final String _FINDER_COLUMN_U_T_ACTIVITYID_2 = "tmActivitySession.activityId = ?";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_C_G_U_I = new FinderPath(TMActivitySessionModelImpl.ENTITY_CACHE_ENABLED,
+			TMActivitySessionModelImpl.FINDER_CACHE_ENABLED,
+			TMActivitySessionImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByC_G_U_I",
+			new String[] {
+				Long.class.getName(), Long.class.getName(), Long.class.getName(),
+				Date.class.getName(), Date.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_COUNT_BY_C_G_U_I = new FinderPath(TMActivitySessionModelImpl.ENTITY_CACHE_ENABLED,
+			TMActivitySessionModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "countByC_G_U_I",
+			new String[] {
+				Long.class.getName(), Long.class.getName(), Long.class.getName(),
+				Date.class.getName(), Date.class.getName()
+			});
+
+	/**
+	 * Returns all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @return the matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<TMActivitySession> findByC_G_U_I(long companyId, long groupId,
+		long userId, Date startTime, Date endTime) throws SystemException {
+		return findByC_G_U_I(companyId, groupId, userId, startTime, endTime,
+			QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivitySessionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @param start the lower bound of the range of t m activity sessions
+	 * @param end the upper bound of the range of t m activity sessions (not inclusive)
+	 * @return the range of matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<TMActivitySession> findByC_G_U_I(long companyId, long groupId,
+		long userId, Date startTime, Date endTime, int start, int end)
+		throws SystemException {
+		return findByC_G_U_I(companyId, groupId, userId, startTime, endTime,
+			start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivitySessionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @param start the lower bound of the range of t m activity sessions
+	 * @param end the upper bound of the range of t m activity sessions (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public List<TMActivitySession> findByC_G_U_I(long companyId, long groupId,
+		long userId, Date startTime, Date endTime, int start, int end,
+		OrderByComparator orderByComparator) throws SystemException {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_C_G_U_I;
+		finderArgs = new Object[] {
+				companyId, groupId, userId, startTime, endTime,
+				
+				start, end, orderByComparator
+			};
+
+		List<TMActivitySession> list = (List<TMActivitySession>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if ((list != null) && !list.isEmpty()) {
+			for (TMActivitySession tmActivitySession : list) {
+				if ((companyId != tmActivitySession.getCompanyId()) ||
+						(groupId != tmActivitySession.getGroupId()) ||
+						(userId != tmActivitySession.getUserId()) ||
+						(startTime.getTime() >= tmActivitySession.getStartTime()
+																	 .getTime()) ||
+						(endTime.getTime() <= tmActivitySession.getEndTime()
+																   .getTime())) {
+					list = null;
+
+					break;
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(7 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(7);
+			}
+
+			query.append(_SQL_SELECT_TMACTIVITYSESSION_WHERE);
+
+			query.append(_FINDER_COLUMN_C_G_U_I_COMPANYID_2);
+
+			query.append(_FINDER_COLUMN_C_G_U_I_GROUPID_2);
+
+			query.append(_FINDER_COLUMN_C_G_U_I_USERID_2);
+
+			boolean bindStartTime = false;
+
+			if (startTime == null) {
+				query.append(_FINDER_COLUMN_C_G_U_I_STARTTIME_1);
+			}
+			else {
+				bindStartTime = true;
+
+				query.append(_FINDER_COLUMN_C_G_U_I_STARTTIME_2);
+			}
+
+			boolean bindEndTime = false;
+
+			if (endTime == null) {
+				query.append(_FINDER_COLUMN_C_G_U_I_ENDTIME_1);
+			}
+			else {
+				bindEndTime = true;
+
+				query.append(_FINDER_COLUMN_C_G_U_I_ENDTIME_2);
+			}
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(TMActivitySessionModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(companyId);
+
+				qPos.add(groupId);
+
+				qPos.add(userId);
+
+				if (bindStartTime) {
+					qPos.add(CalendarUtil.getTimestamp(startTime));
+				}
+
+				if (bindEndTime) {
+					qPos.add(CalendarUtil.getTimestamp(endTime));
+				}
+
+				if (!pagination) {
+					list = (List<TMActivitySession>)QueryUtil.list(q,
+							getDialect(), start, end, false);
+
+					Collections.sort(list);
+
+					list = new UnmodifiableList<TMActivitySession>(list);
+				}
+				else {
+					list = (List<TMActivitySession>)QueryUtil.list(q,
+							getDialect(), start, end);
+				}
+
+				cacheResult(list);
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching t m activity session
+	 * @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession findByC_G_U_I_First(long companyId, long groupId,
+		long userId, Date startTime, Date endTime,
+		OrderByComparator orderByComparator)
+		throws NoSuchTMActivitySessionException, SystemException {
+		TMActivitySession tmActivitySession = fetchByC_G_U_I_First(companyId,
+				groupId, userId, startTime, endTime, orderByComparator);
+
+		if (tmActivitySession != null) {
+			return tmActivitySession;
+		}
+
+		StringBundler msg = new StringBundler(12);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("companyId=");
+		msg.append(companyId);
+
+		msg.append(", groupId=");
+		msg.append(groupId);
+
+		msg.append(", userId=");
+		msg.append(userId);
+
+		msg.append(", startTime=");
+		msg.append(startTime);
+
+		msg.append(", endTime=");
+		msg.append(endTime);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchTMActivitySessionException(msg.toString());
+	}
+
+	/**
+	 * Returns the first t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching t m activity session, or <code>null</code> if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession fetchByC_G_U_I_First(long companyId, long groupId,
+		long userId, Date startTime, Date endTime,
+		OrderByComparator orderByComparator) throws SystemException {
+		List<TMActivitySession> list = findByC_G_U_I(companyId, groupId,
+				userId, startTime, endTime, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching t m activity session
+	 * @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession findByC_G_U_I_Last(long companyId, long groupId,
+		long userId, Date startTime, Date endTime,
+		OrderByComparator orderByComparator)
+		throws NoSuchTMActivitySessionException, SystemException {
+		TMActivitySession tmActivitySession = fetchByC_G_U_I_Last(companyId,
+				groupId, userId, startTime, endTime, orderByComparator);
+
+		if (tmActivitySession != null) {
+			return tmActivitySession;
+		}
+
+		StringBundler msg = new StringBundler(12);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("companyId=");
+		msg.append(companyId);
+
+		msg.append(", groupId=");
+		msg.append(groupId);
+
+		msg.append(", userId=");
+		msg.append(userId);
+
+		msg.append(", startTime=");
+		msg.append(startTime);
+
+		msg.append(", endTime=");
+		msg.append(endTime);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchTMActivitySessionException(msg.toString());
+	}
+
+	/**
+	 * Returns the last t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching t m activity session, or <code>null</code> if a matching t m activity session could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession fetchByC_G_U_I_Last(long companyId, long groupId,
+		long userId, Date startTime, Date endTime,
+		OrderByComparator orderByComparator) throws SystemException {
+		int count = countByC_G_U_I(companyId, groupId, userId, startTime,
+				endTime);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<TMActivitySession> list = findByC_G_U_I(companyId, groupId,
+				userId, startTime, endTime, count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the t m activity sessions before and after the current t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * @param activitySessionId the primary key of the current t m activity session
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next t m activity session
+	 * @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a t m activity session with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public TMActivitySession[] findByC_G_U_I_PrevAndNext(
+		long activitySessionId, long companyId, long groupId, long userId,
+		Date startTime, Date endTime, OrderByComparator orderByComparator)
+		throws NoSuchTMActivitySessionException, SystemException {
+		TMActivitySession tmActivitySession = findByPrimaryKey(activitySessionId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			TMActivitySession[] array = new TMActivitySessionImpl[3];
+
+			array[0] = getByC_G_U_I_PrevAndNext(session, tmActivitySession,
+					companyId, groupId, userId, startTime, endTime,
+					orderByComparator, true);
+
+			array[1] = tmActivitySession;
+
+			array[2] = getByC_G_U_I_PrevAndNext(session, tmActivitySession,
+					companyId, groupId, userId, startTime, endTime,
+					orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected TMActivitySession getByC_G_U_I_PrevAndNext(Session session,
+		TMActivitySession tmActivitySession, long companyId, long groupId,
+		long userId, Date startTime, Date endTime,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_TMACTIVITYSESSION_WHERE);
+
+		query.append(_FINDER_COLUMN_C_G_U_I_COMPANYID_2);
+
+		query.append(_FINDER_COLUMN_C_G_U_I_GROUPID_2);
+
+		query.append(_FINDER_COLUMN_C_G_U_I_USERID_2);
+
+		boolean bindStartTime = false;
+
+		if (startTime == null) {
+			query.append(_FINDER_COLUMN_C_G_U_I_STARTTIME_1);
+		}
+		else {
+			bindStartTime = true;
+
+			query.append(_FINDER_COLUMN_C_G_U_I_STARTTIME_2);
+		}
+
+		boolean bindEndTime = false;
+
+		if (endTime == null) {
+			query.append(_FINDER_COLUMN_C_G_U_I_ENDTIME_1);
+		}
+		else {
+			bindEndTime = true;
+
+			query.append(_FINDER_COLUMN_C_G_U_I_ENDTIME_2);
+		}
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(TMActivitySessionModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(companyId);
+
+		qPos.add(groupId);
+
+		qPos.add(userId);
+
+		if (bindStartTime) {
+			qPos.add(CalendarUtil.getTimestamp(startTime));
+		}
+
+		if (bindEndTime) {
+			qPos.add(CalendarUtil.getTimestamp(endTime));
+		}
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(tmActivitySession);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<TMActivitySession> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public void removeByC_G_U_I(long companyId, long groupId, long userId,
+		Date startTime, Date endTime) throws SystemException {
+		for (TMActivitySession tmActivitySession : findByC_G_U_I(companyId,
+				groupId, userId, startTime, endTime, QueryUtil.ALL_POS,
+				QueryUtil.ALL_POS, null)) {
+			remove(tmActivitySession);
+		}
+	}
+
+	/**
+	 * Returns the number of t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param startTime the start time
+	 * @param endTime the end time
+	 * @return the number of matching t m activity sessions
+	 * @throws SystemException if a system exception occurred
+	 */
+	@Override
+	public int countByC_G_U_I(long companyId, long groupId, long userId,
+		Date startTime, Date endTime) throws SystemException {
+		FinderPath finderPath = FINDER_PATH_WITH_PAGINATION_COUNT_BY_C_G_U_I;
+
+		Object[] finderArgs = new Object[] {
+				companyId, groupId, userId, startTime, endTime
+			};
+
+		Long count = (Long)FinderCacheUtil.getResult(finderPath, finderArgs,
+				this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(6);
+
+			query.append(_SQL_COUNT_TMACTIVITYSESSION_WHERE);
+
+			query.append(_FINDER_COLUMN_C_G_U_I_COMPANYID_2);
+
+			query.append(_FINDER_COLUMN_C_G_U_I_GROUPID_2);
+
+			query.append(_FINDER_COLUMN_C_G_U_I_USERID_2);
+
+			boolean bindStartTime = false;
+
+			if (startTime == null) {
+				query.append(_FINDER_COLUMN_C_G_U_I_STARTTIME_1);
+			}
+			else {
+				bindStartTime = true;
+
+				query.append(_FINDER_COLUMN_C_G_U_I_STARTTIME_2);
+			}
+
+			boolean bindEndTime = false;
+
+			if (endTime == null) {
+				query.append(_FINDER_COLUMN_C_G_U_I_ENDTIME_1);
+			}
+			else {
+				bindEndTime = true;
+
+				query.append(_FINDER_COLUMN_C_G_U_I_ENDTIME_2);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(companyId);
+
+				qPos.add(groupId);
+
+				qPos.add(userId);
+
+				if (bindStartTime) {
+					qPos.add(CalendarUtil.getTimestamp(startTime));
+				}
+
+				if (bindEndTime) {
+					qPos.add(CalendarUtil.getTimestamp(endTime));
+				}
+
+				count = (Long)q.uniqueResult();
+
+				FinderCacheUtil.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_C_G_U_I_COMPANYID_2 = "tmActivitySession.companyId = ? AND ";
+	private static final String _FINDER_COLUMN_C_G_U_I_GROUPID_2 = "tmActivitySession.groupId = ? AND ";
+	private static final String _FINDER_COLUMN_C_G_U_I_USERID_2 = "tmActivitySession.userId = ? AND ";
+	private static final String _FINDER_COLUMN_C_G_U_I_STARTTIME_1 = "tmActivitySession.startTime > NULL AND ";
+	private static final String _FINDER_COLUMN_C_G_U_I_STARTTIME_2 = "tmActivitySession.startTime > ? AND ";
+	private static final String _FINDER_COLUMN_C_G_U_I_ENDTIME_1 = "tmActivitySession.endTime < NULL";
+	private static final String _FINDER_COLUMN_C_G_U_I_ENDTIME_2 = "tmActivitySession.endTime < ?";
 
 	public TMActivitySessionPersistenceImpl() {
 		setModelClass(TMActivitySession.class);

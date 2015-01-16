@@ -475,6 +475,23 @@ public class TMActivitySessionWrapper implements TMActivitySession,
 	}
 
 	@Override
+	public com.liferay.timemanagement.model.TMActivity getTMActivity()
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivitySession.getTMActivity();
+	}
+
+	@Override
+	public long getDuration() throws java.lang.Exception {
+		return _tmActivitySession.getDuration();
+	}
+
+	@Override
+	public java.lang.String getDurationAsString() throws java.lang.Exception {
+		return _tmActivitySession.getDurationAsString();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

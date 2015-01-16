@@ -254,17 +254,6 @@ public interface TMActivityLocalService extends BaseLocalService,
 		long classNameId, long classPK, java.lang.String classUuid,
 		java.lang.String description, java.util.Date endDate, int priority,
 		java.util.Date reminderDate, java.util.Date scheduledDate,
-		java.util.Date startDate, boolean visible, java.util.Date startTime,
-		java.util.Date endTime,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException;
-
-	public com.liferay.timemanagement.model.TMActivity addTMActivity(
-		long companyId, long userId, java.lang.String activityName,
-		long classNameId, long classPK, java.lang.String classUuid,
-		java.lang.String description, java.util.Date endDate, int priority,
-		java.util.Date reminderDate, java.util.Date scheduledDate,
 		java.util.Date startDate, boolean visible,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,

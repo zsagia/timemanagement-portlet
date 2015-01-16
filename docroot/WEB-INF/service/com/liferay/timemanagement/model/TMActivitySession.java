@@ -31,4 +31,11 @@ public interface TMActivitySession extends TMActivitySessionModel, PersistedMode
 	 *
 	 * Never modify this interface directly. Add methods to {@link com.liferay.timemanagement.model.impl.TMActivitySessionImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public com.liferay.timemanagement.model.TMActivity getTMActivity()
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	public long getDuration() throws java.lang.Exception;
+
+	public java.lang.String getDurationAsString() throws java.lang.Exception;
 }

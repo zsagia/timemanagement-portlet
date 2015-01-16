@@ -452,6 +452,232 @@ public class TMActivitySessionUtil {
 	}
 
 	/**
+	* Returns all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @return the matching t m activity sessions
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.timemanagement.model.TMActivitySession> findByC_G_U_I(
+		long companyId, long groupId, long userId, java.util.Date startTime,
+		java.util.Date endTime)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_G_U_I(companyId, groupId, userId, startTime, endTime);
+	}
+
+	/**
+	* Returns a range of all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivitySessionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @param start the lower bound of the range of t m activity sessions
+	* @param end the upper bound of the range of t m activity sessions (not inclusive)
+	* @return the range of matching t m activity sessions
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.timemanagement.model.TMActivitySession> findByC_G_U_I(
+		long companyId, long groupId, long userId, java.util.Date startTime,
+		java.util.Date endTime, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_G_U_I(companyId, groupId, userId, startTime,
+			endTime, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link com.liferay.timemanagement.model.impl.TMActivitySessionModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @param start the lower bound of the range of t m activity sessions
+	* @param end the upper bound of the range of t m activity sessions (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching t m activity sessions
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.timemanagement.model.TMActivitySession> findByC_G_U_I(
+		long companyId, long groupId, long userId, java.util.Date startTime,
+		java.util.Date endTime, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_G_U_I(companyId, groupId, userId, startTime,
+			endTime, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching t m activity session
+	* @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a matching t m activity session could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.timemanagement.model.TMActivitySession findByC_G_U_I_First(
+		long companyId, long groupId, long userId, java.util.Date startTime,
+		java.util.Date endTime,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			com.liferay.timemanagement.NoSuchTMActivitySessionException {
+		return getPersistence()
+				   .findByC_G_U_I_First(companyId, groupId, userId, startTime,
+			endTime, orderByComparator);
+	}
+
+	/**
+	* Returns the first t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching t m activity session, or <code>null</code> if a matching t m activity session could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.timemanagement.model.TMActivitySession fetchByC_G_U_I_First(
+		long companyId, long groupId, long userId, java.util.Date startTime,
+		java.util.Date endTime,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByC_G_U_I_First(companyId, groupId, userId, startTime,
+			endTime, orderByComparator);
+	}
+
+	/**
+	* Returns the last t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching t m activity session
+	* @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a matching t m activity session could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.timemanagement.model.TMActivitySession findByC_G_U_I_Last(
+		long companyId, long groupId, long userId, java.util.Date startTime,
+		java.util.Date endTime,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			com.liferay.timemanagement.NoSuchTMActivitySessionException {
+		return getPersistence()
+				   .findByC_G_U_I_Last(companyId, groupId, userId, startTime,
+			endTime, orderByComparator);
+	}
+
+	/**
+	* Returns the last t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching t m activity session, or <code>null</code> if a matching t m activity session could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.timemanagement.model.TMActivitySession fetchByC_G_U_I_Last(
+		long companyId, long groupId, long userId, java.util.Date startTime,
+		java.util.Date endTime,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByC_G_U_I_Last(companyId, groupId, userId, startTime,
+			endTime, orderByComparator);
+	}
+
+	/**
+	* Returns the t m activity sessions before and after the current t m activity session in the ordered set where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* @param activitySessionId the primary key of the current t m activity session
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next t m activity session
+	* @throws com.liferay.timemanagement.NoSuchTMActivitySessionException if a t m activity session with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.timemanagement.model.TMActivitySession[] findByC_G_U_I_PrevAndNext(
+		long activitySessionId, long companyId, long groupId, long userId,
+		java.util.Date startTime, java.util.Date endTime,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			com.liferay.timemanagement.NoSuchTMActivitySessionException {
+		return getPersistence()
+				   .findByC_G_U_I_PrevAndNext(activitySessionId, companyId,
+			groupId, userId, startTime, endTime, orderByComparator);
+	}
+
+	/**
+	* Removes all the t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63; from the database.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByC_G_U_I(long companyId, long groupId,
+		long userId, java.util.Date startTime, java.util.Date endTime)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence()
+			.removeByC_G_U_I(companyId, groupId, userId, startTime, endTime);
+	}
+
+	/**
+	* Returns the number of t m activity sessions where companyId = &#63; and groupId = &#63; and userId = &#63; and startTime &gt; &#63; and endTime &lt; &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param userId the user ID
+	* @param startTime the start time
+	* @param endTime the end time
+	* @return the number of matching t m activity sessions
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByC_G_U_I(long companyId, long groupId, long userId,
+		java.util.Date startTime, java.util.Date endTime)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .countByC_G_U_I(companyId, groupId, userId, startTime,
+			endTime);
+	}
+
+	/**
 	* Caches the t m activity session in the entity cache if it is enabled.
 	*
 	* @param tmActivitySession the t m activity session

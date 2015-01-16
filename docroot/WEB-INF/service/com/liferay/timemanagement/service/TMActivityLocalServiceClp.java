@@ -121,51 +121,41 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 				"long", "long", "java.lang.String", "long", "long",
 				"java.lang.String", "java.lang.String", "java.util.Date", "int",
 				"java.util.Date", "java.util.Date", "java.util.Date", "boolean",
-				"java.util.Date", "java.util.Date",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName20 = "addTMActivity";
+		_methodName20 = "addTMActivityResources";
 
 		_methodParameterTypes20 = new String[] {
-				"long", "long", "java.lang.String", "long", "long",
-				"java.lang.String", "java.lang.String", "java.util.Date", "int",
-				"java.util.Date", "java.util.Date", "java.util.Date", "boolean",
-				"com.liferay.portal.service.ServiceContext"
+				"com.liferay.timemanagement.model.TMActivity", "boolean",
+				"boolean"
 			};
 
 		_methodName21 = "addTMActivityResources";
 
 		_methodParameterTypes21 = new String[] {
-				"com.liferay.timemanagement.model.TMActivity", "boolean",
-				"boolean"
-			};
-
-		_methodName22 = "addTMActivityResources";
-
-		_methodParameterTypes22 = new String[] {
 				"com.liferay.timemanagement.model.TMActivity",
 				"java.lang.String[][]", "java.lang.String[][]"
 			};
 
-		_methodName23 = "countByC_G";
+		_methodName22 = "countByC_G";
 
-		_methodParameterTypes23 = new String[] { "long", "long" };
+		_methodParameterTypes22 = new String[] { "long", "long" };
+
+		_methodName23 = "getTMActivitiesByC_G";
+
+		_methodParameterTypes23 = new String[] { "long", "long", "int", "int" };
 
 		_methodName24 = "getTMActivitiesByC_G";
 
-		_methodParameterTypes24 = new String[] { "long", "long", "int", "int" };
-
-		_methodName25 = "getTMActivitiesByC_G";
-
-		_methodParameterTypes25 = new String[] {
+		_methodParameterTypes24 = new String[] {
 				"long", "long", "int", "int",
 				"com.liferay.portal.kernel.util.OrderByComparator"
 			};
 
-		_methodName26 = "updateTMActivity";
+		_methodName25 = "updateTMActivity";
 
-		_methodParameterTypes26 = new String[] {
+		_methodParameterTypes25 = new String[] {
 				"long", "java.lang.String", "long", "long", "java.lang.String",
 				"java.lang.String", "java.util.Date", "int", "java.util.Date",
 				"java.util.Date", "java.util.Date", "boolean",
@@ -729,8 +719,7 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		long classNameId, long classPK, java.lang.String classUuid,
 		java.lang.String description, java.util.Date endDate, int priority,
 		java.util.Date reminderDate, java.util.Date scheduledDate,
-		java.util.Date startDate, boolean visible, java.util.Date startTime,
-		java.util.Date endTime,
+		java.util.Date startDate, boolean visible,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -739,78 +728,6 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName19,
 					_methodParameterTypes19,
-					new Object[] {
-						companyId,
-						
-					userId,
-						
-					ClpSerializer.translateInput(activityName),
-						
-					classNameId,
-						
-					classPK,
-						
-					ClpSerializer.translateInput(classUuid),
-						
-					ClpSerializer.translateInput(description),
-						
-					ClpSerializer.translateInput(endDate),
-						
-					priority,
-						
-					ClpSerializer.translateInput(reminderDate),
-						
-					ClpSerializer.translateInput(scheduledDate),
-						
-					ClpSerializer.translateInput(startDate),
-						
-					visible,
-						
-					ClpSerializer.translateInput(startTime),
-						
-					ClpSerializer.translateInput(endTime),
-						
-					ClpSerializer.translateInput(serviceContext)
-					});
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof com.liferay.portal.kernel.exception.PortalException) {
-				throw (com.liferay.portal.kernel.exception.PortalException)t;
-			}
-
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (com.liferay.timemanagement.model.TMActivity)ClpSerializer.translateOutput(returnObj);
-	}
-
-	@Override
-	public com.liferay.timemanagement.model.TMActivity addTMActivity(
-		long companyId, long userId, java.lang.String activityName,
-		long classNameId, long classPK, java.lang.String classUuid,
-		java.lang.String description, java.util.Date endDate, int priority,
-		java.util.Date reminderDate, java.util.Date scheduledDate,
-		java.util.Date startDate, boolean visible,
-		com.liferay.portal.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName20,
-					_methodParameterTypes20,
 					new Object[] {
 						companyId,
 						
@@ -871,8 +788,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName21,
-				_methodParameterTypes21,
+			_invokableLocalService.invokeMethod(_methodName20,
+				_methodParameterTypes20,
 				new Object[] {
 					ClpSerializer.translateInput(tmActivity),
 					
@@ -909,8 +826,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName22,
-				_methodParameterTypes22,
+			_invokableLocalService.invokeMethod(_methodName21,
+				_methodParameterTypes21,
 				new Object[] {
 					ClpSerializer.translateInput(tmActivity),
 					
@@ -946,8 +863,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName23,
-					_methodParameterTypes23, new Object[] { companyId, groupId });
+			returnObj = _invokableLocalService.invokeMethod(_methodName22,
+					_methodParameterTypes22, new Object[] { companyId, groupId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -975,8 +892,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName24,
-					_methodParameterTypes24,
+			returnObj = _invokableLocalService.invokeMethod(_methodName23,
+					_methodParameterTypes23,
 					new Object[] { companyId, groupId, start, end });
 		}
 		catch (Throwable t) {
@@ -1006,8 +923,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName25,
-					_methodParameterTypes25,
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
 					new Object[] {
 						companyId,
 						
@@ -1051,8 +968,8 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName26,
-					_methodParameterTypes26,
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25,
 					new Object[] {
 						activityId,
 						
@@ -1151,6 +1068,4 @@ public class TMActivityLocalServiceClp implements TMActivityLocalService {
 	private String[] _methodParameterTypes24;
 	private String _methodName25;
 	private String[] _methodParameterTypes25;
-	private String _methodName26;
-	private String[] _methodParameterTypes26;
 }

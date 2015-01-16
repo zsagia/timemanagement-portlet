@@ -90,8 +90,11 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 				"value.object.column.bitmask.enabled.com.liferay.timemanagement.model.TMActivitySession"),
 			true);
 	public static long ACTIVITYID_COLUMN_BITMASK = 1L;
-	public static long USERID_COLUMN_BITMASK = 2L;
-	public static long STARTTIME_COLUMN_BITMASK = 4L;
+	public static long COMPANYID_COLUMN_BITMASK = 2L;
+	public static long ENDTIME_COLUMN_BITMASK = 4L;
+	public static long GROUPID_COLUMN_BITMASK = 8L;
+	public static long STARTTIME_COLUMN_BITMASK = 16L;
+	public static long USERID_COLUMN_BITMASK = 32L;
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
 				"lock.expiration.time.com.liferay.timemanagement.model.TMActivitySession"));
 
@@ -226,7 +229,19 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 
 	@Override
 	public void setGroupId(long groupId) {
+		_columnBitmask |= GROUPID_COLUMN_BITMASK;
+
+		if (!_setOriginalGroupId) {
+			_setOriginalGroupId = true;
+
+			_originalGroupId = _groupId;
+		}
+
 		_groupId = groupId;
+	}
+
+	public long getOriginalGroupId() {
+		return _originalGroupId;
 	}
 
 	@Override
@@ -236,7 +251,19 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 
 	@Override
 	public void setCompanyId(long companyId) {
+		_columnBitmask |= COMPANYID_COLUMN_BITMASK;
+
+		if (!_setOriginalCompanyId) {
+			_setOriginalCompanyId = true;
+
+			_originalCompanyId = _companyId;
+		}
+
 		_companyId = companyId;
+	}
+
+	public long getOriginalCompanyId() {
+		return _originalCompanyId;
 	}
 
 	@Override
@@ -335,7 +362,17 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 
 	@Override
 	public void setEndTime(Date endTime) {
+		_columnBitmask |= ENDTIME_COLUMN_BITMASK;
+
+		if (_originalEndTime == null) {
+			_originalEndTime = _endTime;
+		}
+
 		_endTime = endTime;
+	}
+
+	public Date getOriginalEndTime() {
+		return _originalEndTime;
 	}
 
 	@Override
@@ -347,7 +384,15 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 	public void setStartTime(Date startTime) {
 		_columnBitmask = -1L;
 
+		if (_originalStartTime == null) {
+			_originalStartTime = _startTime;
+		}
+
 		_startTime = startTime;
+	}
+
+	public Date getOriginalStartTime() {
+		return _originalStartTime;
 	}
 
 	public long getColumnBitmask() {
@@ -444,6 +489,14 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 	public void resetOriginalValues() {
 		TMActivitySessionModelImpl tmActivitySessionModelImpl = this;
 
+		tmActivitySessionModelImpl._originalGroupId = tmActivitySessionModelImpl._groupId;
+
+		tmActivitySessionModelImpl._setOriginalGroupId = false;
+
+		tmActivitySessionModelImpl._originalCompanyId = tmActivitySessionModelImpl._companyId;
+
+		tmActivitySessionModelImpl._setOriginalCompanyId = false;
+
 		tmActivitySessionModelImpl._originalUserId = tmActivitySessionModelImpl._userId;
 
 		tmActivitySessionModelImpl._setOriginalUserId = false;
@@ -451,6 +504,10 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 		tmActivitySessionModelImpl._originalActivityId = tmActivitySessionModelImpl._activityId;
 
 		tmActivitySessionModelImpl._setOriginalActivityId = false;
+
+		tmActivitySessionModelImpl._originalEndTime = tmActivitySessionModelImpl._endTime;
+
+		tmActivitySessionModelImpl._originalStartTime = tmActivitySessionModelImpl._startTime;
 
 		tmActivitySessionModelImpl._columnBitmask = 0;
 	}
@@ -605,7 +662,11 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 		};
 	private long _activitySessionId;
 	private long _groupId;
+	private long _originalGroupId;
+	private boolean _setOriginalGroupId;
 	private long _companyId;
+	private long _originalCompanyId;
+	private boolean _setOriginalCompanyId;
 	private long _userId;
 	private String _userUuid;
 	private long _originalUserId;
@@ -617,7 +678,9 @@ public class TMActivitySessionModelImpl extends BaseModelImpl<TMActivitySession>
 	private long _originalActivityId;
 	private boolean _setOriginalActivityId;
 	private Date _endTime;
+	private Date _originalEndTime;
 	private Date _startTime;
+	private Date _originalStartTime;
 	private long _columnBitmask;
 	private TMActivitySession _escapedModel;
 }

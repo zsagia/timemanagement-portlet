@@ -301,6 +301,15 @@ public class TMActivitySessionLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.liferay.timemanagement.model.TMActivitySession> getActivitySessionsByC_G_U_I(
+		long companyId, long groupId, long userId,
+		java.util.Date startInterval, java.util.Date endInterval)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _tmActivitySessionLocalService.getActivitySessionsByC_G_U_I(companyId,
+			groupId, userId, startInterval, endInterval);
+	}
+
+	@Override
 	public java.util.List<com.liferay.timemanagement.model.TMActivitySession> getActivitySessionsByU_T(
 		long userId, long tmActivityId)
 		throws com.liferay.portal.kernel.exception.SystemException {

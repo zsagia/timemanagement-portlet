@@ -121,17 +121,23 @@ public class TMActivitySessionLocalServiceClpInvoker {
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName49 = "getActivitySessionsByU_T";
+		_methodName49 = "getActivitySessionsByC_G_U_I";
 
-		_methodParameterTypes49 = new String[] { "long", "long" };
+		_methodParameterTypes49 = new String[] {
+				"long", "long", "long", "java.util.Date", "java.util.Date"
+			};
 
-		_methodName50 = "getTMActivitySessionsByActivityId";
+		_methodName50 = "getActivitySessionsByU_T";
 
-		_methodParameterTypes50 = new String[] { "long" };
+		_methodParameterTypes50 = new String[] { "long", "long" };
 
-		_methodName51 = "updateTaskSession";
+		_methodName51 = "getTMActivitySessionsByActivityId";
 
-		_methodParameterTypes51 = new String[] {
+		_methodParameterTypes51 = new String[] { "long" };
+
+		_methodName52 = "updateTaskSession";
+
+		_methodParameterTypes52 = new String[] {
 				"com.liferay.timemanagement.model.TMActivitySession"
 			};
 	}
@@ -247,17 +253,25 @@ public class TMActivitySessionLocalServiceClpInvoker {
 
 		if (_methodName49.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getActivitySessionsByU_T(((Long)arguments[0]).longValue(),
-				((Long)arguments[1]).longValue());
+			return TMActivitySessionLocalServiceUtil.getActivitySessionsByC_G_U_I(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				((Long)arguments[2]).longValue(), (java.util.Date)arguments[3],
+				(java.util.Date)arguments[4]);
 		}
 
 		if (_methodName50.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
-			return TMActivitySessionLocalServiceUtil.getTMActivitySessionsByActivityId(((Long)arguments[0]).longValue());
+			return TMActivitySessionLocalServiceUtil.getActivitySessionsByU_T(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue());
 		}
 
 		if (_methodName51.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
+			return TMActivitySessionLocalServiceUtil.getTMActivitySessionsByActivityId(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName52.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
 			return TMActivitySessionLocalServiceUtil.updateTaskSession((com.liferay.timemanagement.model.TMActivitySession)arguments[0]);
 		}
 
@@ -308,4 +322,6 @@ public class TMActivitySessionLocalServiceClpInvoker {
 	private String[] _methodParameterTypes50;
 	private String _methodName51;
 	private String[] _methodParameterTypes51;
+	private String _methodName52;
+	private String[] _methodParameterTypes52;
 }

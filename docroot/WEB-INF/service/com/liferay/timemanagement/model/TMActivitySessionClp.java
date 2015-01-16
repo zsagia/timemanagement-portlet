@@ -394,6 +394,63 @@ public class TMActivitySessionClp extends BaseModelImpl<TMActivitySession>
 		}
 	}
 
+	@Override
+	public long getDuration() {
+		try {
+			String methodName = "getDuration";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			Long returnObj = (Long)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public com.liferay.timemanagement.model.TMActivity getTMActivity() {
+		try {
+			String methodName = "getTMActivity";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			com.liferay.timemanagement.model.TMActivity returnObj = (com.liferay.timemanagement.model.TMActivity)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public java.lang.String getDurationAsString() {
+		try {
+			String methodName = "getDurationAsString";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			java.lang.String returnObj = (java.lang.String)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
 	public BaseModel<?> getTMActivitySessionRemoteModel() {
 		return _tmActivitySessionRemoteModel;
 	}
