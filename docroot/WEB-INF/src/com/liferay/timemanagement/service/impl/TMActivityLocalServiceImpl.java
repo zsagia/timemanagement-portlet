@@ -48,26 +48,6 @@ public class TMActivityLocalServiceImpl extends TMActivityLocalServiceBaseImpl {
 			long companyId, long userId, String activityName, long classNameId,
 			long classPK, String classUuid, String description, Date endDate,
 			int priority, Date reminderDate, Date scheduledDate, Date startDate,
-			boolean visible, Date startTime, Date endTime,
-			ServiceContext serviceContext)
-		throws PortalException, SystemException {
-
-		TMActivity tmActivity = addTMActivity(
-			companyId, userId, activityName, classNameId, classPK, classUuid,
-			description, endDate, priority, reminderDate, scheduledDate,
-			startDate, visible, serviceContext);
-
-		tmActivitySessionLocalService.addActivitySession(
-			userId, startTime, endTime, tmActivity.getActivityId(),
-			serviceContext);
-
-		return tmActivity;
-	}
-
-	public TMActivity addTMActivity(
-			long companyId, long userId, String activityName, long classNameId,
-			long classPK, String classUuid, String description, Date endDate,
-			int priority, Date reminderDate, Date scheduledDate, Date startDate,
 			boolean visible, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 

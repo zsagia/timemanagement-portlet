@@ -74,6 +74,18 @@ public class TMActivitySessionLocalServiceImpl
 		return tmActivitySession;
 	}
 
+	public List<TMActivitySession> getActivitySessionsByC_G_U_I(
+			long companyId, long groupId, long userId, Date startInterval,
+			Date endInterval)
+		throws SystemException {
+
+		List<TMActivitySession> tmActivitySessions =
+			tmActivitySessionPersistence.findByC_G_U_I(
+				companyId, groupId, userId, startInterval, endInterval);
+
+		return tmActivitySessions;
+	}
+
 	public List<TMActivitySession> getActivitySessionsByU_T(
 			long userId, long tmActivityId)
 		throws SystemException {
