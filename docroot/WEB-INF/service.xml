@@ -91,6 +91,14 @@
 			<finder-column name="userId" />
 			<finder-column name="activityId" />
 		</finder>
+
+		<finder name="C_G_U_I" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+			<finder-column name="startTime" comparator="&gt;" />
+			<finder-column name="endTime" comparator="&lt;" />
+		</finder>
 	</entity>
 
 	<entity name="TMTask" local-service="true" remote-service="false">
