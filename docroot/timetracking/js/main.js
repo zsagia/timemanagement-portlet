@@ -787,6 +787,6 @@ AUI.add(
 	},
 	'',
 	{
-		requires: ['aui-datatable', 'aui-datatype', 'aui-pagination', 'datatable-mutable', 'datatable-sort', 'datatype-date', 'liferay-history-manager', 'liferay-portlet-url']
+		requires: ['aui-io-deprecated', 'aui-datatable', 'aui-datatype', 'aui-pagination', 'datatable-mutable', 'datatable-sort', 'datatype-date', 'liferay-history-manager', 'liferay-portlet-url']
 	}
 );
