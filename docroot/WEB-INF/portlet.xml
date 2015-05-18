@@ -33,4 +33,36 @@
 			<role-name>user</role-name>
 		</security-role-ref>
 	</portlet>
+	<portlet>
+		<portlet-name>2</portlet-name>
+		<display-name>Activity Management</display-name>
+		<portlet-class>com.liferay.timemanagement.activitymanagement.portlet.ActivityManagementPortlet</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/activitymanagement/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>content.Language</resource-bundle>
+		<portlet-info>
+			<title>Activity Management</title>
+			<short-title>Activity Management</short-title>
+			<keywords/>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet> 
 </portlet-app>

@@ -15,6 +15,19 @@
 		</footer-portlet-javascript>
 		<css-class-wrapper>timetracking-portlet</css-class-wrapper>
 	</portlet>
+	<portlet>
+		<portlet-name>2</portlet-name>
+		<icon>/icons/icon.png</icon>
+		<control-panel-entry-category>
+			Activity Management
+		</control-panel-entry-category>
+		<control-panel-entry-weight>30</control-panel-entry-weight>
+		<header-portlet-css>/activitymanagement/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/activitymanagement/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>activitymanagement-portlet</css-class-wrapper>
+	</portlet> 
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>
