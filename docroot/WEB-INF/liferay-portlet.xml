@@ -27,7 +27,20 @@
 			/activitymanagement/js/main.js
 		</footer-portlet-javascript>
 		<css-class-wrapper>activitymanagement-portlet</css-class-wrapper>
-	</portlet> 
+	</portlet>
+	<portlet>
+		<portlet-name>3</portlet-name>
+		<icon>/icons/icon.png</icon>
+		<control-panel-entry-category>
+			Timesheet
+		</control-panel-entry-category>
+		<control-panel-entry-weight>30</control-panel-entry-weight>
+		<header-portlet-css>/timesheet/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/timesheet/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>timesheet-portlet</css-class-wrapper>
+	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>
